@@ -1,505 +1,248 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>محمدامین طیبی — رزومه</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>محمدامین طیبی | رزومه آنلاین</title>
 
-<!-- Fonts: Shabnam (fa) + Poppins (en) -->
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v2.3.0/Shabnam.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet"/>
 
 <style>
+/* Reset & Base */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0e0e0e;color:#fff;font-family:'Shabnam','Poppins',sans-serif;line-height:1.6;scroll-behavior:smooth}
+a{text-decoration:none;color:inherit}
+
+/* Theme Variables */
 :root{
---bg:#050505;            /* deep black */
---gold:#facc15;          /* gold hue */
---gold-opaque: rgba(250,204,21,0.22); /* ~22% */
---gold-opaque-30: rgba(250,204,21,0.30); /* ~30% */
---muted:#9aa0a6;
---glass: rgba(255,255,255,0.06);
---glass-strong: rgba(255,255,255,0.08);
---accent: #ffd54a;
---card: #0b0b0b;
---radius: 12px;
---max-w: 1100px;
+  --gold:#facc15;
+  --gold-gradient:linear-gradient(45deg,#facc15,#ffd700,#f6e05e);
+  --bg-dark:#0e0e0e;
 }
 
-/* Reset */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-background: var(--bg);
-color:#e8e8e8;
-font-family: "Shabnam", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
--webkit-font-smoothing:antialiased;
--moz-osx-font-smoothing:grayscale;
-line-height:1.45;
-padding-bottom:60px;
+/* Navbar */
+nav{
+  position:fixed;top:0;left:0;width:100%;
+  background:rgba(14,14,14,0.7);backdrop-filter:blur(8px);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 50px;z-index:10
+}
+nav .logo{font-weight:700;font-size:1.5rem;background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
+nav ul{display:flex;gap:25px;list-style:none}
+nav ul li a{font-weight:500;transition:.3s}
+nav ul li a:hover{color:var(--gold)}
+.lang-btn{border:1px solid var(--gold);background:none;color:var(--gold);padding:5px 12px;border-radius:20px;cursor:pointer}
+
+/* Hero */
+header.hero{
+  position:relative;
+  min-height:100vh;display:flex;align-items:center;padding:0 50px;
+  background:var(--gold-gradient);
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;
+  background:var(--bg-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23333' fill-opacity='0.2'%3E%3Ccircle cx='200' cy='200' r='200'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  mix-blend-mode:multiply;
+}
+.hero-content{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:50px;width:100%}
+.hero-text{flex:1;min-width:280px}
+.hero-text h1{font-size:2.5rem;margin-bottom:10px}
+.hero-text h1 span{background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
+.hero-text p{font-size:1.1rem;margin-bottom:20px;color:#ddd}
+.btn{
+  display:inline-block;padding:10px 25px;border-radius:25px;
+  background:var(--gold-gradient);color:#000;font-weight:bold
+}
+.hero-image{flex:1;display:flex;justify-content:center}
+.hero-image img{
+  max-width:320px;border-radius:20px;
+  box-shadow:0 0 40px rgba(250,204,21,0.5);
+  object-fit:cover;mix-blend-mode:screen; /* blend effect */
 }
 
-/* Container */
-.wrap{
-max-width: var(--max-w);
-margin: 28px auto;
-padding: 18px;
+/* Sections */
+section{padding:60px 50px}
+.section-title{
+  font-size:1.8rem;margin-bottom:30px;
+  background:var(--gold-gradient);-webkit-background-clip:text;color:transparent
 }
-
-/* Header / Hero */
-header.header{
-position: relative;
-overflow: visible;
-border-radius: 14px;
-background-color: #050505;
-min-height: 320px;
-display:flex;
-align-items:center;
-padding: 30px;
-box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-}
-
-/* Embedded SVG background (black + gold lines with soft blend) */
-.header::before{
-content:"";
-position:absolute;
-inset:0;
-z-index:0;
-border-radius:14px;
-background:
-url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='600' viewBox='0 0 1600 600'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23facc15' stop-opacity='0.0'/%3E%3Cstop offset='1' stop-color='%23facc15' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none'%3E%3Crect width='100%25' height='100%25' fill='%23050505'/%3E%3Cpath d='M0 480 L400 320 L800 480 L1200 320 L1600 480' stroke='%23facc15' stroke-width='1.8' stroke-opacity='0.22' /%3E%3Cpath d='M0 200 L300 120 L700 200 L1100 120 L1600 200' stroke='%23facc15' stroke-width='1.6' stroke-opacity='0.22' /%3E%3Ccircle cx='1450' cy='80' r='70' fill='%23facc15' fill-opacity='0.18'/%3E%3Crect x='1200' y='20' width='260' height='8' rx='4' fill='url(%23g)' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat;
-mix-blend-mode: normal;
-filter: blur(0.6px) saturate(1.05);
-}
-
-/* subtle golden corner gradient via pseudo element */
-.header::after{
-content:"";
-position:absolute;
-right:0;
-bottom:0;
-width:260px;
-height:260px;
-border-radius:0 14px 14px 0;
-z-index:0;
-background: linear-gradient(135deg, rgba(250,204,21,0.00) 0%, rgba(250,204,21,0.28) 100%);
-mix-blend-mode: soft-light;
-pointer-events:none;
-}
-
-.nav{
-position: sticky;
-top:18px;
-z-index:9;
-display:flex;
-gap:12px;
-justify-content:space-between;
-align-items:center;
-width:100%;
-}
-
-.nav-left{display:flex;gap:10px;align-items:center}
-.brand{
-font-weight:700;
-color:var(--gold);
-letter-spacing:0.6px;
-display:flex;
-gap:10px;
-align-items:center;
-z-index:6;
-}
-.brand .dot{
-width:12px;height:12px;border-radius:50%;
-background:var(--gold);
-box-shadow:0 0 14px rgba(250,204,21,0.12);
-}
-
-.nav-right{display:flex;gap:10px;align-items:center;z-index:6;}
-.lang-switch{
-background: transparent;
-border:1px solid rgba(255,255,255,0.06);
-color:var(--gold);
-padding:8px 12px;
-border-radius:10px;
-cursor:pointer;
-backdrop-filter: blur(6px);
-font-weight:600;
-}
-
-.cv-btn{
-background: linear-gradient(90deg,var(--gold) 0%, #ffea7a 100%);
-color:#050505;
-padding:9px 14px;
-border-radius:10px;
-font-weight:700;
-text-decoration:none;
-display:inline-flex;
-gap:8px;
-align-items:center;
-box-shadow: 0 8px 22px rgba(250,204,21,0.08);
-}
-
-.hero-inner{
-position:relative;
-z-index:6;
-display:flex;
-gap:28px;
-width:100%;
-align-items:center;
-}
-
-/* Left column: text */
-.hero-text{
-flex:1;
-padding: 12px 6px 6px 40px;
-}
-
-h1.name{
-font-size:34px;
-color:#fff;
-margin-bottom:8px;
-font-weight:800;
-letter-spacing:0.4px;
-}
-.title{
-display:flex;
-gap:10px;
-align-items:center;
-color:var(--muted);
-font-weight:600;
-font-size:15px;
-}
-
-.typer{
-color:var(--gold);
-font-weight:700;
-font-family: "Poppins", "Shabnam";
-overflow:hidden;
-white-space:nowrap;
-border-right:2px solid rgba(255,255,255,0.08);
-padding-right:6px;
-animation: blink 1s steps(2,end) infinite;
-display:inline-block;
-}
-@keyframes blink{50%{border-color:transparent}}
-
-.desc{
-margin-top:16px;
-color: #cfcfcf;
-font-size:15px;
-max-width:680px;
-}
-
-.hero-ctas{
-margin-top:18px;
-display:flex;
-gap:12px;
-align-items:center;
-}
-
-/* Right column: profile image */
-.hero-media{
-width:220px;
-min-width:180px;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-z-index:6;
-}
-
-.avatar{
-width:170px;
-height:170px;
-border-radius:50%;
-overflow:hidden;
-display:block;
-background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-box-shadow: 0 12px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(250,204,21,0.06);
-transition: transform .45s cubic-bezier(.2,.9,.2,1);
-mix-blend-mode: overlay;
-filter: contrast(1.05) saturate(1.05) brightness(0.98);
-}
-.avatar img{width:100%;height:100%;object-fit:cover;display:block}
-
-.avatar:hover{transform: translateY(-6px) scale(1.02)}
-
-/* Main content sections */
-main{
-margin-top:18px;
-display:grid;
-grid-template-columns: 1fr 320px;
-gap:22px;
-align-items:start;
-z-index:4;
-}
-
-/* Card style */
-.card{
-background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-border-radius: 12px;
-padding:18px;
-box-shadow: 0 8px 26px rgba(0,0,0,0.6);
-border: 1px solid rgba(255,255,255,0.03);
-}
-
-/* Sidebar (right) */
-aside.sidebar{padding:18px}
-.profile-mini{
-display:flex;gap:12px;align-items:center;margin-bottom:12px;
-}
-.profile-mini .pic{width:60px;height:60px;border-radius:10px;overflow:hidden}
-.profile-mini .meta{font-size:13px;color:var(--muted)}
-
-.info-list{margin-top:8px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--muted)}
-.info-list b{color:#fff;font-weight:700;margin-left:8px}
 
 /* Skills */
-.skills{display:flex;flex-direction:column;gap:12px}
-.skill{
-display:flex;flex-direction:column;gap:6px;
-}
-.skill .bar{
-height:10px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden;
-}
-.skill .bar > i{
-display:block;height:100%;background:linear-gradient(90deg,var(--gold-opaque),var(--gold-opaque-30));
-width:0%;
-transition: width 1000ms cubic-bezier(.2,.9,.15,1);
+.skill{margin-bottom:20px}
+.skill-name{margin-bottom:5px;font-weight:bold}
+.skill-bar{background:#333;border-radius:20px;overflow:hidden;position:relative}
+.skill-bar div{
+  height:12px;background:var(--gold-gradient);
+  width:0;transition:width 1s ease-in-out;
 }
 
-/* Experience (left) */
-.experience{display:flex;flex-direction:column;gap:14px}
-.exp-item{display:flex;gap:14px;align-items:flex-start}
-.exp-left{width:76px;flex-shrink:0;text-align:center;color:var(--muted);font-size:13px}
-.exp-body{flex:1}
-.exp-body h4{color:#fff;font-size:16px;margin-bottom:6px;font-weight:700}
-.exp-body p{color:var(--muted);font-size:14px;line-height:1.5;margin-bottom:8px}
+/* Timeline */
+.timeline{border-right:2px solid var(--gold);padding-right:20px;position:relative}
+.timeline-item{margin-bottom:30px;opacity:0;transform:translateY(40px);transition:all .8s ease}
+.timeline-item.show{opacity:1;transform:translateY(0)}
+.timeline-item h3{color:var(--gold);font-size:1.2rem}
 
-/* Timeline dot */
-.dot{
-width:14px;height:14px;border-radius:50%;
-background:var(--gold);
-box-shadow:0 0 18px rgba(250,204,21,0.12);
-margin:6px auto;
+/* Contact */
+footer{background:#1a1a1a;color:#888;text-align:center;padding:15px}
+
+/* Scroll Animations */
+.fade-in-up{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
+.fade-in-up.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .hero-content{flex-direction:column}
+  nav{padding:15px 20px}
 }
-
-/* Footer */
-footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-
-/* Small screens */
-@media (max-width:980px){
-main{grid-template-columns:1fr; padding-top:10px}
-.hero-inner{flex-direction:column-reverse;gap:18px}
-.hero-text{padding-left:10px}
-.hero-media{width:150px}
-.avatar{width:140px;height:140px}
-}
-
-/* reveal animations */
-.fade-in-up{opacity:0;transform: translateY(14px);transition: all .7s cubic-bezier(.2,.9,.15,1)}
-.fade-in-up.show{opacity:1;transform:none}
 </style>
 </head>
-
 <body>
-<div class="wrap">
-<header class="header card" role="banner">
-<nav class="nav" aria-label="main">
-<div class="nav-left">
-<div class="brand" title="Amin Tayebi">
-<span class="dot" aria-hidden="true"></span>
-<span style="font-size:14px">محمدامین طیبی</span>
-</div>
-</div>
 
-<div class="nav-right">
-<button class="lang-switch" id="langToggle" aria-label="تغییر زبان">EN / FA</button>
-<a class="cv-btn" href="pdf_5.pdf" download><span>دانلود رزومه</span></a>
-</div>
+<!-- Navbar -->
+<nav>
+  <div class="logo">AminT</div>
+  <ul>
+    <li><a href="#home" data-fa="خانه" data-en="Home">خانه</a></li>
+    <li><a href="#about" data-fa="درباره" data-en="About">درباره</a></li>
+    <li><a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
+    <li><a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a></li>
+    <li><a href="#contact" data-fa="تماس" data-en="Contact">تماس</a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()">EN</button>
 </nav>
 
-<div class="hero-inner" style="margin-top:8px;">
-<div class="hero-text" role="main">
-<h1 class="name">محمدامین طیبی</h1>
-<div class="title">
-<span class="typer" id="typewriter">کارشناس فنی پشتیبانی</span>
-<span style="color:var(--muted);font-weight:600;font-size:13px">• تهران، ایران</span>
-</div>
-
-<p class="desc">کارشناس فنی با تمرکز بر شبکه و پشتیبانی سرویس‌ها — تجربه در لینوکس، VOIP، دیتابیس و مانیتورینگ. اهل حل مسئله و همکاری تیمی.</p>
-
-<div class="hero-ctas">
-<a class="cv-btn" href="pdf_5.pdf" download>دانلود رزومه</a>
-<a class="cv-btn" style="background:transparent;color:var(--gold);border:1px solid rgba(255,255,255,0.04)">ارتباط</a>
-</div>
-</div>
-
-<div class="hero-media">
-<figure class="avatar" aria-hidden="true">
-<img src="image.png" alt="عکس پروفایل محمدامین طیبی">
-</figure>
-</div>
-</div>
+<!-- Hero -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-text fade-in-up">
+      <h1><span>محمدامین طیبی</span></h1>
+      <h2 id="typed-text" style="height:40px"></h2>
+      <p data-fa="مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه" 
+         data-en="VoIP & Network Engineer with expertise in advanced solutions and network security.">
+         مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه
+      </p>
+      <a href="pdf_5.pdf" class="btn" download data-fa="دانلود رزومه" data-en="Download CV">دانلود رزومه</a>
+    </div>
+    <div class="hero-image fade-in-up">
+      <img src="image.png" alt="Amin Tayebi">
+    </div>
+  </div>
 </header>
 
-<main>
-<section class="card" style="min-height:200px">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-<h3 style="color:var(--gold);font-weight:800">تجربه‌های کاری</h3>
-<small style="color:var(--muted)">آخرین به‌روزرسانی: 1403</small>
-</div>
-
-<div class="experience">
-<article class="exp-item fade-in-up">
-<div class="exp-left">
-<div>بهمن 1397</div>
-<div class="dot" aria-hidden="true"></div>
-<div>دی 1400</div>
-</div>
-<div class="exp-body">
-<h4>کارشناس سطح 3 — تل‌سی</h4>
-<p>آشنا با پرداخت هوایی، مانیتورینگ Payment با BICP، Team lead گروه F0، آموزش نیروها و کار با PRTG و زیرساخت MCI.</p>
-</div>
-</article>
-
-<article class="exp-item fade-in-up">
-<div class="exp-left">
-<div>دی 1400</div>
-<div class="dot" aria-hidden="true"></div>
-<div>اکنون</div>
-</div>
-<div class="exp-body">
-<h4>کارشناس فنی پشتیبانی — تل‌سی</h4>
-<p>مسئولیت‌ها: Linux admin, VOIP deployment, DB (MariaDB/Oracle), شبکه، پیکربندی و عیب‌یابی سخت‌افزار و نرم‌افزار.</p>
-
-<div style="margin-top:8px">
-<strong style="color:var(--gold)">Linux Administrator</strong>
-<ul style="margin-top:6px;color:var(--muted);padding-inline-start:18px">
-<li>User account management</li>
-<li>SQL / backup & restore</li>
-<li>Network capture (Wireshark, PCAP)</li>
-<li>Hardware setup & troubleshooting</li>
-</ul>
-</div>
-</div>
-</article>
-</div>
+<!-- About -->
+<section id="about" class="fade-in-up">
+  <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
+  <p data-fa="دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار." 
+     data-en="Highly team-oriented, familiar with administrative procedures, committed and quick learner.">
+     دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.
+  </p>
 </section>
 
-<aside class="sidebar card">
-<div class="profile-mini">
-<div class="pic" style="background:linear-gradient(180deg,rgba(250,204,21,0.06),rgba(255,255,255,0.02));overflow:hidden;border-radius:10px">
-<img src="image.png" alt="thumb" style="width:100%;height:100%;object-fit:cover">
-</div>
-<div class="meta">
-<div style="font-weight:700;color:#fff">محمدامین طیبی</div>
-<div style="color:var(--muted);font-size:13px">کارشناس فنی پشتیبانی</div>
-</div>
-</div>
+<!-- Skills -->
+<section id="skills" class="fade-in-up">
+  <h2 class="section-title" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
+  <div class="skill">
+    <div class="skill-name">Linux LPIC — 80%</div>
+    <div class="skill-bar"><div data-skill="80"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">VoIP / Asterisk — 85%</div>
+    <div class="skill-bar"><div data-skill="85"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Network — 80%</div>
+    <div class="skill-bar"><div data-skill="80"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Docker — 60%</div>
+    <div class="skill-bar"><div data-skill="60"></div></div>
+  </div>
+</section>
 
-<div class="info-list">
-<div><b>موقعیت:</b><span style="float:left;color:var(--muted)">تهران، ایران</span></div>
-<div><b>سابقه:</b><span style="float:left;color:var(--muted)">3 سال</span></div>
-<div><b>ایمیل:</b><span style="float:left;color:var(--muted)">amintayebi**@gmail.com</span></div>
-<div><b>موبایل:</b><span style="float:left;color:var(--muted)">+98-912-XXX-752</span></div>
-</div>
+<!-- Experience -->
+<section id="experience" class="fade-in-up">
+  <h2 class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3 data-fa="کارشناس 3 — تل سی" data-en="Level 3 Support — TelC">کارشناس 3 — تل سی</h3>
+      <p data-fa="بهمن 1397 تا دی 1400" data-en="Feb 2019 — Jan 2022">بهمن 1397 تا دی 1400</p>
+    </div>
+    <div class="timeline-item">
+      <h3 data-fa="کارشناس فنی پشتیبانی — تل سی" data-en="Technical Support Specialist — TelC">کارشناس فنی پشتیبانی — تل سی</h3>
+      <p data-fa="دی 1400 تا اکنون" data-en="Jan 2022 — Present">دی 1400 تا اکنون</p>
+    </div>
+  </div>
+</section>
 
-<hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:14px 0;border-radius:2px">
+<!-- Contact -->
+<section id="contact" class="fade-in-up">
+  <h2 class="section-title" data-fa="تماس" data-en="Contact">تماس</h2>
+  <p>📧 amintayebi**@gmail.com</p>
+  <p>📱 +98-912-337-8752</p>
+  <p>🌍 amintayebi.ir</p>
+</section>
 
-<h4 style="color:var(--gold);margin-bottom:8px">مهارت‌های تخصصی</h4>
-<div class="skills">
-<div class="skill">
-<div style="display:flex;justify-content:space-between;font-size:13px"><span>Linux (LPIC)</span><span style="color:var(--muted)">متوسط</span></div>
-<div class="bar"><i data-width="78%"></i></div>
-</div>
-
-<div class="skill">
-<div style="display:flex;justify-content:space-between;font-size:13px"><span>VOIP / Asterisk</span><span style="color:var(--muted)">متوسط</span></div>
-<div class="bar"><i data-width="66%"></i></div>
-</div>
-
-<div class="skill">
-<div style="display:flex;justify-content:space-between;font-size:13px"><span>Database (MariaDB / Oracle)</span><span style="color:var(--muted)">متوسط</span></div>
-<div class="bar"><i data-width="62%"></i></div>
-</div>
-
-<div class="skill">
-<div style="display:flex;justify-content:space-between;font-size:13px"><span>Zabbix / Monitoring</span><span style="color:var(--muted)">متوسط</span></div>
-<div class="bar"><i data-width="58%"></i></div>
-</div>
-</div>
-
-<hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:14px 0;border-radius:2px">
-
-<h4 style="color:var(--gold);margin-bottom:8px">تحصیلات</h4>
-<div style="color:var(--muted);font-size:14px">
-دانشگاه آزاد اسلامی — لیسانس نرم‌افزار (1398 - 1402)
-</div>
-</aside>
-</main>
-
-<footer class="card" role="contentinfo" style="margin-top:18px">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-<div style="color:var(--muted)">© 2025 محمدامین طیبی</div>
-<div style="color:var(--muted)">طراحی شده با ❤️ — شبکه و پشتیبانی</div>
-</div>
-</footer>
-</div>
+<!-- Footer -->
+<footer>&copy; 2025 Amin Tayebi</footer>
 
 <script>
-// Typewriter simple: if language toggled to EN, change text; basic implementation
-(function(){
-const el = document.getElementById('typewriter');
-const phrases = {
-fa: "کارشناس فنی پشتیبانی",
-en: "Technical Support Specialist"
-};
-let lang = 'fa';
-let idx = 0;
-
-// simple typing effect on load
-function typeText(txt, target, speed=28){
-target.textContent = "";
-let i=0;
-const t = setInterval(()=>{ target.textContent += txt[i++] || ""; if(i>txt.length-1) clearInterval(t); }, speed);
+// Language Toggle
+let lang='fa';
+function toggleLang(){
+  lang = (lang==='fa')?'en':'fa';
+  document.documentElement.dir = (lang==='fa')?'rtl':'ltr';
+  document.querySelectorAll('[data-fa]').forEach(el=>{
+    el.innerText = el.getAttribute(`data-${lang}`);
+  });
+  document.querySelector('.lang-btn').innerText = (lang==='fa')?'EN':'FA';
 }
-typeText(phrases.fa, el, 28);
 
-// Lang toggle
-const langBtn = document.getElementById('langToggle');
-langBtn.addEventListener('click', ()=>{
-lang = (lang === 'fa') ? 'en' : 'fa';
-langBtn.textContent = (lang === 'fa') ? 'EN / FA' : 'FA / EN';
-typeText(phrases[lang], el, 24);
-// direction switch for whole page (basic)
-document.documentElement.dir = (lang === 'fa') ? 'rtl' : 'ltr';
-document.documentElement.lang = (lang === 'fa') ? 'fa' : 'en';
-});
-
-// Intersection Observer for reveal animations & skill bars
-const io = new IntersectionObserver((entries)=>{
-entries.forEach(ent=>{
-if(ent.isIntersecting){
-ent.target.classList.add('show');
-// skill bars
-ent.target.querySelectorAll && ent.target.querySelectorAll('.bar > i').forEach(i=>{
-const w = i.getAttribute('data-width') || '60%';
-setTimeout(()=> i.style.width = w, 160);
-});
+// Typewriter Effect
+let jobTitles = [
+  "کارشناس فنی پشتیبانی",
+  "Network & Communications Specialist",
+  "مهندس VoIP و لینوکس"
+];
+let typedIndex=0, charIndex=0;
+let typedElement = document.getElementById('typed-text');
+function typeJob(){
+  if(charIndex < jobTitles[typedIndex].length){
+    typedElement.innerHTML += jobTitles[typedIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeJob,80);
+  }else{
+    setTimeout(eraseJob,1500);
+  }
 }
-});
-}, {threshold: 0.15});
+function eraseJob(){
+  if(charIndex > 0){
+    typedElement.innerHTML = jobTitles[typedIndex].substring(0,charIndex-1);
+    charIndex--;
+    setTimeout(eraseJob,40);
+  }else{
+    typedIndex = (typedIndex+1)%jobTitles.length;
+    setTimeout(typeJob,200);
+  }
+}
+typeJob();
 
-document.querySelectorAll('.fade-in-up').forEach(n=> io.observe(n));
-// observe sidebar for skills
-io.observe(document.querySelector('.sidebar'));
-
-// ensure avatar fallback if image missing
-document.querySelectorAll('img').forEach(img=>{
-img.addEventListener('error', ()=> {
-img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%230b0b0b'/><text x='50%' y='50%' fill='%23facc15' font-size='26' font-family='Poppins,Arial' dominant-baseline='middle' text-anchor='middle'>A.T</text></svg>";
-});
-});
-})();
+// Scroll Animations
+const observers = document.querySelectorAll('.fade-in-up, .timeline-item');
+let observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      if(entry.target.querySelectorAll('[data-skill]').length){
+        entry.target.querySelectorAll('[data-skill]').forEach(bar=>{
+          bar.style.width = bar.dataset.skill+'%';
+        });
+      }
+    }
+  });
+},{threshold:0.2});
+observers.forEach(el=>observer.observe(el));
 </script>
+
 </body>
 </html>
