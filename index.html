@@ -1,278 +1,248 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>رزومه محمدامین طیبی - بکرمودی پرو لوکس</title>
-<link href="https://fonts.googleapis.com/css2?family=Shabnam:wght@300;400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>محمدامین طیبی | رزومه آنلاین</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet"/>
+
 <style>
-/* ===== Reset ===== */
+/* Reset & Base */
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{font-family:'Shabnam',sans-serif;overflow-x:hidden;background:#0a0a0a;color:#fff}
+html,body{background:#0e0e0e;color:#fff;font-family:'Shabnam','Poppins',sans-serif;line-height:1.6;scroll-behavior:smooth}
+a{text-decoration:none;color:inherit}
 
-/* ===== متغیرها ===== */
+/* Theme Variables */
 :root{
- --gold:#FFD700;
- --gold-light:#ffecb3;
- --black:#0a0a0a;
- --shadow-gold:0 0 20px rgba(255,215,0,0.8);
+  --gold:#facc15;
+  --gold-gradient:linear-gradient(45deg,#facc15,#ffd700,#f6e05e);
+  --bg-dark:#0e0e0e;
 }
 
-/* ===== پس‌زمینه طلایی متحرک ===== */
-body::before{
- content:"";
- position:fixed;
- top:0;left:0;width:100%;height:100%;
- background:linear-gradient(120deg,rgba(255,215,0,0.05),rgba(255,215,0,0.1),rgba(255,215,0,0.05));
- background-size:400% 400%;
- animation:bgMove 12s ease infinite;
- z-index:-1;
+/* Navbar */
+nav{
+  position:fixed;top:0;left:0;width:100%;
+  background:rgba(14,14,14,0.7);backdrop-filter:blur(8px);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 50px;z-index:10
 }
-@keyframes bgMove {
- 0%{background-position:0 50%}
- 50%{background-position:100% 50%}
- 100%{background-position:0 50%}
+nav .logo{font-weight:700;font-size:1.5rem;background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
+nav ul{display:flex;gap:25px;list-style:none}
+nav ul li a{font-weight:500;transition:.3s}
+nav ul li a:hover{color:var(--gold)}
+.lang-btn{border:1px solid var(--gold);background:none;color:var(--gold);padding:5px 12px;border-radius:20px;cursor:pointer}
+
+/* Hero */
+header.hero{
+  position:relative;
+  min-height:100vh;display:flex;align-items:center;padding:0 50px;
+  background:var(--gold-gradient);
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;
+  background:var(--bg-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23333' fill-opacity='0.2'%3E%3Ccircle cx='200' cy='200' r='200'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  mix-blend-mode:multiply;
+}
+.hero-content{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:50px;width:100%}
+.hero-text{flex:1;min-width:280px}
+.hero-text h1{font-size:2.5rem;margin-bottom:10px}
+.hero-text h1 span{background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
+.hero-text p{font-size:1.1rem;margin-bottom:20px;color:#ddd}
+.btn{
+  display:inline-block;padding:10px 25px;border-radius:25px;
+  background:var(--gold-gradient);color:#000;font-weight:bold
+}
+.hero-image{flex:1;display:flex;justify-content:center}
+.hero-image img{
+  max-width:320px;border-radius:20px;
+  box-shadow:0 0 40px rgba(250,204,21,0.5);
+  object-fit:cover;mix-blend-mode:screen; /* blend effect */
 }
 
-/* ===== هدر ===== */
-header{
- background:#000;
- padding:1rem 2rem;
- display:flex;
- justify-content:space-between;
- align-items:center;
- position:sticky;top:0;z-index:10;
- box-shadow:var(--shadow-gold);
-}
-header nav a{
- color:var(--gold-light);
- text-decoration:none;
- margin:0 .8rem;
- font-weight:700;
- transition:.3s;
-}
-header nav a:hover{color:var(--gold)}
-
-/* ===== بخش hero ===== */
-.hero{
- display:flex;
- flex-wrap:wrap;
- justify-content:center;
- align-items:center;
- padding:3rem 1rem;
- background:linear-gradient(145deg,#000 60%,#1a1a1a);
- box-shadow:inset 0 0 20px rgba(255,215,0,0.2);
-}
-.hero-text{
- flex:1;min-width:280px;max-width:600px;
-}
-.hero-text h1{
- font-size:2.5rem;
- background:linear-gradient(to right,var(--gold),var(--gold-light));
- -webkit-background-clip:text;
- color:transparent;
-}
-.hero-text p{
- margin-top:1rem;
- font-size:1.2rem;
- color:#ccc;
-}
-.hero-img{
- flex:0 0 auto;
- margin:1rem;
- padding:8px;
- border:3px solid var(--gold);
- box-shadow:0 0 25px rgba(255,215,0,0.7),inset 0 0 15px rgba(255,215,0,0.4);
- transition:.5s;
-}
-.hero-img img{
- display:block;
- width:260px;height:auto;
-}
-.hero-img:hover{
- box-shadow:0 0 40px rgba(255,215,0,0.9),inset 0 0 25px rgba(255,215,0,0.5);
- transform:scale(1.02);
+/* Sections */
+section{padding:60px 50px}
+.section-title{
+  font-size:1.8rem;margin-bottom:30px;
+  background:var(--gold-gradient);-webkit-background-clip:text;color:transparent
 }
 
-/* ===== بخش‌ها ===== */
-section{
- padding:3rem 1rem;
- max-width:1200px;
- margin:auto;
-}
-h2.section-title{
- font-size:1.8rem;
- border-right:5px solid var(--gold);
- padding-right:10px;
- margin-bottom:1.5rem;
-}
-
-/* مهارت‌ها */
-.skills .skill{
- margin:1rem 0;
-}
-.skill .label{
- margin-bottom:5px;
- font-weight:700;
-}
-.skill .bar{
- background:#222;
- border-radius:5px;
- overflow:hidden;
- height:20px;
- box-shadow:inset 0 0 5px rgba(0,0,0,0.8);
-}
-.skill .bar-fill{
- height:100%;
- background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);
- background-size:200% 100%;
- animation:barAnim 3s linear infinite;
-}
-@keyframes barAnim{
- 0%{background-position:0 0}
- 100%{background-position:200% 0}
+/* Skills */
+.skill{margin-bottom:20px}
+.skill-name{margin-bottom:5px;font-weight:bold}
+.skill-bar{background:#333;border-radius:20px;overflow:hidden;position:relative}
+.skill-bar div{
+  height:12px;background:var(--gold-gradient);
+  width:0;transition:width 1s ease-in-out;
 }
 
 /* Timeline */
-.timeline{
- position:relative;
- padding-right:25px;
-}
-.timeline::before{
- content:"";
- position:absolute;
- top:0;right:8px;
- width:4px;height:100%;
- background:var(--gold);
- box-shadow:0 0 10px var(--gold);
-}
-.timeline-item{
- margin-bottom:2rem;
- position:relative;
-}
-.timeline-item::before{
- content:"";
- position:absolute;
- right:-3px;
- width:16px;height:16px;
- background:var(--gold);
- border-radius:50%;
- box-shadow:0 0 10px var(--gold);
-}
-.timeline-item h3{color:var(--gold);margin-bottom:.5rem}
-.timeline-item span{color:#aaa;font-size:.9rem}
-.timeline-item ul{
- margin-top:.5rem;
- list-style:disc;
- padding-right:1.2rem;
-}
+.timeline{border-right:2px solid var(--gold);padding-right:20px;position:relative}
+.timeline-item{margin-bottom:30px;opacity:0;transform:translateY(40px);transition:all .8s ease}
+.timeline-item.show{opacity:1;transform:translateY(0)}
+.timeline-item h3{color:var(--gold);font-size:1.2rem}
 
-/* تماس */
-.contact a{
- color:var(--gold);
- text-decoration:none;
-}
-.contact a:hover{text-decoration:underline}
+/* Contact */
+footer{background:#1a1a1a;color:#888;text-align:center;padding:15px}
 
-footer{
- text-align:center;
- padding:1rem;
- color:#888;
- font-size:.85rem;
- background:#000;
- border-top:1px solid rgba(255,215,0,0.3);
+/* Scroll Animations */
+.fade-in-up{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
+.fade-in-up.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .hero-content{flex-direction:column}
+  nav{padding:15px 20px}
 }
 </style>
 </head>
 <body>
 
-<header>
- <div class="logo" style="color:var(--gold);font-weight:900">Amin Tayebi</div>
- <nav>
-  <a href="#about">درباره من</a>
-  <a href="#skills">مهارت‌ها</a>
-  <a href="#experience">تجربه کاری</a>
-  <a href="#education">تحصیلات</a>
-  <a href="#contact">تماس</a>
- </nav>
-</header>
+<!-- Navbar -->
+<nav>
+  <div class="logo">AminT</div>
+  <ul>
+    <li><a href="#home" data-fa="خانه" data-en="Home">خانه</a></li>
+    <li><a href="#about" data-fa="درباره" data-en="About">درباره</a></li>
+    <li><a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
+    <li><a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a></li>
+    <li><a href="#contact" data-fa="تماس" data-en="Contact">تماس</a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()">EN</button>
+</nav>
 
 <!-- Hero -->
-<div class="hero">
- <div class="hero-text">
-  <h1>محمدامین طیبی</h1>
-  <p>کارشناس فنی پشتیبانی با بیش از ۳ سال تجربه در حوزه شبکه، لینوکس، VOIP و دیتابیس</p>
- </div>
- <div class="hero-img">
-  <img src="image.png" alt="Amin Tayebi Profile">
- </div>
-</div>
-
-<!-- درباره من -->
-<section id="about">
- <h2 class="section-title">درباره من</h2>
- <p>دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.</p>
-</section>
-
-<!-- مهارت‌ها -->
-<section id="skills" class="skills">
- <h2 class="section-title">مهارت‌های تخصصی</h2>
- <div class="skill"><div class="label">Grafana</div><div class="bar"><div class="bar-fill" style="width:40%"></div></div></div>
- <div class="skill"><div class="label">Linux LPIC</div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
- <div class="skill"><div class="label">Passive Network</div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
- <div class="skill"><div class="label">Oracle</div><div class="bar"><div class="bar-fill" style="width:40%"></div></div></div>
- <div class="skill"><div class="label">Network</div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
- <!-- ادامه لیست مهارت‌ها طبق PDF -->
-</section>
-
-<!-- Timeline -->
-<section id="experience">
- <h2 class="section-title">تجربه‌های کاری</h2>
- <div class="timeline">
-  <div class="timeline-item">
-   <h3>کارشناس 3 - تل سی</h3>
-   <span>بهمن 1397 - دی 1400 (3 سال و 10 ماه)</span>
-   <ul>
-    <li>آشنا با پرداخت هوائی</li>
-    <li>مانیتورینگ Payment با نرم افزار BICP</li>
-    <li>تیم لیدر گروه F0</li>
-    <li>گزارش به کارفرما</li>
-    <li>آشنا با نرم افزار مدیریت LBMS</li>
-    <li>Dashboard.sd.mci</li>
-    <li>آموزش 5 نفر در این حوزه</li>
-    <li>آشنایی با نرم افزار PRTG</li>
-    <li>آشنایی به زیر ساخت های MCI</li>
-   </ul>
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-text fade-in-up">
+      <h1><span>محمدامین طیبی</span></h1>
+      <h2 id="typed-text" style="height:40px"></h2>
+      <p data-fa="مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه" 
+         data-en="VoIP & Network Engineer with expertise in advanced solutions and network security.">
+         مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه
+      </p>
+      <a href="pdf_5.pdf" class="btn" download data-fa="دانلود رزومه" data-en="Download CV">دانلود رزومه</a>
+    </div>
+    <div class="hero-image fade-in-up">
+      <img src="image.png" alt="Amin Tayebi">
+    </div>
   </div>
-  <div class="timeline-item">
-   <h3>کارشناس فنی پشتیبانی - تل سی</h3>
-   <span>دی 1400 - اکنون</span>
-   <ul>
-    <li><b>Linux Administrator</b>: User account management, SQL, packet capture, backup & restore...</li>
-    <li><b>VOIP</b>: SIP troubleshooting, Dialplans, network design...</li>
-    <li><b>Database (MariaDB & Oracle)</b>: Security, optimization, backup...</li>
-   </ul>
+</header>
+
+<!-- About -->
+<section id="about" class="fade-in-up">
+  <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
+  <p data-fa="دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار." 
+     data-en="Highly team-oriented, familiar with administrative procedures, committed and quick learner.">
+     دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.
+  </p>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="fade-in-up">
+  <h2 class="section-title" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
+  <div class="skill">
+    <div class="skill-name">Linux LPIC — 80%</div>
+    <div class="skill-bar"><div data-skill="80"></div></div>
   </div>
- </div>
+  <div class="skill">
+    <div class="skill-name">VoIP / Asterisk — 85%</div>
+    <div class="skill-bar"><div data-skill="85"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Network — 80%</div>
+    <div class="skill-bar"><div data-skill="80"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Docker — 60%</div>
+    <div class="skill-bar"><div data-skill="60"></div></div>
+  </div>
 </section>
 
-<!-- تحصیلات -->
-<section id="education">
- <h2 class="section-title">تحصیلات</h2>
- <p>دانشگاه آزاد اسلامی پردیس — لیسانس نرم‌افزار (۱۳۹۸-۱۴۰۲)</p>
+<!-- Experience -->
+<section id="experience" class="fade-in-up">
+  <h2 class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3 data-fa="کارشناس 3 — تل سی" data-en="Level 3 Support — TelC">کارشناس 3 — تل سی</h3>
+      <p data-fa="بهمن 1397 تا دی 1400" data-en="Feb 2019 — Jan 2022">بهمن 1397 تا دی 1400</p>
+    </div>
+    <div class="timeline-item">
+      <h3 data-fa="کارشناس فنی پشتیبانی — تل سی" data-en="Technical Support Specialist — TelC">کارشناس فنی پشتیبانی — تل سی</h3>
+      <p data-fa="دی 1400 تا اکنون" data-en="Jan 2022 — Present">دی 1400 تا اکنون</p>
+    </div>
+  </div>
 </section>
 
-<!-- تماس -->
-<section id="contact" class="contact">
- <h2 class="section-title">اطلاعات تماس</h2>
- <p>ایمیل: <a href="mailto:amintayebi@gmail.com">amintayebi@gmail.com</a></p>
- <p>موبایل: <a href="tel:+989123378752">+98 912 337 8752</a></p>
- <p>موبایل دوم: <a href="tel:+989100913028">+98 910 091 3028</a></p>
+<!-- Contact -->
+<section id="contact" class="fade-in-up">
+  <h2 class="section-title" data-fa="تماس" data-en="Contact">تماس</h2>
+  <p>📧 amintayebi**@gmail.com</p>
+  <p>📱 +98-912-337-8752</p>
+  <p>🌍 amintayebi.ir</p>
 </section>
 
-<footer>
- © 2025 محمدامین طیبی - طراحی بکرمودی پرو
-</footer>
+<!-- Footer -->
+<footer>&copy; 2025 Amin Tayebi</footer>
+
+<script>
+// Language Toggle
+let lang='fa';
+function toggleLang(){
+  lang = (lang==='fa')?'en':'fa';
+  document.documentElement.dir = (lang==='fa')?'rtl':'ltr';
+  document.querySelectorAll('[data-fa]').forEach(el=>{
+    el.innerText = el.getAttribute(`data-${lang}`);
+  });
+  document.querySelector('.lang-btn').innerText = (lang==='fa')?'EN':'FA';
+}
+
+// Typewriter Effect
+let jobTitles = [
+  "کارشناس فنی پشتیبانی",
+  "Network & Communications Specialist",
+  "مهندس VoIP و لینوکس"
+];
+let typedIndex=0, charIndex=0;
+let typedElement = document.getElementById('typed-text');
+function typeJob(){
+  if(charIndex < jobTitles[typedIndex].length){
+    typedElement.innerHTML += jobTitles[typedIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeJob,80);
+  }else{
+    setTimeout(eraseJob,1500);
+  }
+}
+function eraseJob(){
+  if(charIndex > 0){
+    typedElement.innerHTML = jobTitles[typedIndex].substring(0,charIndex-1);
+    charIndex--;
+    setTimeout(eraseJob,40);
+  }else{
+    typedIndex = (typedIndex+1)%jobTitles.length;
+    setTimeout(typeJob,200);
+  }
+}
+typeJob();
+
+// Scroll Animations
+const observers = document.querySelectorAll('.fade-in-up, .timeline-item');
+let observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      if(entry.target.querySelectorAll('[data-skill]').length){
+        entry.target.querySelectorAll('[data-skill]').forEach(bar=>{
+          bar.style.width = bar.dataset.skill+'%';
+        });
+      }
+    }
+  });
+},{threshold:0.2});
+observers.forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
