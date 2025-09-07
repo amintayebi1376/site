@@ -1,2109 +1,505 @@
-<!DOCTYPE html>
-+
-<!DOCTYPE html>
-+
+<!doctype html>
 <html lang="fa" dir="rtl">
-+
 <head>
-+
-  <meta charset="utf-8" />
-+
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-+
-  <title>index.html - Amin Tayebi (Black-Gold Minimal Header)</title>
-+
-  <!-- Fonts: Shabnam (Persian) + Poppins (English) -->
-+
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-+
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet">
-+
-  <style>
-+
-    :root{
-+
-      --bg: #050505;               /* deep black base for header */
-+
-      --fg: #eaeaf0;
-+
-      --muted: #c6c6c6;
-+
-      --gold: #facc15;
-+
-      --gold-weak: rgba(250,204,21,0.22); /* ~22% opacity for subtle lines */
-+
-      --card: rgba(255,255,255,0.03);
-+
-      --shadow: 0 10px 30px rgba(0,0,0,0.6);
-+
-      --radius: 12px;
-+
-      --container: 1100px;
-+
-    }
-+
-    /* Global resets & RTL-friendly */
-+
-    *{box-sizing:border-box}
-+
-    html,body{height:100%}
-+
-    body{
-+
-      margin:0;
-+
-      background:#070707;
-+
-      color:var(--fg);
-+
-      font-family:'Shabnam','Poppins',system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-+
-      -webkit-font-smoothing:antialiased;
-+
-      -moz-osx-font-smoothing:grayscale;
-+
-      line-height:1.6;
-+
-      direction:rtl;
-+
-      scroll-behavior:smooth;
-+
-    }
-+
-    a{color:inherit;text-decoration:none}
-+
-    img{max-width:100%;display:block}
-+
-    /* Container helper */
-+
-    .container{width:calc(100% - 40px);max-width:var(--container);margin:0 auto}
-+
-    /* NAVBAR */
-+
-    .navbar{
-+
-      position:sticky;top:0;width:100%;z-index:80;
-+
-      background:rgba(5,5,5,0.6);
-+
-      backdrop-filter: blur(6px) saturate(1.2);
-+
-      border-bottom:1px solid rgba(255,255,255,0.03);
-+
-    }
-+
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px}
-+
-    .brand{display:flex;align-items:center;gap:12px;color:var(--fg);font-family:'Poppins';font-weight:700}
-+
-    .brand .mark{
-+
-      width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffd166);
-+
-      box-shadow:0 6px 20px rgba(250,204,21,0.08);
-+
-      display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:14px;
-+
-    }
-+
-    .nav-links{display:flex;gap:18px;align-items:center}
-+
-    .nav-links a{padding:8px 12px;border-radius:8px;font-weight:600;font-family:'Shabnam';font-size:14px;color:var(--fg);transition:all .22s}
-+
-    .nav-links a:hover{background:rgba(250,204,21,0.08);color:#fff}
-+
-    .lang-btn{
-+
-      background:transparent;border:1px solid rgba(250,204,21,0.22);
-+
-      color:var(--gold);padding:6px 10px;border-radius:999px;font-weight:700;cursor:pointer;
-+
-      font-family:'Poppins';
-+
-    }
-+
-    /* HERO - deep black base with SVG overlay as data URI */
-+
-    .hero{
-+
-      position:relative;min-height:76vh;display:grid;align-items:center;padding:48px 20px 80px;overflow:hidden;
-+
-      background:var(--bg);
-+
-    }
-+
-    /* The background SVG is embedded as a data URI to avoid external assets.
-+
-       Design choices:
-+
-       - Base is deep black (#050505) to keep the header dark.
-+
-       - Thin angled geometric golden lines use --gold at low opacity (~22%).
-+
-       - Golden patches are narrow; gradients are applied only to small accents.
-+
-       - mix-blend-mode: soft-light is used on the overlay to create a subtle luxurious texture.
-+
-       - This keeps the header mostly black while adding refined golden hints. */
-+
-    .hero::before{
-+
-      content:"";position:absolute;inset:0;z-index:0;
-+
-      background-image: url("data:image/svg+xml;utf8,\
-+
-      <svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'>\
-+
-        <defs>\
-+
-          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>\
-+
-            <stop offset='0%' stop-color='%23facc15' stop-opacity='0.28'/>\
-+
-            <stop offset='100%' stop-color='%23ffd166' stop-opacity='0.18'/>\
-+
-          </linearGradient>\
-+
-        </defs>\
-+
-        <rect width='1600' height='900' fill='%23040404'/>\
-+
-        <!-- Thin angled lines, spaced, low opacity -->\
-+
-        <g stroke='%23facc15' stroke-opacity='0.22' stroke-width='1.2' stroke-linecap='round'>\
-+
-          <path d='M-40 160 L1640 -80'/>\
-+
-          <path d='M-40 320 L1640 80'/>\
-+
-          <path d='M-40 480 L1640 240'/>\
-+
-          <path d='M-40 640 L1640 400'/>\
-+
-        </g>\
-+
-        <!-- Subtle geometric patches (small, low coverage) -->\
-+
-        <g fill='url(%23g)' opacity='0.12' transform='rotate(-8 800 450)'>\
-+
-          <polygon points='1200,40 1440,80 1380,200 1100,160'/>\
-+
-          <polygon points='200,560 380,520 340,640 160,680'/>\
-+
-        </g>\
-+
-        <!-- Very subtle radial glows near corners, low opacity -->\
-+
-        <radialGradient id='r' cx='0.85' cy='0.15' r='0.5'>\
-+
-          <stop offset='0' stop-color='%23facc15' stop-opacity='0.06'/>\
-+
-          <stop offset='1' stop-color='%23000000' stop-opacity='0'/>\
-+
-        </radialGradient>\
-+
-        <rect x='0' y='0' width='1600' height='900' fill='url(%23r)' opacity='0.85'/>\
-+
-      </svg>");
-+
-      background-size:cover;background-position:center;
-+
-      mix-blend-mode:soft-light;pointer-events:none;opacity:1;
-+
-    }
-+
-    /* Overlay gradient corner accent (very thin) */
-+
-    .hero::after{
-+
-      content:"";position:absolute;right:0;bottom:0;width:36%;height:32%;
-+
-      background:linear-gradient(135deg,rgba(250,204,21,0.08),transparent 40%);
-+
-      pointer-events:none;z-index:1;border-radius:18px;
-+
-    }
-+
-    .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;max-width:var(--container);margin:0 auto;width:100%}
-+
-    @media(max-width:920px){.hero-inner{grid-template-columns:1fr;gap:26px;padding-bottom:20px}}
-+
-    .hero-text{padding:8px 0}
-+
-    .greeting{color:var(--muted);font-size:15px;margin-bottom:8px;font-weight:500}
-+
-    .name{
-+
-      font-family:'Poppins';font-weight:800;font-size:56px;line-height:1;letter-spacing:0.6px;margin:6px 0 10px;
-+
-      color:var(--fg);
-+
-    }
-+
-    .name .gold{background:linear-gradient(90deg,var(--gold),#ffd166);-webkit-background-clip:text;background-clip:text;color:transparent}
-+
-    .subtitle{font-family:'Shabnam';font-size:20px;color:#e6e6e6;margin-bottom:14px;opacity:0.98}
-+
-    /* Typewriter line */
-+
-    .typewriter{display:inline-block;border-right:2px solid rgba(255,255,255,0.12);white-space:nowrap;overflow:hidden;font-family:'Poppins';font-size:18px;padding-right:6px}
-+
-    @keyframes caret{0%,100%{border-color:transparent}50%{border-color:rgba(255,255,255,0.7)}}
-+
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-+
-    .btn{
-+
-      display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;font-weight:700;
-+
-      background:transparent;color:var(--fg);border:1px solid rgba(250,204,21,0.14);backdrop-filter:blur(4px);
-+
-      transition:all .18s;font-family:'Poppins'
-+
-    }
-+
-    .btn.primary{
-+
-      background:linear-gradient(90deg,rgba(250,204,21,0.12),rgba(255,209,102,0.08));
-+
-      border:1px solid rgba(250,204,21,0.26);color:var(--fg)
-+
-    }
-+
-    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.45)}
-+
-    /* Profile image: no border, blend with background */
-+
-    .avatar-frame{width:420px;height:420px;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);box-shadow:var(--shadow);backdrop-filter:blur(2px)}
-+
-    .avatar{
-+
-      width:100%;height:100%;object-fit:cover;mix-blend-mode:overlay;filter:saturate(1.05) contrast(1.02);
-+
-      display:block;
-+
-    }
-+
-    @media(max-width:920px){.avatar-frame{width:320px;height:320px;margin:0 auto}}
-+
-    /* Sections */
-+
-    section{padding:64px 0}
-+
-    h2.section-title{font-family:'Poppins';font-size:32px;margin:0 0 14px;color:var(--fg);display:inline-block;position:relative}
-+
-    h2.section-title::after{content:"";display:block;height:4px;width:70px;border-radius:4px;margin-top:8px;background:linear-gradient(90deg,var(--gold),#ffd166);opacity:0.95}
-+
-    .lead{color:var(--muted);font-size:15px;margin-bottom:18px}
-+
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-+
-    .col-6{grid-column:span 6}
-+
-    .col-4{grid-column:span 4}
-+
-    .col-12{grid-column:span 12}
-+
-    @media(max-width:920px){.col-6,.col-4,.col-12{grid-column:span 12}}
-+
-    /* Card */
-+
-    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 6px 24px rgba(0,0,0,0.6)}
-+
-    /* Skills - animated bars */
-+
-    .skill{margin-bottom:14px}
-+
-    .skill-name{font-weight:700;color:#eee;margin-bottom:6px;font-size:14px}
-+
-    .skill-bar{height:12px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
-+
-    .skill-bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#ffd166);border-radius:999px;transition:width 1.2s cubic-bezier(.2,.9,.2,1)}
-+
-    /* Timeline */
-+
-    .timeline{position:relative;padding-right:20px}
-+
-    .timeline::before{content:"";position:absolute;right:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,rgba(250,204,21,0.26),rgba(250,204,21,0.14));border-radius:2px}
-+
-    .timeline-item{position:relative;margin:18px 0 24px;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(.22,.9,.25,1)}
-+
-    .timeline-item.show{opacity:1;transform:translateY(0)}
-+
-    .timeline-dot{position:absolute;right:-6px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 6px 18px rgba(250,204,21,0.12)}
-+
-    /* Fade-in-up helper for multiple elements */
-+
-    .fade-in-up{opacity:0;transform:translateY(36px);transition:all .7s cubic-bezier(.22,.9,.25,1)}
-+
-    .fade-in-up.show{opacity:1;transform:translateY(0)}
-+
-    /* Contact & footer */
-+
-    .contact-list{display:flex;flex-direction:column;gap:8px;color:var(--muted)}
-+
-    footer{padding:30px 0;text-align:center;color:#9a9a9a;background:#070707}
-+
-    /* Accessibility improvements */
-+
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-+
-    /* Responsive text sizing */
-+
-    @media(max-width:720px){
-+
-      .name{font-size:36px}
-+
-      .typewriter{font-size:16px}
-+
-      .avatar-frame{width:300px;height:300px}
-+
-    }
-+
-  </style>
-+
-</head>
-+
-<body>
-+
-  <!-- NAVBAR -->
-+
-  <header class="navbar" role="banner">
-+
-    <div class="container nav-inner" role="navigation" aria-label="Primary">
-+
-      <a class="brand" href="#home" aria-label="Amin Tayebi home">
-+
-        <span class="mark" aria-hidden="true">AT</span>
-+
-        <span class="sr-only">Amin Tayebi</span>
-+
-      </a>
-+
-      <nav class="nav-links" aria-label="Main Links">
-+
-        <a href="#home" data-fa="خانه" data-en="Home">خانه</a>
-+
-        <a href="#about" data-fa="درباره" data-en="About">درباره</a>
-+
-        <a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a>
-+
-        <a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a>
-+
-        <a href="#contact" data-fa="تماس" data-en="Contact">تماس</a>
-+
-      </nav>
-+
-      <div style="display:flex;gap:12px;align-items:center">
-+
-        <a class="btn" href="pdf_5.pdf" download aria-label="Download CV" data-fa="دانلود رزومه" data-en="Download CV">دانلود رزومه</a>
-+
-        <button class="lang-btn" aria-pressed="false" id="langBtn" onclick="toggleLang()">EN</button>
-+
-      </div>
-+
-    </div>
-+
-  </header>
-+
-  <!-- HERO -->
-+
-  <main>
-+
-    <section id="home" class="hero" aria-label="Intro header">
-+
-      <div class="hero-inner">
-+
-        <div class="hero-text">
-+
-          <div class="greeting" data-fa="سلام، من محمدامین طیبی هستم" data-en="Hi, I'm Amin Tayebi">سلام، من محمدامین طیبی هستم</div>
-+
-          <h1 class="name"><span class="gold">محمدامین طیبی</span></h1>
-+
-          <div class="subtitle">
-+
-            <span id="typed-text" class="typewriter" aria-live="polite"></span>
-+
-          </div>
-+
-          <p class="lead" data-fa="کارشناس فنی پشتیبانی — مهندس شبکه و VoIP" data-en="Technical Support Specialist — Network & VoIP Engineer">کارشناس فنی پشتیبانی — مهندس شبکه و VoIP</p>
-+
-          <div class="cta-row" role="group" aria-label="Actions">
-+
-            <a class="btn primary" href="mailto:amintayebi@gmail.com" data-fa="تماس ایمیلی" data-en="Email">✉️ تماس</a>
-+
-            <a class="btn" href="#contact" data-fa="بخش تماس" data-en="Contact">بخش تماس</a>
-+
-          </div>
-+
-        </div>
-+
-        <div style="display:flex;justify-content:center;align-items:center">
-+
-          <div class="avatar-frame" aria-hidden="false" aria-label="Profile image">
-+
-            <!-- Profile image without circular border and with blend effect -->
-+
-            <img class="avatar" src="image.png" alt="عکس محمدامین طیبی - Amin Tayebi" />
-+
-          </div>
-+
-        </div>
-+
-      </div>
-+
-    </section>
-+
-    <!-- ABOUT -->
-+
-    <section id="about" class="container fade-in-up" aria-labelledby="about-title">
-+
-      <h2 id="about-title" class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
-+
-      <p class="lead" data-fa="دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری سریع و تعهد به کار." data-en="Highly team-oriented, familiar with administrative procedures, quick learner and committed.">دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری سریع و تعهد به کار.</p>
-+
-      <div class="grid" style="margin-top:18px">
-+
-        <div class="col-6">
-+
-          <div class="card">
-+
-            <h3 style="margin:0 0 8px;font-family:'Poppins';font-size:18px" data-fa="اطلاعات" data-en="Details">اطلاعات</h3>
-+
-            <div class="contact-list" style="margin-top:10px">
-+
-              <div><strong data-fa="موقعیت" data-en="Location">موقعیت:</strong> <span data-fa="تهران، ایران" data-en="Tehran, Iran">تهران، ایران</span></div>
-+
-              <div><strong data-fa="ایمیل" data-en="Email">ایمیل:</strong> <span>amintayebi**@gmail.com</span></div>
-+
-              <div><strong data-fa="تلفن" data-en="Phone">تلفن:</strong> <span>+98-912-337-8752</span></div>
-+
-              <div><strong data-fa="عنوان شغلی" data-en="Title">عنوان شغلی:</strong> <span data-fa="کارشناس فنی پشتیبانی" data-en="Technical Support Specialist">کارشناس فنی پشتیبانی</span></div>
-+
-            </div>
-+
-          </div>
-+
-        </div>
-+
-        <div class="col-6">
-+
-          <div class="card">
-+
-            <h3 style="margin:0 0 8px;font-family:'Poppins';font-size:18px" data-fa="تحصیلات" data-en="Education">تحصیلات</h3>
-+
-            <p class="lead" style="margin:6px 0 0" data-fa="لیسانس نرم‌افزار — دانشگاه آزاد اسلامی" data-en="BSc Software — Azad University">لیسانس نرم‌افزار — دانشگاه آزاد اسلامی</p>
-+
-          </div>
-+
-        </div>
-+
-      </div>
-+
-    </section>
-+
-    <!-- SKILLS -->
-+
-    <section id="skills" class="container fade-in-up" aria-labelledby="skills-title">
-+
-      <h2 id="skills-title" class="section-title" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
-+
-      <p class="lead" data-fa="مهارت‌های فنی با درصد تسلط؛ بارها انیمیت می‌شوند هنگام اسکرول." data-en="Technical skills with proficiency percentages; bars animate on scroll.">مهارت‌های فنی با درصد تسلط؛ بارها انیمیت می‌شوند هنگام اسکرول.</p>
-+
-      <div class="grid" style="margin-top:18px">
-+
-        <div class="col-6">
-+
-          <div class="card">
-+
-            <div class="skill">
-+
-              <div class="skill-name">Linux LPIC — 80%</div>
-+
-              <div class="skill-bar"><span data-skill="80" style="width:0%"></span></div>
-+
-            </div>
-+
-            <div class="skill">
-+
-              <div class="skill-name">VoIP / Asterisk — 85%</div>
-+
-              <div class="skill-bar"><span data-skill="85" style="width:0%"></span></div>
-+
-            </div>
-+
-            <div class="skill">
-+
-              <div class="skill-name">Network — 80%</div>
-+
-              <div class="skill-bar"><span data-skill="80" style="width:0%"></span></div>
-+
-            </div>
-+
-            <div class="skill">
-+
-              <div class="skill-name">Docker — 60%</div>
-+
-              <div class="skill-bar"><span data-skill="60" style="width:0%"></span></div>
-+
-            </div>
-+
-          </div>
-+
-        </div>
-+
-        <div class="col-6">
-+
-          <div class="card">
-+
-            <h3 style="margin:0 0 8px;font-family:'Poppins';font-size:18px" data-fa="ابزارها" data-en="Tools">ابزارها</h3>
-+
-            <ul style="margin:8px 0 0;padding-left:18px;color:var(--muted);line-height:1.8">
-+
-              <li>Wireshark, TCP/IP, PCAP</li>
-+
-              <li>MariaDB / Oracle</li>
-+
-              <li>PRTG, Zabbix</li>
-+
-              <li>VMware, Docker</li>
-+
-            </ul>
-+
-          </div>
-+
-        </div>
-+
-      </div>
-+
-    </section>
-+
-    <!-- EXPERIENCE / TIMELINE -->
-+
-    <section id="experience" class="container fade-in-up" aria-labelledby="exp-title">
-+
-      <h2 id="exp-title" class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
-+
-      <p class="lead" data-fa="خط زمان تجربه‌های کلیدی" data-en="Timeline of key roles">خط زمان تجربه‌های کلیدی</p>
-+
-      <div class="grid" style="margin-top:18px">
-+
-        <div class="col-12">
-+
-          <div class="timeline card" aria-hidden="false">
-+
-            <article class="timeline-item" data-start="1397-11" role="article" aria-label="کارشناس 3">
-+
-              <span class="timeline-dot" aria-hidden="true"></span>
-+
-              <h4 style="margin:0 0 6px;font-family:'Poppins'">کارشناس 3 — تل سی</h4>
-+
-              <div style="color:var(--muted);font-size:14px;margin-bottom:8px">بهمن 1397 — دی 1400</div>
-+
-              <p style="color:#e6e6e6;margin:0;line-height:1.6">مانیتورینگ Payment، تیم لیدر، آشنایی با PRTG و زیرساخت‌های MCI و ...</p>
-+
-            </article>
-+
-            <article class="timeline-item" data-start="1400-10" role="article" aria-label="کارشناس فنی پشتیبانی">
-+
-              <span class="timeline-dot" aria-hidden="true"></span>
-+
-              <h4 style="margin:0 0 6px;font-family:'Poppins'">کارشناس فنی پشتیبانی — تل سی</h4>
-+
-              <div style="color:var(--muted);font-size:14px;margin-bottom:8px">دی 1400 — اکنون</div>
-+
-              <p style="color:#e6e6e6;margin:0;line-height:1.6">پشتیبانی VoIP، تحلیل ترافیک شبکه، نگهداری سرورها و دیتابیس‌ها.</p>
-+
-            </article>
-+
-          </div>
-+
-        </div>
-+
-      </div>
-+
-    </section>
-+
-    <!-- CONTACT -->
-+
-    <section id="contact" class="container fade-in-up" aria-labelledby="contact-title">
-+
-      <h2 id="contact-title" class="section-title" data-fa="تماس" data-en="Contact">تماس</h2>
-+
-      <div class="grid" style="margin-top:18px">
-+
-        <div class="col-6">
-+
-          <div class="card">
-+
-            <h3 style="margin:0 0 8px;font-family:'Poppins'">راه‌های ارتباطی</h3>
-+
-            <div class="contact-list" style="margin-top:8px">
-+
-              <div>📧 <strong>Email:</strong> amintayebi**@gmail.com</div>
-+
-              <div>📱 <strong>Phone:</strong> +98-912-337-8752</div>
-+
-              <div>🌐 <strong>Website:</strong> amintayebi.ir</div>
-+
-            </div>
-+
-          </div>
-+
-        </div>
-+
-        <div class="col-6">
-+
-          <div class="card">
-+
-            <h3 style="margin:0 0 8px;font-family:'Poppins'">فرم (نمونه)</h3>
-+
-            <p class="lead" style="margin-bottom:10px">این فرم نمونه است — برای فرم فعال نیاز به endpoint یا سرویس فرم داریم.</p>
-+
-            <form onsubmit="event.preventDefault(); alert('فرم ارسال شد (نمونه)');" aria-label="Contact form">
-+
-              <label class="sr-only" for="name">نام</label>
-+
-              <input id="name" name="name" placeholder="نام و نام خانوادگی" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:var(--fg);margin-bottom:8px">
-+
-              <label class="sr-only" for="message">پیام</label>
-+
-              <textarea id="message" name="message" placeholder="پیام" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:var(--fg);min-height:100px"></textarea>
-+
-              <div style="margin-top:10px"><button class="btn primary" type="submit">ارسال</button></div>
-+
-            </form>
-+
-          </div>
-+
-        </div>
-+
-      </div>
-+
-    </section>
-+
-  </main>
-+
-  <footer>
-+
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-+
-      <div style="color:var(--muted)">© 2025 محمدامین طیبی — Amin Tayebi</div>
-+
-      <div style="color:var(--muted)">طراحی مینیمال مشکی-طلایی</div>
-+
-    </div>
-+
-  </footer>
-+
-  <script>
-+
-    // Language toggle
-+
-    let lang = 'fa';
-+
-    function toggleLang(){
-+
-      lang = (lang === 'fa') ? 'en' : 'fa';
-+
-      document.documentElement.dir = (lang === 'fa') ? 'rtl' : 'ltr';
-+
-      document.querySelectorAll('[data-fa]').forEach(el=>{
-+
-        el.innerText = el.getAttribute('data-' + lang) || el.innerText;
-+
-      });
-+
-      document.getElementById('langBtn').innerText = (lang === 'fa') ? 'EN' : 'FA';
-+
-    }
-+
-    // Typewriter effect for job titles
-+
-    const jobTitles = [
-+
-      "کارشناس فنی پشتیبانی",
-+
-      "Network & Communications Specialist",
-+
-      "مهندس VoIP و لینوکس"
-+
-    ];
-+
-    let tIndex = 0, cIndex = 0;
-+
-    const typedEl = document.getElementById('typed-text');
-+
-    function typeLoop(){
-+
-      const txt = jobTitles[tIndex];
-+
-      if(cIndex < txt.length){
-+
-        typedEl.textContent += txt.charAt(cIndex);
-+
-        cIndex++;
-+
-        setTimeout(typeLoop, 70);
-+
-      } else {
-+
-        setTimeout(eraseLoop, 1400);
-+
-      }
-+
-    }
-+
-    function eraseLoop(){
-+
-      if(cIndex > 0){
-+
-        typedEl.textContent = jobTitles[tIndex].substring(0, cIndex - 1);
-+
-        cIndex--;
-+
-        setTimeout(eraseLoop, 30);
-+
-      } else {
-+
-        tIndex = (tIndex + 1) % jobTitles.length;
-+
-        setTimeout(typeLoop, 220);
-+
-      }
-+
-    }
-+
-    // start after small delay for better UX
-+
-    setTimeout(typeLoop, 600);
-+
-    // caret animation (visual)
-+
-    typedEl.style.animation = 'caret 0.9s steps(1) infinite';
-+
-    // Intersection Observer: reveal elements and animate skill bars
-+
-    const ioOptions = {threshold: 0.18};
-+
-    const io = new IntersectionObserver((entries, observer) => {
-+
-      entries.forEach(entry => {
-+
-        if(entry.isIntersecting){
-+
-          entry.target.classList.add('show');
-+
-          // Skills: animate bars inside this element or globally when skills section visible
-+
-          entry.target.querySelectorAll('[data-skill]').forEach(span => {
-+
-            const v = span.getAttribute('data-skill') || span.dataset.skill;
-+
-            // small timeout per bar for staggered feel
-+
-            setTimeout(() => { span.style.width = v + '%'; }, 120);
-+
-          });
-+
-          // Also animate any .skill-bar > span in the viewport
-+
-          entry.target.querySelectorAll('.skill-bar > span').forEach(span => {
-+
-            const v = span.getAttribute('data-skill') || span.dataset.skill;
-+
-            setTimeout(()=>{ span.style.width = v + '%'; }, 160);
-+
-          });
-+
-        }
-+
-      });
-+
-    }, ioOptions);
-+
-    // Observe key elements
-+
-    document.querySelectorAll('.fade-in-up, .timeline-item, .skill-bar, section').forEach(el => io.observe(el));
-+
-    // Small accessibility: add focus outlines for keyboard users
-+
-    document.addEventListener('keyup', function(e){
-+
-      if(e.key === 'Tab'){
-+
-        document.documentElement.classList.add('user-is-tabbing');
-+
-      }
-+
-    });
-+
-  </script>
-+
-</body>
-+
-</html>
-2
--
-<html lang="fa" dir="rtl">
-3
--
-<head>
-4
--
 <meta charset="utf-8" />
-5
--
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-6
--
-<title>index.html - Amin Tayebi (Black-Gold Minimal Header)</title>
-7
--
-8
--
-<!-- Google Fonts: Persian (Shabnam) and English (Poppins) -->
-9
--
-<link href="https://fonts.googleapis.com/css2?family=Shabnam:wght@300;400;500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-10
--
-11
--
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>محمدامین طیبی — رزومه</title>
+
+<!-- Fonts: Shabnam (fa) + Poppins (en) -->
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v2.3.0/Shabnam.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-12
--
 :root{
-13
--
---bg: #0b0b0f;
-14
--
---bg-deep: #050505;
-15
--
---fg: #eaeaf0;
-16
--
---muted: #c6c6c6;
-17
--
---gold: #facc15;
-18
--
---gold-soft: rgba(250, 204, 21, 0.25);
-19
--
---card: rgba(255,255,255,0.04);
-20
--
---shadow: 0 8px 30px rgba(0,0,0,.25);
-21
--
---radius: 14px;
-22
--
+--bg:#050505;            /* deep black */
+--gold:#facc15;          /* gold hue */
+--gold-opaque: rgba(250,204,21,0.22); /* ~22% */
+--gold-opaque-30: rgba(250,204,21,0.30); /* ~30% */
+--muted:#9aa0a6;
+--glass: rgba(255,255,255,0.06);
+--glass-strong: rgba(255,255,255,0.08);
+--accent: #ffd54a;
+--card: #0b0b0b;
+--radius: 12px;
+--max-w: 1100px;
 }
-23
--
-24
--
-/* Global resets for RTL */
-25
--
-* { box-sizing: border-box; }
-26
--
-html, body {
-27
--
-margin: 0;
-28
--
-padding: 0;
-29
--
-background: #0a0a0a;
-30
--
-color: var(--fg);
-31
--
-font-family: 'Shabnam', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-32
--
-line-height: 1.6;
-33
--
-height: 100%;
-34
--
-scroll-behavior: smooth;
-35
--
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+background: var(--bg);
+color:#e8e8e8;
+font-family: "Shabnam", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+line-height:1.45;
+padding-bottom:60px;
 }
-36
--
-37
--
-/* Use a high-performance, self-contained SVG background as a data URI */
-38
--
-/* The SVG: deep black base with thin angled golden lines at 20-30% opacity */
-39
--
-/* It is embedded in CSS as a background to the header element and layered with mix-blend-mode: soft-light */
-40
--
-/* Comments included for clarity as requested */
-41
--
-.hero {
-42
--
+
+/* Container */
+.wrap{
+max-width: var(--max-w);
+margin: 28px auto;
+padding: 18px;
+}
+
+/* Header / Hero */
+header.header{
 position: relative;
-43
--
-min-height: 72vh;
-44
--
-display: grid;
-45
--
-place-items: center;
-46
--
-text-align: right;
-47
--
-padding: 48px 20px;
-48
--
-overflow: hidden;
-49
--
-background: #050505;
-50
--
-/* SVG overlay via data URI in CSS below */
-51
--
-background-image: url("data:image/svg+xml;utf8,\
-52
--
-<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'>\
-53
--
-<defs>\
-54
--
-<linearGradient id='g' x1='0' y1='0' x2='1' y2='0'>\
-55
--
-<stop offset='0%' stop-color='%23facc15' stop-opacity='0.25'/>\
-56
--
-<stop offset='50%' stop-color='%23facc15' stop-opacity='0.15'/>\
-57
--
-<stop offset='100%' stop-color='%23facc15' stop-opacity='0.25'/>\
-58
--
-</linearGradient>\
-59
--
-</defs>\
-60
--
-<rect width='1200' height='600' fill='black'/>\
-61
--
-<!-- Thin angled lines: multiple lines with opacity to create a geometric golden texture -->\
-62
--
-<path d='M0,120 L1200,0' stroke='url(%23g)' stroke-width='2' stroke-linecap='round' />\
-63
--
-<path d='M0,240 L1200,120' stroke='url(%23g)' stroke-width='2' stroke-linecap='round' />\
-64
--
-<path d='M0,360 L1200,240' stroke='url(%23g)' stroke-width='2' stroke-linecap='round' />\
-65
--
-<path d='M0,480 L1200,360' stroke='url(%23g)' stroke-width='2' stroke-linecap='round' />\
-66
--
-<!-- more subtle diagonal patches -->\
-67
--
-<path d='M0,60 L1200,0' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round' />\
-68
--
-<path d='M0,300 L1200,240' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/>\
-69
--
-</svg>");
-70
--
-background-size: cover;
-71
--
-background-position: center;
-72
--
-/* Soft glow accent around golden lines */
-73
--
-box-shadow: inset 0 0 60px rgba(250, 204, 21, 0.15);
-74
--
-isolation: isolate;
-75
--
+overflow: visible;
+border-radius: 14px;
+background-color: #050505;
+min-height: 320px;
+display:flex;
+align-items:center;
+padding: 30px;
+box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 }
-76
--
-77
--
-/* Overlay layer to apply mix-blend-mode soft-light on top of the SVG background */
-78
--
-.hero::after{
-79
--
-content: "";
-80
--
-position: absolute;
-81
--
-inset: 0;
-82
--
-/* gradient to subtly darken the lower area for text contrast */
-83
--
-background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.35) 100%);
-84
--
+
+/* Embedded SVG background (black + gold lines with soft blend) */
+.header::before{
+content:"";
+position:absolute;
+inset:0;
+z-index:0;
+border-radius:14px;
+background:
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='600' viewBox='0 0 1600 600'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23facc15' stop-opacity='0.0'/%3E%3Cstop offset='1' stop-color='%23facc15' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='none'%3E%3Crect width='100%25' height='100%25' fill='%23050505'/%3E%3Cpath d='M0 480 L400 320 L800 480 L1200 320 L1600 480' stroke='%23facc15' stroke-width='1.8' stroke-opacity='0.22' /%3E%3Cpath d='M0 200 L300 120 L700 200 L1100 120 L1600 200' stroke='%23facc15' stroke-width='1.6' stroke-opacity='0.22' /%3E%3Ccircle cx='1450' cy='80' r='70' fill='%23facc15' fill-opacity='0.18'/%3E%3Crect x='1200' y='20' width='260' height='8' rx='4' fill='url(%23g)' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat;
+mix-blend-mode: normal;
+filter: blur(0.6px) saturate(1.05);
+}
+
+/* subtle golden corner gradient via pseudo element */
+.header::after{
+content:"";
+position:absolute;
+right:0;
+bottom:0;
+width:260px;
+height:260px;
+border-radius:0 14px 14px 0;
+z-index:0;
+background: linear-gradient(135deg, rgba(250,204,21,0.00) 0%, rgba(250,204,21,0.28) 100%);
 mix-blend-mode: soft-light;
-85
--
-pointer-events: none;
-86
--
+pointer-events:none;
 }
-87
--
-88
--
-/* Gold gradient accents for titles/buttons (thin) */
-89
--
-.gold-gradient {
-90
--
-background: linear-gradient(90deg, #facc15, #ffd166);
-91
--
--webkit-background-clip: text;
-92
--
-background-clip: text;
-93
--
-color: transparent;
-94
--
-}
-95
--
-96
--
-/* Layout helpers */
-97
--
-.container {
-98
--
-width: min(1100px, 92%);
-99
--
-margin: 0 auto;
-100
--
-}
-101
--
-102
--
-/* Navbar */
-103
--
-.navbar {
-104
--
+
+.nav{
 position: sticky;
-105
--
-top: 0;
-106
--
-z-index: 50;
-107
--
-backdrop-filter: saturate(1.2) blur(6px);
-108
--
-background: rgba(5,5,5,0.8);
-109
--
-border-bottom: 1px solid rgba(255,255,255,0.04);
-110
--
+top:18px;
+z-index:9;
+display:flex;
+gap:12px;
+justify-content:space-between;
+align-items:center;
+width:100%;
 }
-111
--
-112
--
-.nav-inner {
-113
--
-display: flex;
-114
--
-align-items: center;
-115
--
-justify-content: space-between;
-116
--
-padding: 14px 0;
-117
--
-gap: 12px;
-118
--
+
+.nav-left{display:flex;gap:10px;align-items:center}
+.brand{
+font-weight:700;
+color:var(--gold);
+letter-spacing:0.6px;
+display:flex;
+gap:10px;
+align-items:center;
+z-index:6;
 }
-119
--
-120
--
-.brand {
-121
--
-display: flex;
-122
--
-align-items: center;
-123
--
-gap: 12px;
-124
--
-text-decoration: none;
-125
--
-color: #fff;
-126
--
-font-family: 'Poppins', sans-serif;
-127
--
-font-weight: 600;
-128
--
-letter-spacing: .2px;
-129
--
+.brand .dot{
+width:12px;height:12px;border-radius:50%;
+background:var(--gold);
+box-shadow:0 0 14px rgba(250,204,21,0.12);
 }
-130
--
-131
--
-.brand img {
-132
--
-height: 28px;
-133
--
-width: 28px;
-134
--
-border-radius: 6px;
-135
--
-/* simple tiny emblem placeholder */
-136
--
-filter: saturate(1.2);
-137
--
+
+.nav-right{display:flex;gap:10px;align-items:center;z-index:6;}
+.lang-switch{
+background: transparent;
+border:1px solid rgba(255,255,255,0.06);
+color:var(--gold);
+padding:8px 12px;
+border-radius:10px;
+cursor:pointer;
+backdrop-filter: blur(6px);
+font-weight:600;
 }
-138
--
-139
--
-.nav-links {
-140
--
-display: flex;
-141
--
-gap: 14px;
-142
--
-align-items: center;
-143
--
+
+.cv-btn{
+background: linear-gradient(90deg,var(--gold) 0%, #ffea7a 100%);
+color:#050505;
+padding:9px 14px;
+border-radius:10px;
+font-weight:700;
+text-decoration:none;
+display:inline-flex;
+gap:8px;
+align-items:center;
+box-shadow: 0 8px 22px rgba(250,204,21,0.08);
 }
-144
--
-145
--
-.nav-links a {
-146
--
-color: #eaeaf0;
-147
--
-text-decoration: none;
-148
--
-padding: 8px 12px;
-149
--
-border-radius: 8px;
-150
--
-font-family: 'Shabnam', sans-serif;
-151
--
-font-weight: 500;
-152
--
-font-size: 14px;
-153
--
-transition: transform .25s ease, color .25s ease, background .25s ease;
-154
--
+
+.hero-inner{
+position:relative;
+z-index:6;
+display:flex;
+gap:28px;
+width:100%;
+align-items:center;
 }
-155
--
-156
--
-.nav-links a:hover {
-157
--
-color: #111;
-158
--
-background: linear-gradient(90deg, #facc15 0%, #ffd166 100%);
-159
--
-text-shadow: 0 0 6px rgba(250, 204, 21, 0.6);
-160
--
+
+/* Left column: text */
+.hero-text{
+flex:1;
+padding: 12px 6px 6px 40px;
 }
-161
--
-162
--
-.btn {
-163
--
-display: inline-flex;
-164
--
-align-items: center;
-165
--
-justify-content: center;
-166
--
-padding: 10px 16px;
-167
--
-border-radius: 999px;
-168
--
-border: 1px solid rgba(250,204,21,.5);
-169
--
-background: rgba(250,204,21,.15);
-170
--
-color: #fff;
-171
--
-text-decoration: none;
-172
--
-font-family: 'Poppins', sans-serif;
-173
--
-font-weight: 600;
-174
--
-transition: transform .25s ease;
-175
--
+
+h1.name{
+font-size:34px;
+color:#fff;
+margin-bottom:8px;
+font-weight:800;
+letter-spacing:0.4px;
 }
-176
--
-.btn:hover { transform: translateY(-1px); }
-177
--
-178
--
-/* Hero section */
-179
--
-.hero-content {
-180
--
-display: grid;
-181
--
-grid-template-columns: 1.1fr 0.9fr;
-182
--
-gap: 28px;
-183
--
-align-items: center;
-184
--
-direction: rtl;
-185
--
+.title{
+display:flex;
+gap:10px;
+align-items:center;
+color:var(--muted);
+font-weight:600;
+font-size:15px;
 }
-186
--
-187
--
-.hero-text {
-188
--
-padding: 8px 0;
-189
--
+
+.typer{
+color:var(--gold);
+font-weight:700;
+font-family: "Poppins", "Shabnam";
+overflow:hidden;
+white-space:nowrap;
+border-right:2px solid rgba(255,255,255,0.08);
+padding-right:6px;
+animation: blink 1s steps(2,end) infinite;
+display:inline-block;
 }
-190
--
-191
--
-.greeting {
-192
--
-font-family: 'Shabnam', sans-serif;
-193
--
-font-weight: 500;
-194
--
-color: #ddd;
-195
--
-font-size: 16px;
-196
--
-letter-spacing: .4px;
-197
--
-margin-bottom: 8px;
-198
--
+@keyframes blink{50%{border-color:transparent}}
+
+.desc{
+margin-top:16px;
+color: #cfcfcf;
+font-size:15px;
+max-width:680px;
 }
-199
--
-200
--
-.name {
-201
--
-font-family: 'Poppins', sans-serif;
-202
--
-font-size: 52px;
-203
--
-line-height: 1.05;
-204
--
-margin: 6px 0 12px;
-205
--
-letter-spacing: .5px;
-206
--
+
+.hero-ctas{
+margin-top:18px;
+display:flex;
+gap:12px;
+align-items:center;
 }
-207
--
-208
--
-.subtitle {
-209
--
-font-family: 'Shabnam', sans-serif;
-210
--
-font-size: 22px;
-211
--
-color: #e6e6e6;
-212
--
-opacity: .95;
-213
--
-margin-bottom: 14px;
-214
--
+
+/* Right column: profile image */
+.hero-media{
+width:220px;
+min-width:180px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+z-index:6;
 }
-215
--
-216
--
-.typewriter {
-217
--
-display: inline-block;
-218
--
-border-right: 2px solid #fff;
-219
--
-white-space: nowrap;
-220
--
-overflow: hidden;
-221
--
-font-family: 'Poppins', sans-serif;
-222
--
-font-size: 20px;
-223
--
-animation: caret 0.8s infinite;
-224
--
-width: 22ch;
-225
--
-}
-226
--
-@keyframes caret {
-227
--
-0%, 100% { border-color: transparent; }
-228
--
-50% { border-color: #fff; }
-229
--
-}
-230
--
-231
--
-.cta-row {
-232
--
-margin-top: 18px;
-233
--
-display: flex;
-234
--
-gap: 12px;
-235
--
-align-items: center;
-236
--
-flex-wrap: wrap;
-237
--
-}
-238
--
-239
--
-.avatar {
-240
--
-width: 320px;
-241
--
-height: 320px;
-242
--
-border-radius: 8px;
-243
--
-object-fit: cover;
-244
--
-/* Blend image with background for a glassy look */
-245
--
+
+.avatar{
+width:170px;
+height:170px;
+border-radius:50%;
+overflow:hidden;
+display:block;
+background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+box-shadow: 0 12px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(250,204,21,0.06);
+transition: transform .45s cubic-bezier(.2,.9,.2,1);
 mix-blend-mode: overlay;
-246
--
-filter: saturate(1.05);
-247
--
-border: none; /* remove circular border as requested */
-248
--
-box-shadow: 0 8px 40px rgba(0,0,0,.4);
-249
--
-background: #1a1a1a;
-250
--
+filter: contrast(1.05) saturate(1.05) brightness(0.98);
 }
-251
--
-252
--
-/* A decorative gradient frame around the hero image (subtle) */
-253
--
-.avatar-frame {
-254
--
-position: relative;
-255
--
-width: 320px;
-256
--
-height: 320px;
-257
--
-border-radius: 10px;
-258
--
-padding: 8px;
-259
--
-background: linear-gradient(135deg, rgba(24,24,24,.8), rgba(5,5,5,.6));
-260
--
-box-shadow: inset 0 0 80px rgba(0,0,0,.6);
-261
--
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+.avatar:hover{transform: translateY(-6px) scale(1.02)}
+
+/* Main content sections */
+main{
+margin-top:18px;
+display:grid;
+grid-template-columns: 1fr 320px;
+gap:22px;
+align-items:start;
+z-index:4;
 }
-262
--
-263
--
-/* Section styling */
-264
--
-section {
-265
--
-padding: 72px 0;
-266
--
+
+/* Card style */
+.card{
+background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+border-radius: 12px;
+padding:18px;
+box-shadow: 0 8px 26px rgba(0,0,0,0.6);
+border: 1px solid rgba(255,255,255,0.03);
 }
-267
--
-268
--
-h2.section-title {
-269
--
-font-family: 'Poppins', sans-serif;
-270
--
-font-size: 36px;
-271
--
-margin: 0 0 12px;
-272
--
-color: #fff;
-273
--
-position: relative;
-274
--
-display: inline-block;
-275
--
+
+/* Sidebar (right) */
+aside.sidebar{padding:18px}
+.profile-mini{
+display:flex;gap:12px;align-items:center;margin-bottom:12px;
 }
-276
--
-277
--
-/* Gold thin accent under titles */
-278
--
-h2.section-title::after {
-279
--
-content: "";
-280
--
-display: block;
-281
--
-width: 60px;
-282
--
-height: 4px;
-283
--
-background: linear-gradient(90deg, #facc15, #ffd166);
-284
--
-border-radius: 2px;
-285
--
-margin-top: 8px;
-286
--
+.profile-mini .pic{width:60px;height:60px;border-radius:10px;overflow:hidden}
+.profile-mini .meta{font-size:13px;color:var(--muted)}
+
+.info-list{margin-top:8px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--muted)}
+.info-list b{color:#fff;font-weight:700;margin-left:8px}
+
+/* Skills */
+.skills{display:flex;flex-direction:column;gap:12px}
+.skill{
+display:flex;flex-direction:column;gap:6px;
 }
-287
--
-288
--
-.lead {
-289
--
-color: var(--muted);
-290
--
-font-family: 'Shabnam', sans-serif;
-291
--
-font-size: 16px;
-292
--
+.skill .bar{
+height:10px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden;
 }
-293
--
-294
--
-/* Grid helpers for sections */
-295
--
-.grid {
-296
--
-display: grid;
-297
--
-grid-template-columns: repeat(12, 1fr);
-298
--
-gap: 20px;
-299
--
+.skill .bar > i{
+display:block;height:100%;background:linear-gradient(90deg,var(--gold-opaque),var(--gold-opaque-30));
+width:0%;
+transition: width 1000ms cubic-bezier(.2,.9,.15,1);
 }
-300
--
-301
--
-.col-6 { grid-column: span 6; }
-302
--
-.col-4 { grid-column: span 4; }
-303
--
-.col-8 { grid-column: span 8; }
-304
--
-.col-12 { grid-column: span 12; }
-305
--
-306
--
-@media (max-width: 1024px){
-307
--
-.hero-content { grid-template-columns: 1fr; text-align: right; }
-308
--
-.avatar { width: 260px; height: 260px; }
-309
--
-.avatar-frame { width: 260px; height: 260px; }
-310
--
-.col-6, .col-4, .col-8 { grid-column: span 12; }
-311
--
-.name { font-size: 42px; }
-312
--
+
+/* Experience (left) */
+.experience{display:flex;flex-direction:column;gap:14px}
+.exp-item{display:flex;gap:14px;align-items:flex-start}
+.exp-left{width:76px;flex-shrink:0;text-align:center;color:var(--muted);font-size:13px}
+.exp-body{flex:1}
+.exp-body h4{color:#fff;font-size:16px;margin-bottom:6px;font-weight:700}
+.exp-body p{color:var(--muted);font-size:14px;line-height:1.5;margin-bottom:8px}
+
+/* Timeline dot */
+.dot{
+width:14px;height:14px;border-radius:50%;
+background:var(--gold);
+box-shadow:0 0 18px rgba(250,204,21,0.12);
+margin:6px auto;
 }
-313
--
-314
--
-/* About and content cards */
-315
--
-.card {
-316
--
-background: var(--card);
-317
--
-border-radius: var(--radius);
-318
--
-padding: 22px;
-319
--
-border: 1px solid rgba(255,255,255,0.05);
-320
--
-box-shadow: var(--shadow);
-321
--
-}
-322
--
-323
--
-/* Skills with animated bars */
-324
--
-.skill {
-325
--
-display: grid;
-326
--
-grid-template-columns: 1fr auto;
-327
--
-align-items: center;
-328
--
-gap: 10px;
-329
--
-margin: 12px 0;
-330
--
-}
-331
--
-.skill-name {
-332
--
-font-family: 'Shabnam', sans-serif;
-333
--
-font-size: 14px;
-334
--
-color: #e9e9e9;
-335
--
-}
-336
--
-.skill-bar {
-337
--
-grid-column: 1 / -1;
-338
--
-height: 12px;
-339
--
-background: rgba(255,255,255,0.08);
-340
--
-border-radius: 999px;
-341
--
-overflow: hidden;
-342
--
-position: relative;
-343
--
-}
-344
--
-.skill-bar > span {
-345
--
-display: block;
-346
--
-height: 100%;
-347
--
-width: 0%;
-348
--
-background: linear-gradient(90deg, #facc15, #ffd166);
-349
--
-border-radius: 999px;
-350
--
-transition: width 1.2s ease;
-351
--
-}
-352
--
-353
--
-/* Experience timeline */
-354
--
-.timeline {
-355
--
-position: relative;
-356
--
-padding: 10px 0;
-357
--
-}
-358
--
-.timeline::before {
-359
--
-content: "";
-360
--
-position: absolute;
-361
--
-top: 0;
-362
--
-bottom: 0;
-363
--
-right: 18px;
-364
--
-width: 2px;
-365
--
-background: rgba(250,204,21,0.6);
-366
--
-transform: translateX(0);
-367
--
-}
-368
--
-.timeline-item {
-369
--
-position: relative;
-370
--
-margin: 22px 0 22px 40px;
-371
--
-padding: 12px 14px;
-372
--
-background: rgba(255,255,255,0.04);
-373
--
-border-radius: 10px;
-374
--
-border: 1px solid rgba(255,255,255,0.06);
-375
--
-opacity: 0;
-376
--
-transform: translateY(20px);
-377
--
-transition: all 0.6s ease;
-378
--
-}
-379
--
-.timeline-item.visible {
-380
--
-opacity: 1;
-381
--
-transform: translateY(0);
-382
--
-}
-383
--
-.timeline-year {
-384
--
-font-family: 'Poppins', sans-serif;
-385
--
-font-weight: 600;
-386
--
-color: #fff;
-387
--
-font-size: 14px;
-388
--
-opacity: .9;
-389
--
-}
-390
--
-.timeline-title {
-391
--
-font-family: 'Poppins', sans-serif;
-392
--
-font-size: 16px;
-393
--
-margin: 6px 0;
-394
--
-}
-395
--
-.timeline-detail {
-396
--
-font-family: 'Shabnam', sans-serif;
-397
--
-color: #ddd;
-398
--
-font-size: 14px;
-399
--
-}
-400
--
-401
--
-/* Contact form (non-functional placeholder with accessible labels) */
-402
--
-.contact-grid {
-403
--
-display: grid;
-404
--
-grid-template-columns: 1fr 1fr;
-405
--
-gap: 14px;
-406
--
-}
-407
--
-input, textarea {
-408
--
-width: 100%;
-409
--
-padding: 12px 14px;
-410
--
-border-radius: 8px;
-411
--
-border: 1px solid rgba(255,255,255,.15);
-412
--
-background: rgba(0,0,0,.25);
-413
--
-color: #fff;
-414
--
-font-family: 'Shabnam', sans-serif;
-415
--
-outline: none;
-416
--
-}
-417
--
-textarea { min-height: 120px; resize: vertical; }
-418
--
-label { font-family: 'Shabnam', sans-serif; font-size: 13px; color: #ddd; display: block; margin-bottom: 6px; }
-419
--
-420
--
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-421
--
-422
--
-@media (max-width: 720px){
-423
--
-.contact-grid { grid-template-columns: 1fr; }
-424
--
-.form-row { grid-template-columns: 1fr; }
-425
--
-.hero-content { padding: 0 0 8px; }
-426
--
-}
-427
--
-428
--
+
 /* Footer */
-429
--
-footer {
-430
--
-padding: 40px 0;
-431
--
-text-align: center;
-432
--
-color: #bbb;
-433
--
-font-family: 'Shabnam', sans-serif;
-434
--
-background: #0b0b0f;
-435
--
+footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+
+/* Small screens */
+@media (max-width:980px){
+main{grid-template-columns:1fr; padding-top:10px}
+.hero-inner{flex-direction:column-reverse;gap:18px}
+.hero-text{padding-left:10px}
+.hero-media{width:150px}
+.avatar{width:140px;height:140px}
 }
+
+/* reveal animations */
+.fade-in-up{opacity:0;transform: translateY(14px);transition: all .7s cubic-bezier(.2,.9,.15,1)}
+.fade-in-up.show{opacity:1;transform:none}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header class="header card" role="banner">
+<nav class="nav" aria-label="main">
+<div class="nav-left">
+<div class="brand" title="Amin Tayebi">
+<span class="dot" aria-hidden="true"></span>
+<span style="font-size:14px">محمدامین طیبی</span>
+</div>
+</div>
+
+<div class="nav-right">
+<button class="lang-switch" id="langToggle" aria-label="تغییر زبان">EN / FA</button>
+<a class="cv-btn" href="pdf_5.pdf" download><span>دانلود رزومه</span></a>
+</div>
+</nav>
+
+<div class="hero-inner" style="margin-top:8px;">
+<div class="hero-text" role="main">
+<h1 class="name">محمدامین طیبی</h1>
+<div class="title">
+<span class="typer" id="typewriter">کارشناس فنی پشتیبانی</span>
+<span style="color:var(--muted);font-weight:600;font-size:13px">• تهران، ایران</span>
+</div>
+
+<p class="desc">کارشناس فنی با تمرکز بر شبکه و پشتیبانی سرویس‌ها — تجربه در لینوکس، VOIP، دیتابیس و مانیتورینگ. اهل حل مسئله و همکاری تیمی.</p>
+
+<div class="hero-ctas">
+<a class="cv-btn" href="pdf_5.pdf" download>دانلود رزومه</a>
+<a class="cv-btn" style="background:transparent;color:var(--gold);border:1px solid rgba(255,255,255,0.04)">ارتباط</a>
+</div>
+</div>
+
+<div class="hero-media">
+<figure class="avatar" aria-hidden="true">
+<img src="image.png" alt="عکس پروفایل محمدامین طیبی">
+</figure>
+</div>
+</div>
+</header>
+
+<main>
+<section class="card" style="min-height:200px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<h3 style="color:var(--gold);font-weight:800">تجربه‌های کاری</h3>
+<small style="color:var(--muted)">آخرین به‌روزرسانی: 1403</small>
+</div>
+
+<div class="experience">
+<article class="exp-item fade-in-up">
+<div class="exp-left">
+<div>بهمن 1397</div>
+<div class="dot" aria-hidden="true"></div>
+<div>دی 1400</div>
+</div>
+<div class="exp-body">
+<h4>کارشناس سطح 3 — تل‌سی</h4>
+<p>آشنا با پرداخت هوایی، مانیتورینگ Payment با BICP، Team lead گروه F0، آموزش نیروها و کار با PRTG و زیرساخت MCI.</p>
+</div>
+</article>
+
+<article class="exp-item fade-in-up">
+<div class="exp-left">
+<div>دی 1400</div>
+<div class="dot" aria-hidden="true"></div>
+<div>اکنون</div>
+</div>
+<div class="exp-body">
+<h4>کارشناس فنی پشتیبانی — تل‌سی</h4>
+<p>مسئولیت‌ها: Linux admin, VOIP deployment, DB (MariaDB/Oracle), شبکه، پیکربندی و عیب‌یابی سخت‌افزار و نرم‌افزار.</p>
+
+<div style="margin-top:8px">
+<strong style="color:var(--gold)">Linux Administrator</strong>
+<ul style="margin-top:6px;color:var(--muted);padding-inline-start:18px">
+<li>User account management</li>
+<li>SQL / backup & restore</li>
+<li>Network capture (Wireshark, PCAP)</li>
+<li>Hardware setup & troubleshooting</li>
+</ul>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<aside class="sidebar card">
+<div class="profile-mini">
+<div class="pic" style="background:linear-gradient(180deg,rgba(250,204,21,0.06),rgba(255,255,255,0.02));overflow:hidden;border-radius:10px">
+<img src="image.png" alt="thumb" style="width:100%;height:100%;object-fit:cover">
+</div>
+<div class="meta">
+<div style="font-weight:700;color:#fff">محمدامین طیبی</div>
+<div style="color:var(--muted);font-size:13px">کارشناس فنی پشتیبانی</div>
+</div>
+</div>
+
+<div class="info-list">
+<div><b>موقعیت:</b><span style="float:left;color:var(--muted)">تهران، ایران</span></div>
+<div><b>سابقه:</b><span style="float:left;color:var(--muted)">3 سال</span></div>
+<div><b>ایمیل:</b><span style="float:left;color:var(--muted)">amintayebi**@gmail.com</span></div>
+<div><b>موبایل:</b><span style="float:left;color:var(--muted)">+98-912-XXX-752</span></div>
+</div>
+
+<hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:14px 0;border-radius:2px">
+
+<h4 style="color:var(--gold);margin-bottom:8px">مهارت‌های تخصصی</h4>
+<div class="skills">
+<div class="skill">
+<div style="display:flex;justify-content:space-between;font-size:13px"><span>Linux (LPIC)</span><span style="color:var(--muted)">متوسط</span></div>
+<div class="bar"><i data-width="78%"></i></div>
+</div>
+
+<div class="skill">
+<div style="display:flex;justify-content:space-between;font-size:13px"><span>VOIP / Asterisk</span><span style="color:var(--muted)">متوسط</span></div>
+<div class="bar"><i data-width="66%"></i></div>
+</div>
+
+<div class="skill">
+<div style="display:flex;justify-content:space-between;font-size:13px"><span>Database (MariaDB / Oracle)</span><span style="color:var(--muted)">متوسط</span></div>
+<div class="bar"><i data-width="62%"></i></div>
+</div>
+
+<div class="skill">
+<div style="display:flex;justify-content:space-between;font-size:13px"><span>Zabbix / Monitoring</span><span style="color:var(--muted)">متوسط</span></div>
+<div class="bar"><i data-width="58%"></i></div>
+</div>
+</div>
+
+<hr style="border:none;height:1px;background:rgba(255,255,255,0.03);margin:14px 0;border-radius:2px">
+
+<h4 style="color:var(--gold);margin-bottom:8px">تحصیلات</h4>
+<div style="color:var(--muted);font-size:14px">
+دانشگاه آزاد اسلامی — لیسانس نرم‌افزار (1398 - 1402)
+</div>
+</aside>
+</main>
+
+<footer class="card" role="contentinfo" style="margin-top:18px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+<div style="color:var(--muted)">© 2025 محمدامین طیبی</div>
+<div style="color:var(--muted)">طراحی شده با ❤️ — شبکه و پشتیبانی</div>
+</div>
+</footer>
+</div>
+
+<script>
+// Typewriter simple: if language toggled to EN, change text; basic implementation
+(function(){
+const el = document.getElementById('typewriter');
+const phrases = {
+fa: "کارشناس فنی پشتیبانی",
+en: "Technical Support Specialist"
+};
+let lang = 'fa';
+let idx = 0;
+
+// simple typing effect on load
+function typeText(txt, target, speed=28){
+target.textContent = "";
+let i=0;
+const t = setInterval(()=>{ target.textContent += txt[i++] || ""; if(i>txt.length-1) clearInterval(t); }, speed);
+}
+typeText(phrases.fa, el, 28);
+
+// Lang toggle
+const langBtn = document.getElementById('langToggle');
+langBtn.addEventListener('click', ()=>{
+lang = (lang === 'fa') ? 'en' : 'fa';
+langBtn.textContent = (lang === 'fa') ? 'EN / FA' : 'FA / EN';
+typeText(phrases[lang], el, 24);
+// direction switch for whole page (basic)
+document.documentElement.dir = (lang === 'fa') ? 'rtl' : 'ltr';
+document.documentElement.lang = (lang === 'fa') ? 'fa' : 'en';
+});
+
+// Intersection Observer for reveal animations & skill bars
+const io = new IntersectionObserver((entries)=>{
+entries.forEach(ent=>{
+if(ent.isIntersecting){
+ent.target.classList.add('show');
+// skill bars
+ent.target.querySelectorAll && ent.target.querySelectorAll('.bar > i').forEach(i=>{
+const w = i.getAttribute('data-width') || '60%';
+setTimeout(()=> i.style.width = w, 160);
+});
+}
+});
+}, {threshold: 0.15});
+
+document.querySelectorAll('.fade-in-up').forEach(n=> io.observe(n));
+// observe sidebar for skills
+io.observe(document.querySelector('.sidebar'));
+
+// ensure avatar fallback if image missing
+document.querySelectorAll('img').forEach(img=>{
+img.addEventListener('error', ()=> {
+img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%230b0b0b'/><text x='50%' y='50%' fill='%23facc15' font-size='26' font-family='Poppins,Arial' dominant-baseline='middle' text-anchor='middle'>A.T</text></svg>";
+});
+});
+})();
+</script>
+</body>
+</html>
