@@ -1,172 +1,183 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رزومه | محمدامین طیبی</title>
-    <!-- فونت وزیر -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Vazir', sans-serif;
-            background: #121212;
-            color: #fff;
-            line-height: 1.6;
-        }
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #1f1c2c, #928dab);
-        }
-        header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            object-fit: cover;
-        }
-        header h1 {
-            font-size: 2rem;
-            margin-top: 15px;
-        }
-        header p {
-            font-size: 1.1rem;
-            color: #ccc;
-        }
-        section {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-        h2 {
-            border-right: 4px solid #00e5ff;
-            padding-right: 10px;
-            margin-bottom: 10px;
-            color: #00e5ff;
-        }
-        .skills, .experience, .education, .contact, .languages, .about {
-            display: grid;
-            gap: 15px;
-        }
-        .card {
-            background: #1e1e1e;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .contact a {
-            display: inline-block;
-            margin: 6px 8px;
-            color: #00e5ff;
-            text-decoration: none;
-        }
-        .contact a:hover {
-            text-decoration: underline;
-        }
-        .download-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: #00e5ff;
-            color: #121212;
-            font-weight: bold;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-        .download-btn:hover {
-            background: #00c4e6;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            color: #666;
-            background: #1a1a1a;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رزومه | محمدامین طیبی</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Vazir', sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0; right: 0;
+      width: 60px;
+      height: 100%;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      gap: 20px;
+    }
+    .sidebar a {
+      color: #facc15;
+      font-size: 20px;
+      text-decoration: none;
+    }
+    header {
+      background: url('header-bg.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 100px 0 60px;
+    }
+    header .info {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
+    header p {
+      margin: 5px 0 0;
+      color: #facc15;
+    }
+    section {
+      padding: 40px 100px 40px 60px;
+    }
+    h2 {
+      border-right: 4px solid #facc15;
+      padding-right: 10px;
+      margin-bottom: 20px;
+      color: #facc15;
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: #1a1a1a;
+      padding: 15px 20px;
+      border-radius: 10px;
+      flex: 1 1 200px;
+      text-align: center;
+    }
+    .skills .skill {
+      margin-bottom: 15px;
+    }
+    .skill-bar {
+      background: #333;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .skill-bar div {
+      background: #facc15;
+      height: 10px;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .service {
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .languages .lang {
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+      background: #1a1a1a;
+    }
+    @media (max-width: 768px) {
+      header { padding: 20px; height: auto; }
+      section { padding: 20px; }
+      .sidebar { flex-direction: row; height: 60px; width: 100%; top: auto; bottom: 0; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="profile.jpg" alt="عکس پروفایل">
-        <h1>محمدامین طیبی</h1>
-        <p>کارشناس فنی پشتیبانی | 3 سال سابقه</p>
-    </header>
 
-    <section class="about">
-        <h2>درباره من</h2>
-        <div class="card">
-            دارای روحیه تیمی بالا<br>
-            آشنا با مراتب اداری<br>
-            یادگیری بالا و تعهد به کار
-        </div>
-    </section>
+<div class="sidebar">
+  <a href="#about">🏠</a>
+  <a href="#skills">💼</a>
+  <a href="#services">🛠</a>
+  <a href="#languages">🌐</a>
+  <a href="#contact">✉️</a>
+</div>
 
-    <section class="experience">
-        <h2>تجربه کاری</h2>
-        <div class="card">
-            <strong>کارشناس 3</strong> — تل سی، تهران (بهمن 1397 تا دی 1400)  
-            3 سال و 10 ماه  
-            <ul>
-                <li>آشنا با پرداخت هوایی</li>
-                <li>مانیتورینگ Payment با نرم‌افزار BICP</li>
-                <li>تیم لیدر گروه F0</li>
-                <li>گزارش به کارفرما</li>
-                <li>آشنا با نرم‌افزار مدیریت LBMS</li>
-                <li>Dashboard.sd.mci</li>
-                <li>آموزش 5 نفر در این حوزه</li>
-                <li>آشنایی با نرم‌افزار PRTG</li>
-                <li>آشنایی به زیرساخت‌های MCI</li>
-            </ul>
-        </div>
-        <div class="card">
-            <strong>کارشناس فنی پشتیبانی</strong> — تل سی، تهران (دی 1400 تا اکنون)  
-            تخصص‌ها:
-            <ul>
-                <li><b>Linux Administrator:</b> User account management، SQL، Wireshark، Backup & Restore، Network routers</li>
-                <li><b>VOIP:</b> شبکه، SIP header troubleshoot، Dialplans، AMI، VoIP</li>
-                <li><b>Database:</b> MariaDB & Oracle، امنیت و بهینه‌سازی دیتابیس، Backup & Recovery</li>
-            </ul>
-        </div>
-    </section>
+<header>
+  <div class="info">
+    <h1>محمدامین طیبی</h1>
+    <p>کارشناس فنی پشتیبانی</p>
+  </div>
+</header>
 
-    <section class="education">
-        <h2>تحصیلات</h2>
-        <div class="card">
-            دانشگاه آزاد اسلامی پردیس — لیسانس نرم‌افزار | 1398 - 1402
-        </div>
-    </section>
+<section id="stats">
+  <h2>آمار کاری</h2>
+  <div class="stats">
+    <div class="stat">📅 3 سال سابقه</div>
+    <div class="stat">😊 17 مشتری راضی</div>
+    <div class="stat">📂 9 پروژه</div>
+    <div class="stat">🏆 جوایز</div>
+  </div>
+</section>
 
-    <section class="skills">
-        <h2>مهارت‌های تخصصی</h2>
-        <div class="card">
-            grafana (مبتدی)، Linux LPIC (متوسط)، Passive Network (متوسط)، Oracle (مبتدی)،  
-            Network (متوسط)، MySQL (متوسط)، issabel (متوسط)، Zabbix (متوسط)، Jira (مبتدی)،  
-            Bash Script (مبتدی)، Docker (مبتدی)، API (متوسط)، Asterisk (متوسط)، MikroTik Routers (مبتدی)،  
-            JavaScript (مبتدی)، PL/SQL (متوسط)، Linux Server (مبتدی)، Vmware Workstation (متوسط)، Troubleshooting (متوسط)
-        </div>
-    </section>
+<section id="skills" class="skills">
+  <h2>مهارت‌ها</h2>
+  <div class="skill">
+    <p>PHP — 90%</p>
+    <div class="skill-bar"><div style="width:90%"></div></div>
+  </div>
+  <div class="skill">
+    <p>JavaScript — 90%</p>
+    <div class="skill-bar"><div style="width:90%"></div></div>
+  </div>
+  <div class="skill">
+    <p>HTML/CSS — 95%</p>
+    <div class="skill-bar"><div style="width:95%"></div></div>
+  </div>
+</section>
 
-    <section class="languages">
-        <h2>مهارت‌های زبان</h2>
-        <div class="card">انگلیسی — متوسط</div>
-    </section>
+<section id="services" class="services">
+  <h2>خدمات من</h2>
+  <div class="service">طراحی رابط کاربری</div>
+  <div class="service">برنامه‌نویسی وب</div>
+  <div class="service">بهینه‌سازی سایت</div>
+</section>
 
-    <section class="contact">
-        <h2>اطلاعات تماس</h2>
-        <a href="mailto:amintayebi**@gmail.com">ایمیل</a>
-        <a href="tel:+989123378752">+98-912-337-8752</a>
-        <a href="tel:+989100913028">+98-910-091-3028</a>
-        <a href="https://amintayebi.ir" target="_blank">وبسایت</a>
-        <a href="https://github.com/" target="_blank">گیت‌هاب</a>
-        <a href="https://linkedin.com" target="_blank">لینکدین</a>
-    </section>
+<section id="languages" class="languages">
+  <h2>زبان‌ها</h2>
+  <div class="lang">انگلیسی — متوسط</div>
+  <div class="lang">فارسی — 100%</div>
+</section>
 
-    <section style="text-align: center;">
-        <a href="resume.pdf" class="download-btn" download>دانلود PDF رزومه</a>
-    </section>
+<section id="contact">
+  <h2>اطلاعات تماس</h2>
+  <p>📧 amintayebi**@gmail.com</p>
+  <p>📱 +98-912-337-8752</p>
+  <p>🌍 amintayebi.ir</p>
+  <p>
+    <a href="resume.pdf" download style="color:#facc15;text-decoration:none;">⬇️ دانلود PDF رزومه</a>
+  </p>
+</section>
 
-    <footer>
-        ساخته شده با ❤️ توسط محمدامین طیبی
-    </footer>
+<footer>© 2025 محمدامین طیبی</footer>
+
 </body>
 </html>
