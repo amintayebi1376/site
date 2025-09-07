@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رزومه | امین تایبی</title>
+    <title>رزومه | محمدامین طیبی</title>
     <!-- فونت وزیر -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
     <style>
@@ -45,18 +45,18 @@
             margin-bottom: 10px;
             color: #00e5ff;
         }
-        .skills, .experience {
+        .skills, .experience, .education, .contact, .languages, .about {
             display: grid;
             gap: 15px;
         }
-        .skill-item, .exp-item {
+        .card {
             background: #1e1e1e;
             padding: 15px;
             border-radius: 8px;
         }
         .contact a {
             display: inline-block;
-            margin: 8px;
+            margin: 6px 8px;
             color: #00e5ff;
             text-decoration: none;
         }
@@ -83,57 +83,90 @@
             color: #666;
             background: #1a1a1a;
         }
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-        }
     </style>
 </head>
 <body>
     <header>
         <img src="profile.jpg" alt="عکس پروفایل">
-        <h1>امین تایبی</h1>
-        <p>برنامه‌نویس وب و توسعه‌دهنده فرانت‌اند</p>
+        <h1>محمدامین طیبی</h1>
+        <p>کارشناس فنی پشتیبانی | 3 سال سابقه</p>
     </header>
 
     <section class="about">
         <h2>درباره من</h2>
-        <p>اینجا متن معرفی کوتاه خودت رو بنویس... مثل خلاصه‌ای از تجربه‌هات، علاقه‌ت به تکنولوژی و هدف‌های کاری.</p>
-    </section>
-
-    <section class="skills">
-        <h2>مهارت‌ها</h2>
-        <div class="skill-item">HTML, CSS, JavaScript</div>
-        <div class="skill-item">React, Vue</div>
-        <div class="skill-item">Git, GitHub, Cloudflare</div>
+        <div class="card">
+            دارای روحیه تیمی بالا<br>
+            آشنا با مراتب اداری<br>
+            یادگیری بالا و تعهد به کار
+        </div>
     </section>
 
     <section class="experience">
         <h2>تجربه کاری</h2>
-        <div class="exp-item">
-            <h3>شرکت نمونه - توسعه‌دهنده فرانت‌اند</h3>
-            <p>1400 - اکنون | کار روی پروژه‌های تحت وب و بهبود رابط کاربری.</p>
+        <div class="card">
+            <strong>کارشناس 3</strong> — تل سی، تهران (بهمن 1397 تا دی 1400)  
+            3 سال و 10 ماه  
+            <ul>
+                <li>آشنا با پرداخت هوایی</li>
+                <li>مانیتورینگ Payment با نرم‌افزار BICP</li>
+                <li>تیم لیدر گروه F0</li>
+                <li>گزارش به کارفرما</li>
+                <li>آشنا با نرم‌افزار مدیریت LBMS</li>
+                <li>Dashboard.sd.mci</li>
+                <li>آموزش 5 نفر در این حوزه</li>
+                <li>آشنایی با نرم‌افزار PRTG</li>
+                <li>آشنایی به زیرساخت‌های MCI</li>
+            </ul>
         </div>
-        <div class="exp-item">
-            <h3>پروژه شخصی - سایت رزومه</h3>
-            <p>ساخت رزومه آنلاین شخصی با HTML & CSS برای معرفی مهارت‌ها و نمونه‌کارها.</p>
+        <div class="card">
+            <strong>کارشناس فنی پشتیبانی</strong> — تل سی، تهران (دی 1400 تا اکنون)  
+            تخصص‌ها:
+            <ul>
+                <li><b>Linux Administrator:</b> User account management، SQL، Wireshark، Backup & Restore، Network routers</li>
+                <li><b>VOIP:</b> شبکه، SIP header troubleshoot، Dialplans، AMI، VoIP</li>
+                <li><b>Database:</b> MariaDB & Oracle، امنیت و بهینه‌سازی دیتابیس، Backup & Recovery</li>
+            </ul>
         </div>
+    </section>
+
+    <section class="education">
+        <h2>تحصیلات</h2>
+        <div class="card">
+            دانشگاه آزاد اسلامی پردیس — لیسانس نرم‌افزار | 1398 - 1402
+        </div>
+    </section>
+
+    <section class="skills">
+        <h2>مهارت‌های تخصصی</h2>
+        <div class="card">
+            grafana (مبتدی)، Linux LPIC (متوسط)، Passive Network (متوسط)، Oracle (مبتدی)،  
+            Network (متوسط)، MySQL (متوسط)، issabel (متوسط)، Zabbix (متوسط)، Jira (مبتدی)،  
+            Bash Script (مبتدی)، Docker (مبتدی)، API (متوسط)، Asterisk (متوسط)، MikroTik Routers (مبتدی)،  
+            JavaScript (مبتدی)، PL/SQL (متوسط)، Linux Server (مبتدی)، Vmware Workstation (متوسط)، Troubleshooting (متوسط)
+        </div>
+    </section>
+
+    <section class="languages">
+        <h2>مهارت‌های زبان</h2>
+        <div class="card">انگلیسی — متوسط</div>
     </section>
 
     <section class="contact">
         <h2>اطلاعات تماس</h2>
-        <a href="mailto:you@example.com">ایمیل</a>
-        <a href="https://github.com/yourusername" target="_blank">گیت‌هاب</a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank">لینکدین</a>
+        <a href="mailto:amintayebi**@gmail.com">ایمیل</a>
+        <a href="tel:+989123378752">+98-912-337-8752</a>
+        <a href="tel:+989100913028">+98-910-091-3028</a>
+        <a href="https://amintayebi.ir" target="_blank">وبسایت</a>
+        <a href="https://github.com/" target="_blank">گیت‌هاب</a>
+        <a href="https://linkedin.com" target="_blank">لینکدین</a>
     </section>
 
-    <section class="resume-download" style="text-align: center;">
+    <section style="text-align: center;">
         <a href="resume.pdf" class="download-btn" download>دانلود PDF رزومه</a>
     </section>
 
     <footer>
-        ساخته شده با ❤️ توسط امین
+        ساخته شده با ❤️ توسط محمدامین طیبی
     </footer>
 </body>
 </html>
