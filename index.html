@@ -4,132 +4,133 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>رزومه محمدامین طیبی | Amin Tayebi Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-    /* ----- Base Styles ----- */
-    * {margin:0;padding:0;box-sizing:border-box}
-    body {
-        font-family: Arial, Tahoma, sans-serif;
-        background-color: #0d0d0d;
-        color: #fff;
-        line-height: 1.6;
-        direction: rtl;
-    }
-    a {color: #FFD700; text-decoration: none;}
-    a:hover {text-decoration: underline;}
-    container {
-        width: 100%;
-        max-width: 1200px;
-        margin: auto;
-        padding: 20px;
-    }
-    header {
-        text-align: center;
-        padding: 30px;
-        border-bottom: 2px solid #FFD700;
-    }
-    header h1 {
-        font-size: 2.5rem;
-        color: #FFD700;
-    }
-    header p {
-        font-size: 1.2rem;
-        color: #ccc;
-    }
-    .lang-switch {
-        margin-top: 10px;
-    }
-    .lang-switch button {
-        background: #FFD700;
-        color: #000;
-        border: none;
-        padding: 8px 16px;
-        cursor: pointer;
-        margin: 5px;
-        font-weight: bold;
-    }
-    .lang-switch button:hover {
-        background: #e6c200;
-    }
-
-    /* ----- Layout ----- */
-    .main {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 20px;
-    }
-    .sidebar {
-        flex: 1 1 300px;
-        background-color: #1a1a1a;
-        padding: 20px;
-        margin: 10px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(255,215,0,0.4);
-    }
-    .content {
-        flex: 3 1 500px;
-        background-color: #1a1a1a;
-        padding: 20px;
-        margin: 10px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(255,215,0,0.4);
-    }
-    h2 {
-        border-bottom: 2px solid #FFD700;
-        padding-bottom: 5px;
-        margin-bottom: 10px;
-        color: #FFD700;
-    }
-    ul {list-style: none;}
-    li {margin-bottom: 5px;}
-
-    /* ----- Timeline ----- */
-    .timeline {
-        border-right: 2px solid #FFD700;
-        padding-right: 15px;
-        margin-right: 10px;
-    }
-    .timeline-item {
-        margin-bottom: 20px;
-    }
-    .timeline-item h3 {
-        color: #FFD700;
-    }
-    .timeline-item span {
-        font-size: 0.9rem;
-        color: #ccc;
-    }
-    .skills-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .skills-table td {
-        border-bottom: 1px solid #444;
-        padding: 6px 0;
-    }
-    .skills-table td:first-child {
-        color: #ccc;
-        width: 30%;
-    }
-    .skills-table td:last-child {
-        color: #FFD700;
-        text-align: left;
-    }
-
-    /* ----- Responsive ----- */
-    @media(max-width: 768px) {
-        .main {
-            flex-direction: column;
-        }
-    }
+:root {
+    --bg-dark: #050505;
+    --bg-card: rgba(255, 215, 0, 0.02);
+    --gold: #FFD700;
+    --gold-light: #ffea8a;
+    --text-light: #ccc;
+    --shadow-gold: 0 0 10px rgba(255,215,0,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--bg-dark);
+    color: white;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+header {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 1px solid var(--gold);
+    box-shadow: inset 0 -1px 0 var(--gold-light);
+}
+header h1 {
+    font-size: 2.8rem;
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255,215,0,0.6);
+    animation: glow 3s infinite alternate;
+}
+header p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-top: 8px;
+}
+.lang-switch button {
+    margin-top: 15px;
+    border: none;
+    background: var(--gold);
+    color: black;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.lang-switch button:hover {
+    background: var(--gold-light);
+}
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+    to { text-shadow: 0 0 20px rgba(255,215,0,0.8), 0 0 30px rgba(255,215,0,0.5); }
+}
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+}
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--gold);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-gold);
+    flex: 1 1 350px;
+    animation: fadeInUp 0.8s ease;
+}
+.card h2 {
+    color: var(--gold);
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 5px;
+}
+.card ul {
+    list-style: none;
+}
+.card li {
+    margin-bottom: 8px;
+    padding-left: 10px;
+    position: relative;
+}
+.card li::before {
+    content: "★";
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+}
+.timeline {
+    border-right: 2px solid var(--gold);
+    padding-right: 15px;
+}
+.timeline-item {
+    margin-bottom: 20px;
+}
+.timeline-item h3 {
+    color: var(--gold);
+}
+.timeline-item span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+.skills-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.skills-table td {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 0;
+    color: var(--text-light);
+}
+.skills-table td:last-child {
+    text-align: left;
+    color: var(--gold);
+}
+@keyframes fadeInUp {
+    from {opacity:0;transform:translateY(20px);}
+    to {opacity:1;transform:translateY(0);}
+}
+@media(max-width: 900px) {
+    .main {flex-direction: column;}
+}
 </style>
 <script>
 function switchLang(lang) {
-    document.querySelectorAll('[data-lang]').forEach(function(el) {
-        if(el.dataset.lang === lang) {
-            el.style.display = '';
-        } else {
-            el.style.display = 'none';
-        }
+    document.querySelectorAll('[data-lang]').forEach(el=>{
+        el.style.display = (el.dataset.lang === lang) ? '' : 'none';
     });
 }
 </script>
@@ -139,8 +140,8 @@ function switchLang(lang) {
 <header>
     <h1 data-lang="fa">محمدامین طیبی</h1>
     <h1 data-lang="en">Mohammad Amin Tayebi</h1>
-    <p data-lang="fa">کارشناس فنی پشتیبانی | رزومه</p>
-    <p data-lang="en">Technical Support Specialist | Resume</p>
+    <p data-lang="fa">کارشناس فنی پشتیبانی</p>
+    <p data-lang="en">Technical Support Specialist</p>
     <div class="lang-switch">
         <button onclick="switchLang('fa')">فارسی</button>
         <button onclick="switchLang('en')">English</button>
@@ -148,13 +149,12 @@ function switchLang(lang) {
 </header>
 
 <div class="main">
-    <!-- Sidebar -->
-    <aside class="sidebar">
+    <div class="card">
         <h2 data-lang="fa">اطلاعات شخصی</h2>
-        <h2 data-lang="en">Personal Information</h2>
+        <h2 data-lang="en">Personal Info</h2>
         <ul data-lang="fa">
             <li>سن: 26</li>
-            <li>وضعیت تاهل: مجرد</li>
+            <li>وضعیت تأهل: مجرد</li>
             <li>خدمت سربازی: انجام نشده</li>
             <li>موقعیت: ایران، تهران</li>
             <li>موبایل: +98-09123378752</li>
@@ -168,48 +168,46 @@ function switchLang(lang) {
             <li>Phone: +98-09123378752</li>
             <li>Email: amintayebi**@gmail.com</li>
         </ul>
+    </div>
 
+    <div class="card">
         <h2 data-lang="fa">تحصیلات</h2>
         <h2 data-lang="en">Education</h2>
         <p data-lang="fa">دانشگاه آزاد اسلامی پردیس — کارشناسی نرم‌افزار (1398-1402)</p>
-        <p data-lang="en">Islamic Azad University Pardis — BSc in Software Engineering (2019-2023)</p>
-
+        <p data-lang="en">Azad University Pardis — BSc Software Engineering (2019-2023)</p>
         <h2 data-lang="fa">زبان</h2>
         <h2 data-lang="en">Language</h2>
         <p data-lang="fa">انگلیسی — متوسط</p>
         <p data-lang="en">English — Intermediate</p>
-    </aside>
+    </div>
 
-    <!-- Content -->
-    <section class="content">
+    <div class="card">
         <h2 data-lang="fa">تجربه کاری</h2>
         <h2 data-lang="en">Work Experience</h2>
 
         <div class="timeline" data-lang="fa">
             <div class="timeline-item">
                 <h3>کارشناس 3 | تل سی</h3>
-                <span>بهمن 1397 - دی 1400 (3 سال و 10 ماه)</span>
+                <span>بهمن 1397 - دی 1400</span>
                 <ul>
                     <li>آشنا با پرداخت هوایی</li>
                     <li>مانیتورینگ Payment با BICP</li>
                     <li>تیم لیدر گروه F0</li>
                     <li>گزارش به کارفرما</li>
-                    <li>آشنا با LBMS</li>
-                    <li>Dashboard.sd.mci</li>
+                    <li>LBMS Dashboard</li>
                     <li>آموزش 5 نفر</li>
                     <li>آشنایی با PRTG</li>
-                    <li>آشنایی زیرساخت‌های MCI</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <h3>کارشناس فنی پشتیبانی | تل سی</h3>
                 <span>دی 1400 - اکنون</span>
                 <ul>
-                    <li>لینوکس ادمین، مدیریت اکانت‌ها</li>
-                    <li>SQL، مانیتور شبکه</li>
-                    <li>پشتیبان‌گیری و بازیابی</li>
-                    <li>VOIP، پیکربندی و دیباگ SIP</li>
-                    <li>دیتابیس MariaDB و Oracle</li>
+                    <li>Linux Admin</li>
+                    <li>SQL & Network Monitoring</li>
+                    <li>Backup & Restore</li>
+                    <li>VOIP & SIP Debugging</li>
+                    <li>MariaDB & Oracle</li>
                 </ul>
             </div>
         </div>
@@ -217,54 +215,50 @@ function switchLang(lang) {
         <div class="timeline" data-lang="en">
             <div class="timeline-item">
                 <h3>Level 3 Expert | Tel Si</h3>
-                <span>Feb 2019 - Jan 2022 (3 years 10 months)</span>
+                <span>Feb 2019 - Jan 2022</span>
                 <ul>
-                    <li>Familiar with Air Payment</li>
-                    <li>Payment monitoring via BICP</li>
-                    <li>Team Leader, F0 group</li>
+                    <li>Air Payment monitoring (BICP)</li>
+                    <li>Team Leader F0</li>
                     <li>Client reporting</li>
-                    <li>LBMS software</li>
-                    <li>Dashboard.sd.mci</li>
-                    <li>Trained 5 people</li>
-                    <li>Familiar with PRTG</li>
-                    <li>MCI infrastructure knowledge</li>
                 </ul>
             </div>
             <div class="timeline-item">
                 <h3>Technical Support Specialist | Tel Si</h3>
                 <span>Jan 2022 - Present</span>
                 <ul>
-                    <li>Linux admin, user account management</li>
+                    <li>Linux admin</li>
                     <li>SQL, network monitoring</li>
                     <li>Backup and restore</li>
-                    <li>VOIP, SIP debugging</li>
-                    <li>MariaDB & Oracle databases</li>
+                    <li>VOIP, SIP debug</li>
+                    <li>MariaDB, Oracle</li>
                 </ul>
             </div>
         </div>
+    </div>
 
-        <h2 data-lang="fa">مهارت‌های تخصصی</h2>
-        <h2 data-lang="en">Technical Skills</h2>
+    <div class="card">
+        <h2 data-lang="fa">مهارت‌ها</h2>
+        <h2 data-lang="en">Skills</h2>
         <table class="skills-table" data-lang="fa">
-            <tr><td>مبتدی</td><td>Grafana</td></tr>
             <tr><td>متوسط</td><td>Linux LPIC</td></tr>
-            <tr><td>متوسط</td><td>Passive Network</td></tr>
-            <tr><td>مبتدی</td><td>Oracle</td></tr>
-            <!-- ادامه مهارت‌ها -->
+            <tr><td>مبتدی</td><td>Grafana</td></tr>
+            <tr><td>متوسط</td><td>MySQL</td></tr>
+            <tr><td>متوسط</td><td>Vmware</td></tr>
         </table>
         <table class="skills-table" data-lang="en">
-            <tr><td>Beginner</td><td>Grafana</td></tr>
             <tr><td>Intermediate</td><td>Linux LPIC</td></tr>
-            <tr><td>Intermediate</td><td>Passive Network</td></tr>
-            <tr><td>Beginner</td><td>Oracle</td></tr>
-            <!-- More skills -->
+            <tr><td>Beginner</td><td>Grafana</td></tr>
+            <tr><td>Intermediate</td><td>MySQL</td></tr>
+            <tr><td>Intermediate</td><td>Vmware</td></tr>
         </table>
+    </div>
 
+    <div class="card">
         <h2 data-lang="fa">درباره من</h2>
         <h2 data-lang="en">About Me</h2>
-        <p data-lang="fa">دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیرنده سریع و متعهد به کار.</p>
-        <p data-lang="en">Highly team-oriented, familiar with administrative procedures, fast learner, and committed to work.</p>
-    </section>
+        <p data-lang="fa">دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.</p>
+        <p data-lang="en">Highly team-oriented, familiar with administrative protocols, quick learner, committed to work.</p>
+    </div>
 </div>
 </body>
 </html>
