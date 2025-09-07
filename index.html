@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رزومه | محمدامین طیبی</title>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+  <title>رزومه آنلاین | محمدامین طیبی</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -12,67 +12,65 @@
       background: #0e0e0e;
       color: #fff;
     }
-    .sidebar {
-      position: fixed;
-      top: 0; right: 0;
-      width: 60px;
-      height: 100%;
-      background: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 20px;
-      gap: 20px;
-    }
-    .sidebar a {
-      color: #facc15;
-      font-size: 20px;
-      text-decoration: none;
-    }
-    header {
-      background: url('header-bg.jpg') center/cover no-repeat;
-      height: 300px;
+    .hero {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      padding: 0 100px 0 60px;
+      padding: 50px;
+      gap: 50px;
+      flex-wrap: wrap;
     }
-    header .info {
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
+    .hero img {
       border-radius: 10px;
+      max-width: 400px;
+      height: auto;
+      border: 5px solid #facc15;
     }
-    header h1 {
+    .hero-text h1 {
+      font-size: 2.5rem;
       margin: 0;
-      font-size: 2rem;
-      color: #fff;
     }
-    header p {
-      margin: 5px 0 0;
+    .hero-text h1 span {
       color: #facc15;
     }
-    section {
-      padding: 40px 100px 40px 60px;
+    .hero-text p {
+      margin: 15px 0;
+      font-size: 1.1rem;
+      color: #ccc;
     }
-    h2 {
-      border-right: 4px solid #facc15;
-      padding-right: 10px;
-      margin-bottom: 20px;
-      color: #facc15;
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background: #facc15;
+      color: #000;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
     }
     .stats {
       display: flex;
-      gap: 20px;
+      justify-content: space-around;
+      padding: 40px;
+      background: #1a1a1a;
       flex-wrap: wrap;
     }
     .stat {
-      background: #1a1a1a;
-      padding: 15px 20px;
-      border-radius: 10px;
-      flex: 1 1 200px;
       text-align: center;
+      margin: 15px;
     }
-    .skills .skill {
+    .stat h3 {
+      font-size: 1.8rem;
+      color: #facc15;
+    }
+    section {
+      padding: 40px;
+    }
+    h2 {
+      color: #facc15;
+      margin-bottom: 20px;
+      border-right: 4px solid #facc15;
+      padding-right: 10px;
+    }
+    .skill {
       margin-bottom: 15px;
     }
     .skill-bar {
@@ -86,7 +84,7 @@
     }
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
       gap: 20px;
     }
     .service {
@@ -94,51 +92,35 @@
       padding: 15px;
       border-radius: 10px;
     }
-    .languages .lang {
-      margin-bottom: 15px;
-    }
     footer {
+      background: #1a1a1a;
       text-align: center;
       padding: 20px;
-      font-size: 0.9rem;
       color: #aaa;
-      background: #1a1a1a;
-    }
-    @media (max-width: 768px) {
-      header { padding: 20px; height: auto; }
-      section { padding: 20px; }
-      .sidebar { flex-direction: row; height: 60px; width: 100%; top: auto; bottom: 0; }
     }
   </style>
 </head>
 <body>
 
-<div class="sidebar">
-  <a href="#about">🏠</a>
-  <a href="#skills">💼</a>
-  <a href="#services">🛠</a>
-  <a href="#languages">🌐</a>
-  <a href="#contact">✉️</a>
+<!-- هدر -->
+<div class="hero">
+  <img src="image.png" alt="محمدامین طیبی">
+  <div class="hero-text">
+    <h1>محمدامین <span>طیبی</span></h1>
+    <p>کارشناس فنی پشتیبانی</p>
+    <a href="pdf_5.pdf" class="btn" download>دانلود رزومه PDF</a>
+  </div>
 </div>
 
-<header>
-  <div class="info">
-    <h1>محمدامین طیبی</h1>
-    <p>کارشناس فنی پشتیبانی</p>
-  </div>
-</header>
+<!-- آمار -->
+<div class="stats">
+  <div class="stat"><h3>3+</h3><p>سال سابقه</p></div>
+  <div class="stat"><h3>17</h3><p>مشتری راضی</p></div>
+  <div class="stat"><h3>9</h3><p>پروژه</p></div>
+</div>
 
-<section id="stats">
-  <h2>آمار کاری</h2>
-  <div class="stats">
-    <div class="stat">📅 3 سال سابقه</div>
-    <div class="stat">😊 17 مشتری راضی</div>
-    <div class="stat">📂 9 پروژه</div>
-    <div class="stat">🏆 جوایز</div>
-  </div>
-</section>
-
-<section id="skills" class="skills">
+<!-- مهارت‌ها -->
+<section>
   <h2>مهارت‌ها</h2>
   <div class="skill">
     <p>PHP — 90%</p>
@@ -154,27 +136,22 @@
   </div>
 </section>
 
-<section id="services" class="services">
-  <h2>خدمات من</h2>
-  <div class="service">طراحی رابط کاربری</div>
-  <div class="service">برنامه‌نویسی وب</div>
-  <div class="service">بهینه‌سازی سایت</div>
+<!-- خدمات -->
+<section>
+  <h2>خدمات</h2>
+  <div class="services">
+    <div class="service">طراحی رابط کاربری</div>
+    <div class="service">برنامه‌نویسی وب</div>
+    <div class="service">بهینه‌سازی سایت</div>
+  </div>
 </section>
 
-<section id="languages" class="languages">
-  <h2>زبان‌ها</h2>
-  <div class="lang">انگلیسی — متوسط</div>
-  <div class="lang">فارسی — 100%</div>
-</section>
-
-<section id="contact">
+<!-- تماس -->
+<section>
   <h2>اطلاعات تماس</h2>
   <p>📧 amintayebi**@gmail.com</p>
   <p>📱 +98-912-337-8752</p>
   <p>🌍 amintayebi.ir</p>
-  <p>
-    <a href="resume.pdf" download style="color:#facc15;text-decoration:none;">⬇️ دانلود PDF رزومه</a>
-  </p>
 </section>
 
 <footer>© 2025 محمدامین طیبی</footer>
