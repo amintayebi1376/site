@@ -1,248 +1,270 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>محمدامین طیبی | رزومه آنلاین</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet"/>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رزومه محمدامین طیبی | Amin Tayebi Resume</title>
 <style>
-/* Reset & Base */
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{background:#0e0e0e;color:#fff;font-family:'Shabnam','Poppins',sans-serif;line-height:1.6;scroll-behavior:smooth}
-a{text-decoration:none;color:inherit}
+    /* ----- Base Styles ----- */
+    * {margin:0;padding:0;box-sizing:border-box}
+    body {
+        font-family: Arial, Tahoma, sans-serif;
+        background-color: #0d0d0d;
+        color: #fff;
+        line-height: 1.6;
+        direction: rtl;
+    }
+    a {color: #FFD700; text-decoration: none;}
+    a:hover {text-decoration: underline;}
+    container {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+    header {
+        text-align: center;
+        padding: 30px;
+        border-bottom: 2px solid #FFD700;
+    }
+    header h1 {
+        font-size: 2.5rem;
+        color: #FFD700;
+    }
+    header p {
+        font-size: 1.2rem;
+        color: #ccc;
+    }
+    .lang-switch {
+        margin-top: 10px;
+    }
+    .lang-switch button {
+        background: #FFD700;
+        color: #000;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        margin: 5px;
+        font-weight: bold;
+    }
+    .lang-switch button:hover {
+        background: #e6c200;
+    }
 
-/* Theme Variables */
-:root{
-  --gold:#facc15;
-  --gold-gradient:linear-gradient(45deg,#facc15,#ffd700,#f6e05e);
-  --bg-dark:#0e0e0e;
-}
+    /* ----- Layout ----- */
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    .sidebar {
+        flex: 1 1 300px;
+        background-color: #1a1a1a;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(255,215,0,0.4);
+    }
+    .content {
+        flex: 3 1 500px;
+        background-color: #1a1a1a;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(255,215,0,0.4);
+    }
+    h2 {
+        border-bottom: 2px solid #FFD700;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        color: #FFD700;
+    }
+    ul {list-style: none;}
+    li {margin-bottom: 5px;}
 
-/* Navbar */
-nav{
-  position:fixed;top:0;left:0;width:100%;
-  background:rgba(14,14,14,0.7);backdrop-filter:blur(8px);
-  display:flex;justify-content:space-between;align-items:center;
-  padding:15px 50px;z-index:10
-}
-nav .logo{font-weight:700;font-size:1.5rem;background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
-nav ul{display:flex;gap:25px;list-style:none}
-nav ul li a{font-weight:500;transition:.3s}
-nav ul li a:hover{color:var(--gold)}
-.lang-btn{border:1px solid var(--gold);background:none;color:var(--gold);padding:5px 12px;border-radius:20px;cursor:pointer}
+    /* ----- Timeline ----- */
+    .timeline {
+        border-right: 2px solid #FFD700;
+        padding-right: 15px;
+        margin-right: 10px;
+    }
+    .timeline-item {
+        margin-bottom: 20px;
+    }
+    .timeline-item h3 {
+        color: #FFD700;
+    }
+    .timeline-item span {
+        font-size: 0.9rem;
+        color: #ccc;
+    }
+    .skills-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .skills-table td {
+        border-bottom: 1px solid #444;
+        padding: 6px 0;
+    }
+    .skills-table td:first-child {
+        color: #ccc;
+        width: 30%;
+    }
+    .skills-table td:last-child {
+        color: #FFD700;
+        text-align: left;
+    }
 
-/* Hero */
-header.hero{
-  position:relative;
-  min-height:100vh;display:flex;align-items:center;padding:0 50px;
-  background:var(--gold-gradient);
-}
-header.hero::before{
-  content:"";position:absolute;inset:0;
-  background:var(--bg-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23333' fill-opacity='0.2'%3E%3Ccircle cx='200' cy='200' r='200'/%3E%3C/g%3E%3C/svg%3E") repeat;
-  mix-blend-mode:multiply;
-}
-.hero-content{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:50px;width:100%}
-.hero-text{flex:1;min-width:280px}
-.hero-text h1{font-size:2.5rem;margin-bottom:10px}
-.hero-text h1 span{background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
-.hero-text p{font-size:1.1rem;margin-bottom:20px;color:#ddd}
-.btn{
-  display:inline-block;padding:10px 25px;border-radius:25px;
-  background:var(--gold-gradient);color:#000;font-weight:bold
-}
-.hero-image{flex:1;display:flex;justify-content:center}
-.hero-image img{
-  max-width:320px;border-radius:20px;
-  box-shadow:0 0 40px rgba(250,204,21,0.5);
-  object-fit:cover;mix-blend-mode:screen; /* blend effect */
-}
-
-/* Sections */
-section{padding:60px 50px}
-.section-title{
-  font-size:1.8rem;margin-bottom:30px;
-  background:var(--gold-gradient);-webkit-background-clip:text;color:transparent
-}
-
-/* Skills */
-.skill{margin-bottom:20px}
-.skill-name{margin-bottom:5px;font-weight:bold}
-.skill-bar{background:#333;border-radius:20px;overflow:hidden;position:relative}
-.skill-bar div{
-  height:12px;background:var(--gold-gradient);
-  width:0;transition:width 1s ease-in-out;
-}
-
-/* Timeline */
-.timeline{border-right:2px solid var(--gold);padding-right:20px;position:relative}
-.timeline-item{margin-bottom:30px;opacity:0;transform:translateY(40px);transition:all .8s ease}
-.timeline-item.show{opacity:1;transform:translateY(0)}
-.timeline-item h3{color:var(--gold);font-size:1.2rem}
-
-/* Contact */
-footer{background:#1a1a1a;color:#888;text-align:center;padding:15px}
-
-/* Scroll Animations */
-.fade-in-up{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
-.fade-in-up.show{opacity:1;transform:translateY(0)}
-
-@media(max-width:768px){
-  .hero-content{flex-direction:column}
-  nav{padding:15px 20px}
-}
+    /* ----- Responsive ----- */
+    @media(max-width: 768px) {
+        .main {
+            flex-direction: column;
+        }
+    }
 </style>
+<script>
+function switchLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(function(el) {
+        if(el.dataset.lang === lang) {
+            el.style.display = '';
+        } else {
+            el.style.display = 'none';
+        }
+    });
+}
+</script>
 </head>
-<body>
+<body onload="switchLang('fa')">
 
-<!-- Navbar -->
-<nav>
-  <div class="logo">AminT</div>
-  <ul>
-    <li><a href="#home" data-fa="خانه" data-en="Home">خانه</a></li>
-    <li><a href="#about" data-fa="درباره" data-en="About">درباره</a></li>
-    <li><a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
-    <li><a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a></li>
-    <li><a href="#contact" data-fa="تماس" data-en="Contact">تماس</a></li>
-  </ul>
-  <button class="lang-btn" onclick="toggleLang()">EN</button>
-</nav>
-
-<!-- Hero -->
-<header class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-text fade-in-up">
-      <h1><span>محمدامین طیبی</span></h1>
-      <h2 id="typed-text" style="height:40px"></h2>
-      <p data-fa="مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه" 
-         data-en="VoIP & Network Engineer with expertise in advanced solutions and network security.">
-         مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه
-      </p>
-      <a href="pdf_5.pdf" class="btn" download data-fa="دانلود رزومه" data-en="Download CV">دانلود رزومه</a>
+<header>
+    <h1 data-lang="fa">محمدامین طیبی</h1>
+    <h1 data-lang="en">Mohammad Amin Tayebi</h1>
+    <p data-lang="fa">کارشناس فنی پشتیبانی | رزومه</p>
+    <p data-lang="en">Technical Support Specialist | Resume</p>
+    <div class="lang-switch">
+        <button onclick="switchLang('fa')">فارسی</button>
+        <button onclick="switchLang('en')">English</button>
     </div>
-    <div class="hero-image fade-in-up">
-      <img src="image.png" alt="Amin Tayebi">
-    </div>
-  </div>
 </header>
 
-<!-- About -->
-<section id="about" class="fade-in-up">
-  <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
-  <p data-fa="دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار." 
-     data-en="Highly team-oriented, familiar with administrative procedures, committed and quick learner.">
-     دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.
-  </p>
-</section>
+<div class="main">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 data-lang="fa">اطلاعات شخصی</h2>
+        <h2 data-lang="en">Personal Information</h2>
+        <ul data-lang="fa">
+            <li>سن: 26</li>
+            <li>وضعیت تاهل: مجرد</li>
+            <li>خدمت سربازی: انجام نشده</li>
+            <li>موقعیت: ایران، تهران</li>
+            <li>موبایل: +98-09123378752</li>
+            <li>ایمیل: amintayebi**@gmail.com</li>
+        </ul>
+        <ul data-lang="en">
+            <li>Age: 26</li>
+            <li>Marital Status: Single</li>
+            <li>Military Service: Not completed</li>
+            <li>Location: Tehran, Iran</li>
+            <li>Phone: +98-09123378752</li>
+            <li>Email: amintayebi**@gmail.com</li>
+        </ul>
 
-<!-- Skills -->
-<section id="skills" class="fade-in-up">
-  <h2 class="section-title" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
-  <div class="skill">
-    <div class="skill-name">Linux LPIC — 80%</div>
-    <div class="skill-bar"><div data-skill="80"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">VoIP / Asterisk — 85%</div>
-    <div class="skill-bar"><div data-skill="85"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Network — 80%</div>
-    <div class="skill-bar"><div data-skill="80"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Docker — 60%</div>
-    <div class="skill-bar"><div data-skill="60"></div></div>
-  </div>
-</section>
+        <h2 data-lang="fa">تحصیلات</h2>
+        <h2 data-lang="en">Education</h2>
+        <p data-lang="fa">دانشگاه آزاد اسلامی پردیس — کارشناسی نرم‌افزار (1398-1402)</p>
+        <p data-lang="en">Islamic Azad University Pardis — BSc in Software Engineering (2019-2023)</p>
 
-<!-- Experience -->
-<section id="experience" class="fade-in-up">
-  <h2 class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3 data-fa="کارشناس 3 — تل سی" data-en="Level 3 Support — TelC">کارشناس 3 — تل سی</h3>
-      <p data-fa="بهمن 1397 تا دی 1400" data-en="Feb 2019 — Jan 2022">بهمن 1397 تا دی 1400</p>
-    </div>
-    <div class="timeline-item">
-      <h3 data-fa="کارشناس فنی پشتیبانی — تل سی" data-en="Technical Support Specialist — TelC">کارشناس فنی پشتیبانی — تل سی</h3>
-      <p data-fa="دی 1400 تا اکنون" data-en="Jan 2022 — Present">دی 1400 تا اکنون</p>
-    </div>
-  </div>
-</section>
+        <h2 data-lang="fa">زبان</h2>
+        <h2 data-lang="en">Language</h2>
+        <p data-lang="fa">انگلیسی — متوسط</p>
+        <p data-lang="en">English — Intermediate</p>
+    </aside>
 
-<!-- Contact -->
-<section id="contact" class="fade-in-up">
-  <h2 class="section-title" data-fa="تماس" data-en="Contact">تماس</h2>
-  <p>📧 amintayebi**@gmail.com</p>
-  <p>📱 +98-912-337-8752</p>
-  <p>🌍 amintayebi.ir</p>
-</section>
+    <!-- Content -->
+    <section class="content">
+        <h2 data-lang="fa">تجربه کاری</h2>
+        <h2 data-lang="en">Work Experience</h2>
 
-<!-- Footer -->
-<footer>&copy; 2025 Amin Tayebi</footer>
+        <div class="timeline" data-lang="fa">
+            <div class="timeline-item">
+                <h3>کارشناس 3 | تل سی</h3>
+                <span>بهمن 1397 - دی 1400 (3 سال و 10 ماه)</span>
+                <ul>
+                    <li>آشنا با پرداخت هوایی</li>
+                    <li>مانیتورینگ Payment با BICP</li>
+                    <li>تیم لیدر گروه F0</li>
+                    <li>گزارش به کارفرما</li>
+                    <li>آشنا با LBMS</li>
+                    <li>Dashboard.sd.mci</li>
+                    <li>آموزش 5 نفر</li>
+                    <li>آشنایی با PRTG</li>
+                    <li>آشنایی زیرساخت‌های MCI</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>کارشناس فنی پشتیبانی | تل سی</h3>
+                <span>دی 1400 - اکنون</span>
+                <ul>
+                    <li>لینوکس ادمین، مدیریت اکانت‌ها</li>
+                    <li>SQL، مانیتور شبکه</li>
+                    <li>پشتیبان‌گیری و بازیابی</li>
+                    <li>VOIP، پیکربندی و دیباگ SIP</li>
+                    <li>دیتابیس MariaDB و Oracle</li>
+                </ul>
+            </div>
+        </div>
 
-<script>
-// Language Toggle
-let lang='fa';
-function toggleLang(){
-  lang = (lang==='fa')?'en':'fa';
-  document.documentElement.dir = (lang==='fa')?'rtl':'ltr';
-  document.querySelectorAll('[data-fa]').forEach(el=>{
-    el.innerText = el.getAttribute(`data-${lang}`);
-  });
-  document.querySelector('.lang-btn').innerText = (lang==='fa')?'EN':'FA';
-}
+        <div class="timeline" data-lang="en">
+            <div class="timeline-item">
+                <h3>Level 3 Expert | Tel Si</h3>
+                <span>Feb 2019 - Jan 2022 (3 years 10 months)</span>
+                <ul>
+                    <li>Familiar with Air Payment</li>
+                    <li>Payment monitoring via BICP</li>
+                    <li>Team Leader, F0 group</li>
+                    <li>Client reporting</li>
+                    <li>LBMS software</li>
+                    <li>Dashboard.sd.mci</li>
+                    <li>Trained 5 people</li>
+                    <li>Familiar with PRTG</li>
+                    <li>MCI infrastructure knowledge</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Technical Support Specialist | Tel Si</h3>
+                <span>Jan 2022 - Present</span>
+                <ul>
+                    <li>Linux admin, user account management</li>
+                    <li>SQL, network monitoring</li>
+                    <li>Backup and restore</li>
+                    <li>VOIP, SIP debugging</li>
+                    <li>MariaDB & Oracle databases</li>
+                </ul>
+            </div>
+        </div>
 
-// Typewriter Effect
-let jobTitles = [
-  "کارشناس فنی پشتیبانی",
-  "Network & Communications Specialist",
-  "مهندس VoIP و لینوکس"
-];
-let typedIndex=0, charIndex=0;
-let typedElement = document.getElementById('typed-text');
-function typeJob(){
-  if(charIndex < jobTitles[typedIndex].length){
-    typedElement.innerHTML += jobTitles[typedIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(typeJob,80);
-  }else{
-    setTimeout(eraseJob,1500);
-  }
-}
-function eraseJob(){
-  if(charIndex > 0){
-    typedElement.innerHTML = jobTitles[typedIndex].substring(0,charIndex-1);
-    charIndex--;
-    setTimeout(eraseJob,40);
-  }else{
-    typedIndex = (typedIndex+1)%jobTitles.length;
-    setTimeout(typeJob,200);
-  }
-}
-typeJob();
+        <h2 data-lang="fa">مهارت‌های تخصصی</h2>
+        <h2 data-lang="en">Technical Skills</h2>
+        <table class="skills-table" data-lang="fa">
+            <tr><td>مبتدی</td><td>Grafana</td></tr>
+            <tr><td>متوسط</td><td>Linux LPIC</td></tr>
+            <tr><td>متوسط</td><td>Passive Network</td></tr>
+            <tr><td>مبتدی</td><td>Oracle</td></tr>
+            <!-- ادامه مهارت‌ها -->
+        </table>
+        <table class="skills-table" data-lang="en">
+            <tr><td>Beginner</td><td>Grafana</td></tr>
+            <tr><td>Intermediate</td><td>Linux LPIC</td></tr>
+            <tr><td>Intermediate</td><td>Passive Network</td></tr>
+            <tr><td>Beginner</td><td>Oracle</td></tr>
+            <!-- More skills -->
+        </table>
 
-// Scroll Animations
-const observers = document.querySelectorAll('.fade-in-up, .timeline-item');
-let observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-      if(entry.target.querySelectorAll('[data-skill]').length){
-        entry.target.querySelectorAll('[data-skill]').forEach(bar=>{
-          bar.style.width = bar.dataset.skill+'%';
-        });
-      }
-    }
-  });
-},{threshold:0.2});
-observers.forEach(el=>observer.observe(el));
-</script>
-
+        <h2 data-lang="fa">درباره من</h2>
+        <h2 data-lang="en">About Me</h2>
+        <p data-lang="fa">دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیرنده سریع و متعهد به کار.</p>
+        <p data-lang="en">Highly team-oriented, familiar with administrative procedures, fast learner, and committed to work.</p>
+    </section>
+</div>
 </body>
 </html>
