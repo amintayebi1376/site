@@ -1,59 +1,101 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>رزومه آنلاین | محمدامین طیبی</title>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Vazir','Roboto',sans-serif;background:#0e0e0e;color:#fff;line-height:1.6}
-    a{text-decoration:none;color:inherit}
-    /* General Colors */
-    :root{
-      --main:#facc15;
-      --bg:#0e0e0e;
-      --light:#ccc;
-    }
-    /* Navbar */
-    nav{
-      display:flex;justify-content:space-between;align-items:center;
-      padding:20px 50px;flex-wrap:wrap;
-    }
-    nav .logo{font-size:1.5rem;font-weight:bold;color:var(--main)}
-    nav ul{list-style:none;display:flex;gap:25px;}
-    nav ul li a{color:#fff;font-weight:500;transition:.3s}
-    nav ul li a:hover,nav ul li.active a{color:var(--main)}
-    .lang-btn{border:1px solid var(--main);padding:5px 12px;border-radius:20px;cursor:pointer;color:var(--main);background:none}
-    /* Hero */
-    header.hero{padding:50px}
-    .hero-content{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:30px;}
-    .hero-text{flex:1;min-width:280px}
-    .hero-text h1{font-size:2rem;margin-bottom:10px}
-    .hero-text h1 span{color:var(--main)}
-    .hero-text p{color:var(--light);margin-bottom:20px}
-    .btn{display:inline-block;background:var(--main);color:#000;padding:10px 20px;border-radius:25px;font-weight:bold}
-    .hero-image img{max-width:300px;border-radius:50%;border:5px solid var(--main)}
-    /* Section titles */
-    section{padding:40px 50px}
-    h2.section-title{color:var(--main);border-right:5px solid var(--main);padding-right:10px;margin-bottom:20px}
-    /* Skills */
-    .skill{margin-bottom:15px}
-    .skill-bar{background:#333;border-radius:20px;overflow:hidden}
-    .skill-bar div{background:var(--main);height:10px}
-    /* Timeline */
-    .timeline{border-right:2px solid var(--main);padding-right:20px;position:relative}
-    .timeline::before{content:'';position:absolute;top:0;right:-7px;width:14px;height:14px;background:var(--main);border-radius:50%}
-    .timeline-item{margin-bottom:30px}
-    .timeline-item h3{color:var(--main)}
-    /* Services */
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-    .service{background:#1a1a1a;padding:15px;border-radius:10px;color:var(--light)}
-    footer{text-align:center;padding:20px;background:#1a1a1a;color:#888;margin-top:40px}
-    /* English Left-to-right */
-    [dir="ltr"] body{font-family:'Roboto','Vazir',sans-serif;}
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>محمدامین طیبی | رزومه آنلاین</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet"/>
+
+<style>
+/* Reset & Base */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0e0e0e;color:#fff;font-family:'Shabnam','Poppins',sans-serif;line-height:1.6;scroll-behavior:smooth}
+a{text-decoration:none;color:inherit}
+
+/* Theme Variables */
+:root{
+  --gold:#facc15;
+  --gold-gradient:linear-gradient(45deg,#facc15,#ffd700,#f6e05e);
+  --bg-dark:#0e0e0e;
+}
+
+/* Navbar */
+nav{
+  position:fixed;top:0;left:0;width:100%;
+  background:rgba(14,14,14,0.7);backdrop-filter:blur(8px);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 50px;z-index:10
+}
+nav .logo{font-weight:700;font-size:1.5rem;background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
+nav ul{display:flex;gap:25px;list-style:none}
+nav ul li a{font-weight:500;transition:.3s}
+nav ul li a:hover{color:var(--gold)}
+.lang-btn{border:1px solid var(--gold);background:none;color:var(--gold);padding:5px 12px;border-radius:20px;cursor:pointer}
+
+/* Hero */
+header.hero{
+  position:relative;
+  min-height:100vh;display:flex;align-items:center;padding:0 50px;
+  background:var(--gold-gradient);
+}
+header.hero::before{
+  content:"";position:absolute;inset:0;
+  background:var(--bg-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23333' fill-opacity='0.2'%3E%3Ccircle cx='200' cy='200' r='200'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  mix-blend-mode:multiply;
+}
+.hero-content{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:50px;width:100%}
+.hero-text{flex:1;min-width:280px}
+.hero-text h1{font-size:2.5rem;margin-bottom:10px}
+.hero-text h1 span{background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
+.hero-text p{font-size:1.1rem;margin-bottom:20px;color:#ddd}
+.btn{
+  display:inline-block;padding:10px 25px;border-radius:25px;
+  background:var(--gold-gradient);color:#000;font-weight:bold
+}
+.hero-image{flex:1;display:flex;justify-content:center}
+.hero-image img{
+  max-width:320px;border-radius:20px;
+  box-shadow:0 0 40px rgba(250,204,21,0.5);
+  object-fit:cover;mix-blend-mode:screen; /* blend effect */
+}
+
+/* Sections */
+section{padding:60px 50px}
+.section-title{
+  font-size:1.8rem;margin-bottom:30px;
+  background:var(--gold-gradient);-webkit-background-clip:text;color:transparent
+}
+
+/* Skills */
+.skill{margin-bottom:20px}
+.skill-name{margin-bottom:5px;font-weight:bold}
+.skill-bar{background:#333;border-radius:20px;overflow:hidden;position:relative}
+.skill-bar div{
+  height:12px;background:var(--gold-gradient);
+  width:0;transition:width 1s ease-in-out;
+}
+
+/* Timeline */
+.timeline{border-right:2px solid var(--gold);padding-right:20px;position:relative}
+.timeline-item{margin-bottom:30px;opacity:0;transform:translateY(40px);transition:all .8s ease}
+.timeline-item.show{opacity:1;transform:translateY(0)}
+.timeline-item h3{color:var(--gold);font-size:1.2rem}
+
+/* Contact */
+footer{background:#1a1a1a;color:#888;text-align:center;padding:15px}
+
+/* Scroll Animations */
+.fade-in-up{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
+.fade-in-up.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .hero-content{flex-direction:column}
+  nav{padding:15px 20px}
+}
+</style>
 </head>
 <body>
 
@@ -61,7 +103,7 @@
 <nav>
   <div class="logo">AminT</div>
   <ul>
-    <li class="active"><a href="#home" data-fa="خانه" data-en="Home">خانه</a></li>
+    <li><a href="#home" data-fa="خانه" data-en="Home">خانه</a></li>
     <li><a href="#about" data-fa="درباره" data-en="About">درباره</a></li>
     <li><a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
     <li><a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a></li>
@@ -73,41 +115,53 @@
 <!-- Hero -->
 <header class="hero" id="home">
   <div class="hero-content">
-    <div class="hero-text">
-      <h1 data-fa="متخصص شبکه و ارتباطات | ویپ، لینوکس، مجازی‌سازی، دواپس" data-en="Network & Communications Specialist | VoIP, Linux, Virtualization, DevOps">
-        متخصص شبکه و ارتباطات | ویپ، لینوکس، مجازی‌سازی، دواپس
-      </h1>
-      <p data-fa="مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه" data-en="VoIP & Network Engineer with expertise in advanced solutions and network security.">
-        مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه
+    <div class="hero-text fade-in-up">
+      <h1><span>محمدامین طیبی</span></h1>
+      <h2 id="typed-text" style="height:40px"></h2>
+      <p data-fa="مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه" 
+         data-en="VoIP & Network Engineer with expertise in advanced solutions and network security.">
+         مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه
       </p>
       <a href="pdf_5.pdf" class="btn" download data-fa="دانلود رزومه" data-en="Download CV">دانلود رزومه</a>
     </div>
-    <div class="hero-image">
+    <div class="hero-image fade-in-up">
       <img src="image.png" alt="Amin Tayebi">
     </div>
   </div>
 </header>
 
 <!-- About -->
-<section id="about">
+<section id="about" class="fade-in-up">
   <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
-  <p data-fa="در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند." 
-     data-en="I have engineered and managed communication solutions for both SMEs and large enterprises combining technical precision with deep business understanding.">
-    در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند.
+  <p data-fa="دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار." 
+     data-en="Highly team-oriented, familiar with administrative procedures, committed and quick learner.">
+     دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.
   </p>
 </section>
 
 <!-- Skills -->
-<section id="skills">
+<section id="skills" class="fade-in-up">
   <h2 class="section-title" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
-  <div class="skill"><p>Linux LPIC — 80%</p><div class="skill-bar"><div style="width:80%"></div></div></div>
-  <div class="skill"><p>VoIP / Asterisk — 85%</p><div class="skill-bar"><div style="width:85%"></div></div></div>
-  <div class="skill"><p>Network — 80%</p><div class="skill-bar"><div style="width:80%"></div></div></div>
-  <div class="skill"><p>Docker — 60%</p><div class="skill-bar"><div style="width:60%"></div></div></div>
+  <div class="skill">
+    <div class="skill-name">Linux LPIC — 80%</div>
+    <div class="skill-bar"><div data-skill="80"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">VoIP / Asterisk — 85%</div>
+    <div class="skill-bar"><div data-skill="85"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Network — 80%</div>
+    <div class="skill-bar"><div data-skill="80"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Docker — 60%</div>
+    <div class="skill-bar"><div data-skill="60"></div></div>
+  </div>
 </section>
 
 <!-- Experience -->
-<section id="experience">
+<section id="experience" class="fade-in-up">
   <h2 class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
   <div class="timeline">
     <div class="timeline-item">
@@ -122,7 +176,7 @@
 </section>
 
 <!-- Contact -->
-<section id="contact">
+<section id="contact" class="fade-in-up">
   <h2 class="section-title" data-fa="تماس" data-en="Contact">تماس</h2>
   <p>📧 amintayebi**@gmail.com</p>
   <p>📱 +98-912-337-8752</p>
@@ -133,15 +187,61 @@
 <footer>&copy; 2025 Amin Tayebi</footer>
 
 <script>
-let lang = 'fa';
+// Language Toggle
+let lang='fa';
 function toggleLang(){
-  lang = (lang === 'fa') ? 'en' : 'fa';
-  document.documentElement.dir = (lang === 'fa') ? 'rtl' : 'ltr';
+  lang = (lang==='fa')?'en':'fa';
+  document.documentElement.dir = (lang==='fa')?'rtl':'ltr';
   document.querySelectorAll('[data-fa]').forEach(el=>{
     el.innerText = el.getAttribute(`data-${lang}`);
   });
-  document.querySelector('.lang-btn').innerText = (lang === 'fa') ? 'EN' : 'FA';
+  document.querySelector('.lang-btn').innerText = (lang==='fa')?'EN':'FA';
 }
+
+// Typewriter Effect
+let jobTitles = [
+  "کارشناس فنی پشتیبانی",
+  "Network & Communications Specialist",
+  "مهندس VoIP و لینوکس"
+];
+let typedIndex=0, charIndex=0;
+let typedElement = document.getElementById('typed-text');
+function typeJob(){
+  if(charIndex < jobTitles[typedIndex].length){
+    typedElement.innerHTML += jobTitles[typedIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeJob,80);
+  }else{
+    setTimeout(eraseJob,1500);
+  }
+}
+function eraseJob(){
+  if(charIndex > 0){
+    typedElement.innerHTML = jobTitles[typedIndex].substring(0,charIndex-1);
+    charIndex--;
+    setTimeout(eraseJob,40);
+  }else{
+    typedIndex = (typedIndex+1)%jobTitles.length;
+    setTimeout(typeJob,200);
+  }
+}
+typeJob();
+
+// Scroll Animations
+const observers = document.querySelectorAll('.fade-in-up, .timeline-item');
+let observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      if(entry.target.querySelectorAll('[data-skill]').length){
+        entry.target.querySelectorAll('[data-skill]').forEach(bar=>{
+          bar.style.width = bar.dataset.skill+'%';
+        });
+      }
+    }
+  });
+},{threshold:0.2});
+observers.forEach(el=>observer.observe(el));
 </script>
 
 </body>
