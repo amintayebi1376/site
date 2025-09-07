@@ -1,264 +1,278 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رزومه محمدامین طیبی | Amin Tayebi Resume</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>رزومه محمدامین طیبی - بکرمودی پرو لوکس</title>
+<link href="https://fonts.googleapis.com/css2?family=Shabnam:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-:root {
-    --bg-dark: #050505;
-    --bg-card: rgba(255, 215, 0, 0.02);
-    --gold: #FFD700;
-    --gold-light: #ffea8a;
-    --text-light: #ccc;
-    --shadow-gold: 0 0 10px rgba(255,215,0,0.3);
-}
+/* ===== Reset ===== */
 *{margin:0;padding:0;box-sizing:border-box}
-body {
-    font-family: 'Vazirmatn', sans-serif;
-    background: var(--bg-dark);
-    color: white;
-    line-height: 1.7;
-    overflow-x: hidden;
+html,body{font-family:'Shabnam',sans-serif;overflow-x:hidden;background:#0a0a0a;color:#fff}
+
+/* ===== متغیرها ===== */
+:root{
+ --gold:#FFD700;
+ --gold-light:#ffecb3;
+ --black:#0a0a0a;
+ --shadow-gold:0 0 20px rgba(255,215,0,0.8);
 }
-header {
-    text-align: center;
-    padding: 40px 20px;
-    border-bottom: 1px solid var(--gold);
-    box-shadow: inset 0 -1px 0 var(--gold-light);
+
+/* ===== پس‌زمینه طلایی متحرک ===== */
+body::before{
+ content:"";
+ position:fixed;
+ top:0;left:0;width:100%;height:100%;
+ background:linear-gradient(120deg,rgba(255,215,0,0.05),rgba(255,215,0,0.1),rgba(255,215,0,0.05));
+ background-size:400% 400%;
+ animation:bgMove 12s ease infinite;
+ z-index:-1;
 }
-header h1 {
-    font-size: 2.8rem;
-    color: var(--gold);
-    text-shadow: 0 0 10px rgba(255,215,0,0.6);
-    animation: glow 3s infinite alternate;
+@keyframes bgMove {
+ 0%{background-position:0 50%}
+ 50%{background-position:100% 50%}
+ 100%{background-position:0 50%}
 }
-header p {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-top: 8px;
+
+/* ===== هدر ===== */
+header{
+ background:#000;
+ padding:1rem 2rem;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ position:sticky;top:0;z-index:10;
+ box-shadow:var(--shadow-gold);
 }
-.lang-switch button {
-    margin-top: 15px;
-    border: none;
-    background: var(--gold);
-    color: black;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+header nav a{
+ color:var(--gold-light);
+ text-decoration:none;
+ margin:0 .8rem;
+ font-weight:700;
+ transition:.3s;
 }
-.lang-switch button:hover {
-    background: var(--gold-light);
+header nav a:hover{color:var(--gold)}
+
+/* ===== بخش hero ===== */
+.hero{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ align-items:center;
+ padding:3rem 1rem;
+ background:linear-gradient(145deg,#000 60%,#1a1a1a);
+ box-shadow:inset 0 0 20px rgba(255,215,0,0.2);
 }
-@keyframes glow {
-    from { text-shadow: 0 0 10px rgba(255,215,0,0.4); }
-    to { text-shadow: 0 0 20px rgba(255,215,0,0.8), 0 0 30px rgba(255,215,0,0.5); }
+.hero-text{
+ flex:1;min-width:280px;max-width:600px;
 }
-.main {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    gap: 20px;
-    justify-content: center;
+.hero-text h1{
+ font-size:2.5rem;
+ background:linear-gradient(to right,var(--gold),var(--gold-light));
+ -webkit-background-clip:text;
+ color:transparent;
 }
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--gold);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: var(--shadow-gold);
-    flex: 1 1 350px;
-    animation: fadeInUp 0.8s ease;
+.hero-text p{
+ margin-top:1rem;
+ font-size:1.2rem;
+ color:#ccc;
 }
-.card h2 {
-    color: var(--gold);
-    margin-bottom: 10px;
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 5px;
+.hero-img{
+ flex:0 0 auto;
+ margin:1rem;
+ padding:8px;
+ border:3px solid var(--gold);
+ box-shadow:0 0 25px rgba(255,215,0,0.7),inset 0 0 15px rgba(255,215,0,0.4);
+ transition:.5s;
 }
-.card ul {
-    list-style: none;
+.hero-img img{
+ display:block;
+ width:260px;height:auto;
 }
-.card li {
-    margin-bottom: 8px;
-    padding-left: 10px;
-    position: relative;
+.hero-img:hover{
+ box-shadow:0 0 40px rgba(255,215,0,0.9),inset 0 0 25px rgba(255,215,0,0.5);
+ transform:scale(1.02);
 }
-.card li::before {
-    content: "★";
-    color: var(--gold);
-    position: absolute;
-    left: 0;
+
+/* ===== بخش‌ها ===== */
+section{
+ padding:3rem 1rem;
+ max-width:1200px;
+ margin:auto;
 }
-.timeline {
-    border-right: 2px solid var(--gold);
-    padding-right: 15px;
+h2.section-title{
+ font-size:1.8rem;
+ border-right:5px solid var(--gold);
+ padding-right:10px;
+ margin-bottom:1.5rem;
 }
-.timeline-item {
-    margin-bottom: 20px;
+
+/* مهارت‌ها */
+.skills .skill{
+ margin:1rem 0;
 }
-.timeline-item h3 {
-    color: var(--gold);
+.skill .label{
+ margin-bottom:5px;
+ font-weight:700;
 }
-.timeline-item span {
-    color: var(--text-light);
-    font-size: 0.9rem;
+.skill .bar{
+ background:#222;
+ border-radius:5px;
+ overflow:hidden;
+ height:20px;
+ box-shadow:inset 0 0 5px rgba(0,0,0,0.8);
 }
-.skills-table {
-    width: 100%;
-    border-collapse: collapse;
+.skill .bar-fill{
+ height:100%;
+ background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);
+ background-size:200% 100%;
+ animation:barAnim 3s linear infinite;
 }
-.skills-table td {
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding: 6px 0;
-    color: var(--text-light);
+@keyframes barAnim{
+ 0%{background-position:0 0}
+ 100%{background-position:200% 0}
 }
-.skills-table td:last-child {
-    text-align: left;
-    color: var(--gold);
+
+/* Timeline */
+.timeline{
+ position:relative;
+ padding-right:25px;
 }
-@keyframes fadeInUp {
-    from {opacity:0;transform:translateY(20px);}
-    to {opacity:1;transform:translateY(0);}
+.timeline::before{
+ content:"";
+ position:absolute;
+ top:0;right:8px;
+ width:4px;height:100%;
+ background:var(--gold);
+ box-shadow:0 0 10px var(--gold);
 }
-@media(max-width: 900px) {
-    .main {flex-direction: column;}
+.timeline-item{
+ margin-bottom:2rem;
+ position:relative;
+}
+.timeline-item::before{
+ content:"";
+ position:absolute;
+ right:-3px;
+ width:16px;height:16px;
+ background:var(--gold);
+ border-radius:50%;
+ box-shadow:0 0 10px var(--gold);
+}
+.timeline-item h3{color:var(--gold);margin-bottom:.5rem}
+.timeline-item span{color:#aaa;font-size:.9rem}
+.timeline-item ul{
+ margin-top:.5rem;
+ list-style:disc;
+ padding-right:1.2rem;
+}
+
+/* تماس */
+.contact a{
+ color:var(--gold);
+ text-decoration:none;
+}
+.contact a:hover{text-decoration:underline}
+
+footer{
+ text-align:center;
+ padding:1rem;
+ color:#888;
+ font-size:.85rem;
+ background:#000;
+ border-top:1px solid rgba(255,215,0,0.3);
 }
 </style>
-<script>
-function switchLang(lang) {
-    document.querySelectorAll('[data-lang]').forEach(el=>{
-        el.style.display = (el.dataset.lang === lang) ? '' : 'none';
-    });
-}
-</script>
 </head>
-<body onload="switchLang('fa')">
+<body>
 
 <header>
-    <h1 data-lang="fa">محمدامین طیبی</h1>
-    <h1 data-lang="en">Mohammad Amin Tayebi</h1>
-    <p data-lang="fa">کارشناس فنی پشتیبانی</p>
-    <p data-lang="en">Technical Support Specialist</p>
-    <div class="lang-switch">
-        <button onclick="switchLang('fa')">فارسی</button>
-        <button onclick="switchLang('en')">English</button>
-    </div>
+ <div class="logo" style="color:var(--gold);font-weight:900">Amin Tayebi</div>
+ <nav>
+  <a href="#about">درباره من</a>
+  <a href="#skills">مهارت‌ها</a>
+  <a href="#experience">تجربه کاری</a>
+  <a href="#education">تحصیلات</a>
+  <a href="#contact">تماس</a>
+ </nav>
 </header>
 
-<div class="main">
-    <div class="card">
-        <h2 data-lang="fa">اطلاعات شخصی</h2>
-        <h2 data-lang="en">Personal Info</h2>
-        <ul data-lang="fa">
-            <li>سن: 26</li>
-            <li>وضعیت تأهل: مجرد</li>
-            <li>خدمت سربازی: انجام نشده</li>
-            <li>موقعیت: ایران، تهران</li>
-            <li>موبایل: +98-09123378752</li>
-            <li>ایمیل: amintayebi**@gmail.com</li>
-        </ul>
-        <ul data-lang="en">
-            <li>Age: 26</li>
-            <li>Marital Status: Single</li>
-            <li>Military Service: Not completed</li>
-            <li>Location: Tehran, Iran</li>
-            <li>Phone: +98-09123378752</li>
-            <li>Email: amintayebi**@gmail.com</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2 data-lang="fa">تحصیلات</h2>
-        <h2 data-lang="en">Education</h2>
-        <p data-lang="fa">دانشگاه آزاد اسلامی پردیس — کارشناسی نرم‌افزار (1398-1402)</p>
-        <p data-lang="en">Azad University Pardis — BSc Software Engineering (2019-2023)</p>
-        <h2 data-lang="fa">زبان</h2>
-        <h2 data-lang="en">Language</h2>
-        <p data-lang="fa">انگلیسی — متوسط</p>
-        <p data-lang="en">English — Intermediate</p>
-    </div>
-
-    <div class="card">
-        <h2 data-lang="fa">تجربه کاری</h2>
-        <h2 data-lang="en">Work Experience</h2>
-
-        <div class="timeline" data-lang="fa">
-            <div class="timeline-item">
-                <h3>کارشناس 3 | تل سی</h3>
-                <span>بهمن 1397 - دی 1400</span>
-                <ul>
-                    <li>آشنا با پرداخت هوایی</li>
-                    <li>مانیتورینگ Payment با BICP</li>
-                    <li>تیم لیدر گروه F0</li>
-                    <li>گزارش به کارفرما</li>
-                    <li>LBMS Dashboard</li>
-                    <li>آموزش 5 نفر</li>
-                    <li>آشنایی با PRTG</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h3>کارشناس فنی پشتیبانی | تل سی</h3>
-                <span>دی 1400 - اکنون</span>
-                <ul>
-                    <li>Linux Admin</li>
-                    <li>SQL & Network Monitoring</li>
-                    <li>Backup & Restore</li>
-                    <li>VOIP & SIP Debugging</li>
-                    <li>MariaDB & Oracle</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="timeline" data-lang="en">
-            <div class="timeline-item">
-                <h3>Level 3 Expert | Tel Si</h3>
-                <span>Feb 2019 - Jan 2022</span>
-                <ul>
-                    <li>Air Payment monitoring (BICP)</li>
-                    <li>Team Leader F0</li>
-                    <li>Client reporting</li>
-                </ul>
-            </div>
-            <div class="timeline-item">
-                <h3>Technical Support Specialist | Tel Si</h3>
-                <span>Jan 2022 - Present</span>
-                <ul>
-                    <li>Linux admin</li>
-                    <li>SQL, network monitoring</li>
-                    <li>Backup and restore</li>
-                    <li>VOIP, SIP debug</li>
-                    <li>MariaDB, Oracle</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2 data-lang="fa">مهارت‌ها</h2>
-        <h2 data-lang="en">Skills</h2>
-        <table class="skills-table" data-lang="fa">
-            <tr><td>متوسط</td><td>Linux LPIC</td></tr>
-            <tr><td>مبتدی</td><td>Grafana</td></tr>
-            <tr><td>متوسط</td><td>MySQL</td></tr>
-            <tr><td>متوسط</td><td>Vmware</td></tr>
-        </table>
-        <table class="skills-table" data-lang="en">
-            <tr><td>Intermediate</td><td>Linux LPIC</td></tr>
-            <tr><td>Beginner</td><td>Grafana</td></tr>
-            <tr><td>Intermediate</td><td>MySQL</td></tr>
-            <tr><td>Intermediate</td><td>Vmware</td></tr>
-        </table>
-    </div>
-
-    <div class="card">
-        <h2 data-lang="fa">درباره من</h2>
-        <h2 data-lang="en">About Me</h2>
-        <p data-lang="fa">دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.</p>
-        <p data-lang="en">Highly team-oriented, familiar with administrative protocols, quick learner, committed to work.</p>
-    </div>
+<!-- Hero -->
+<div class="hero">
+ <div class="hero-text">
+  <h1>محمدامین طیبی</h1>
+  <p>کارشناس فنی پشتیبانی با بیش از ۳ سال تجربه در حوزه شبکه، لینوکس، VOIP و دیتابیس</p>
+ </div>
+ <div class="hero-img">
+  <img src="image.png" alt="Amin Tayebi Profile">
+ </div>
 </div>
+
+<!-- درباره من -->
+<section id="about">
+ <h2 class="section-title">درباره من</h2>
+ <p>دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.</p>
+</section>
+
+<!-- مهارت‌ها -->
+<section id="skills" class="skills">
+ <h2 class="section-title">مهارت‌های تخصصی</h2>
+ <div class="skill"><div class="label">Grafana</div><div class="bar"><div class="bar-fill" style="width:40%"></div></div></div>
+ <div class="skill"><div class="label">Linux LPIC</div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
+ <div class="skill"><div class="label">Passive Network</div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
+ <div class="skill"><div class="label">Oracle</div><div class="bar"><div class="bar-fill" style="width:40%"></div></div></div>
+ <div class="skill"><div class="label">Network</div><div class="bar"><div class="bar-fill" style="width:70%"></div></div></div>
+ <!-- ادامه لیست مهارت‌ها طبق PDF -->
+</section>
+
+<!-- Timeline -->
+<section id="experience">
+ <h2 class="section-title">تجربه‌های کاری</h2>
+ <div class="timeline">
+  <div class="timeline-item">
+   <h3>کارشناس 3 - تل سی</h3>
+   <span>بهمن 1397 - دی 1400 (3 سال و 10 ماه)</span>
+   <ul>
+    <li>آشنا با پرداخت هوائی</li>
+    <li>مانیتورینگ Payment با نرم افزار BICP</li>
+    <li>تیم لیدر گروه F0</li>
+    <li>گزارش به کارفرما</li>
+    <li>آشنا با نرم افزار مدیریت LBMS</li>
+    <li>Dashboard.sd.mci</li>
+    <li>آموزش 5 نفر در این حوزه</li>
+    <li>آشنایی با نرم افزار PRTG</li>
+    <li>آشنایی به زیر ساخت های MCI</li>
+   </ul>
+  </div>
+  <div class="timeline-item">
+   <h3>کارشناس فنی پشتیبانی - تل سی</h3>
+   <span>دی 1400 - اکنون</span>
+   <ul>
+    <li><b>Linux Administrator</b>: User account management, SQL, packet capture, backup & restore...</li>
+    <li><b>VOIP</b>: SIP troubleshooting, Dialplans, network design...</li>
+    <li><b>Database (MariaDB & Oracle)</b>: Security, optimization, backup...</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- تحصیلات -->
+<section id="education">
+ <h2 class="section-title">تحصیلات</h2>
+ <p>دانشگاه آزاد اسلامی پردیس — لیسانس نرم‌افزار (۱۳۹۸-۱۴۰۲)</p>
+</section>
+
+<!-- تماس -->
+<section id="contact" class="contact">
+ <h2 class="section-title">اطلاعات تماس</h2>
+ <p>ایمیل: <a href="mailto:amintayebi@gmail.com">amintayebi@gmail.com</a></p>
+ <p>موبایل: <a href="tel:+989123378752">+98 912 337 8752</a></p>
+ <p>موبایل دوم: <a href="tel:+989100913028">+98 910 091 3028</a></p>
+</section>
+
+<footer>
+ © 2025 محمدامین طیبی - طراحی بکرمودی پرو
+</footer>
+
 </body>
 </html>
