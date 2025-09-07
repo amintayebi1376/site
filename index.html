@@ -9,60 +9,78 @@
     body {
       margin: 0;
       font-family: 'Vazir', sans-serif;
-      background: #0e0e0e;
+      background-color: #0e0e0e;
       color: #fff;
     }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+    }
+    .navbar .logo {
+      color: #facc15;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-links .active a {
+      color: #facc15;
+    }
+    .contact-btn {
+      border: 1px solid #facc15;
+      padding: 8px 20px;
+      border-radius: 20px;
+      color: #facc15;
+      text-decoration: none;
+    }
+    /* Hero */
     .hero {
+      padding: 50px;
+    }
+    .hero-content {
       display: flex;
       align-items: center;
-      padding: 50px;
-      gap: 50px;
+      justify-content: space-between;
       flex-wrap: wrap;
-    }
-    .hero img {
-      border-radius: 10px;
-      max-width: 400px;
-      height: auto;
-      border: 5px solid #facc15;
+      gap: 30px;
     }
     .hero-text h1 {
       font-size: 2.5rem;
-      margin: 0;
+      margin-bottom: 10px;
     }
     .hero-text h1 span {
       color: #facc15;
     }
     .hero-text p {
-      margin: 15px 0;
-      font-size: 1.1rem;
       color: #ccc;
+      margin-bottom: 20px;
     }
-    .btn {
-      display: inline-block;
-      padding: 10px 25px;
+    .hero-text .btn {
       background: #facc15;
       color: #000;
-      text-decoration: none;
+      padding: 10px 25px;
       border-radius: 25px;
+      text-decoration: none;
       font-weight: bold;
     }
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      padding: 40px;
-      background: #1a1a1a;
-      flex-wrap: wrap;
+    .hero-image img {
+      max-width: 400px;
+      border-radius: 10px;
     }
-    .stat {
-      text-align: center;
-      margin: 15px;
-    }
-    .stat h3 {
-      font-size: 1.8rem;
-      color: #facc15;
-    }
+    /* Sections */
     section {
-      padding: 40px;
+      padding: 40px 50px;
     }
     h2 {
       color: #facc15;
@@ -102,25 +120,34 @@
 </head>
 <body>
 
-<!-- هدر -->
-<div class="hero">
-  <img src="image.png" alt="محمدامین طیبی">
-  <div class="hero-text">
-    <h1>محمدامین <span>طیبی</span></h1>
-    <p>کارشناس فنی پشتیبانی</p>
-    <a href="pdf_5.pdf" class="btn" download>دانلود رزومه PDF</a>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">Beker</div>
+  <ul class="nav-links">
+    <li class="active"><a href="#">خانه</a></li>
+    <li><a href="#about">درباره من</a></li>
+    <li><a href="#services">خدمات</a></li>
+    <li><a href="#contact">تماس</a></li>
+  </ul>
+  <a href="#contact" class="contact-btn">تماس</a>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>ساخت محصولات دیجیتال،<br><span>برندها و تجربه‌ای جدید</span></h1>
+      <p>محمدامین طیبی — کارشناس فنی پشتیبانی</p>
+      <a href="pdf_5.pdf" class="btn" download>دانلود رزومه PDF</a>
+    </div>
+    <div class="hero-image">
+      <img src="image.png" alt="محمدامین طیبی">
+    </div>
   </div>
-</div>
+</header>
 
-<!-- آمار -->
-<div class="stats">
-  <div class="stat"><h3>3+</h3><p>سال سابقه</p></div>
-  <div class="stat"><h3>17</h3><p>مشتری راضی</p></div>
-  <div class="stat"><h3>9</h3><p>پروژه</p></div>
-</div>
-
-<!-- مهارت‌ها -->
-<section>
+<!-- Skills -->
+<section id="skills">
   <h2>مهارت‌ها</h2>
   <div class="skill">
     <p>PHP — 90%</p>
@@ -136,8 +163,8 @@
   </div>
 </section>
 
-<!-- خدمات -->
-<section>
+<!-- Services -->
+<section id="services">
   <h2>خدمات</h2>
   <div class="services">
     <div class="service">طراحی رابط کاربری</div>
@@ -146,14 +173,15 @@
   </div>
 </section>
 
-<!-- تماس -->
-<section>
+<!-- Contact -->
+<section id="contact">
   <h2>اطلاعات تماس</h2>
   <p>📧 amintayebi**@gmail.com</p>
   <p>📱 +98-912-337-8752</p>
   <p>🌍 amintayebi.ir</p>
 </section>
 
+<!-- Footer -->
 <footer>© 2025 محمدامین طیبی</footer>
 
 </body>
