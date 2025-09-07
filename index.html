@@ -3,54 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت من | امین</title>
+    <title>رزومه | امین تایبی</title>
     <!-- فونت وزیر -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
     <style>
         body {
             margin: 0;
-            padding: 0;
-            font-family: "Vazir", sans-serif;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            font-family: 'Vazir', sans-serif;
+            background: #121212;
             color: #fff;
-            text-align: center;
+            line-height: 1.6;
         }
         header {
-            padding: 60px 20px;
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
         }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            object-fit: cover;
         }
-        p {
-            font-size: 1.2rem;
+        header h1 {
+            font-size: 2rem;
+            margin-top: 15px;
         }
-        footer {
+        header p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+        section {
+            max-width: 900px;
+            margin: auto;
             padding: 20px;
-            background: rgba(255,255,255,0.1);
-            font-size: 0.9rem;
         }
-        a.button {
+        h2 {
+            border-right: 4px solid #00e5ff;
+            padding-right: 10px;
+            margin-bottom: 10px;
+            color: #00e5ff;
+        }
+        .skills, .experience {
+            display: grid;
+            gap: 15px;
+        }
+        .skill-item, .exp-item {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .contact a {
+            display: inline-block;
+            margin: 8px;
+            color: #00e5ff;
+            text-decoration: none;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        .download-btn {
             display: inline-block;
             margin-top: 20px;
-            padding: 10px 20px;
-            background: #fff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 5px;
+            padding: 12px 24px;
+            background: #00e5ff;
+            color: #121212;
             font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
         }
-        a.button:hover {
-            background: #f0f0f0;
+        .download-btn:hover {
+            background: #00c4e6;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            background: #1a1a1a;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>سلام دنیا! 🌍</h1>
-        <p>به سایت Cloudflare Pages من خوش آمدید.</p>
-        <a href="https://github.com/" class="button">رفتن به گیت‌هاب</a>
+        <img src="profile.jpg" alt="عکس پروفایل">
+        <h1>امین تایبی</h1>
+        <p>برنامه‌نویس وب و توسعه‌دهنده فرانت‌اند</p>
     </header>
+
+    <section class="about">
+        <h2>درباره من</h2>
+        <p>اینجا متن معرفی کوتاه خودت رو بنویس... مثل خلاصه‌ای از تجربه‌هات، علاقه‌ت به تکنولوژی و هدف‌های کاری.</p>
+    </section>
+
+    <section class="skills">
+        <h2>مهارت‌ها</h2>
+        <div class="skill-item">HTML, CSS, JavaScript</div>
+        <div class="skill-item">React, Vue</div>
+        <div class="skill-item">Git, GitHub, Cloudflare</div>
+    </section>
+
+    <section class="experience">
+        <h2>تجربه کاری</h2>
+        <div class="exp-item">
+            <h3>شرکت نمونه - توسعه‌دهنده فرانت‌اند</h3>
+            <p>1400 - اکنون | کار روی پروژه‌های تحت وب و بهبود رابط کاربری.</p>
+        </div>
+        <div class="exp-item">
+            <h3>پروژه شخصی - سایت رزومه</h3>
+            <p>ساخت رزومه آنلاین شخصی با HTML & CSS برای معرفی مهارت‌ها و نمونه‌کارها.</p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2>اطلاعات تماس</h2>
+        <a href="mailto:you@example.com">ایمیل</a>
+        <a href="https://github.com/yourusername" target="_blank">گیت‌هاب</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank">لینکدین</a>
+    </section>
+
+    <section class="resume-download" style="text-align: center;">
+        <a href="resume.pdf" class="download-btn" download>دانلود PDF رزومه</a>
+    </section>
+
     <footer>
         ساخته شده با ❤️ توسط امین
     </footer>
