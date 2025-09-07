@@ -1,188 +1,148 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>رزومه آنلاین | محمدامین طیبی</title>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Vazir', sans-serif;
-      background-color: #0e0e0e;
-      color: #fff;
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Vazir','Roboto',sans-serif;background:#0e0e0e;color:#fff;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    /* General Colors */
+    :root{
+      --main:#facc15;
+      --bg:#0e0e0e;
+      --light:#ccc;
     }
     /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
+    nav{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px 50px;flex-wrap:wrap;
     }
-    .navbar .logo {
-      color: #facc15;
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .nav-links .active a {
-      color: #facc15;
-    }
-    .contact-btn {
-      border: 1px solid #facc15;
-      padding: 8px 20px;
-      border-radius: 20px;
-      color: #facc15;
-      text-decoration: none;
-    }
+    nav .logo{font-size:1.5rem;font-weight:bold;color:var(--main)}
+    nav ul{list-style:none;display:flex;gap:25px;}
+    nav ul li a{color:#fff;font-weight:500;transition:.3s}
+    nav ul li a:hover,nav ul li.active a{color:var(--main)}
+    .lang-btn{border:1px solid var(--main);padding:5px 12px;border-radius:20px;cursor:pointer;color:var(--main);background:none}
     /* Hero */
-    .hero {
-      padding: 50px;
-    }
-    .hero-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-    .hero-text h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    .hero-text h1 span {
-      color: #facc15;
-    }
-    .hero-text p {
-      color: #ccc;
-      margin-bottom: 20px;
-    }
-    .hero-text .btn {
-      background: #facc15;
-      color: #000;
-      padding: 10px 25px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero-image img {
-      max-width: 400px;
-      border-radius: 10px;
-    }
-    /* Sections */
-    section {
-      padding: 40px 50px;
-    }
-    h2 {
-      color: #facc15;
-      margin-bottom: 20px;
-      border-right: 4px solid #facc15;
-      padding-right: 10px;
-    }
-    .skill {
-      margin-bottom: 15px;
-    }
-    .skill-bar {
-      background: #333;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .skill-bar div {
-      background: #facc15;
-      height: 10px;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 20px;
-    }
-    .service {
-      background: #1a1a1a;
-      padding: 15px;
-      border-radius: 10px;
-    }
-    footer {
-      background: #1a1a1a;
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-    }
+    header.hero{padding:50px}
+    .hero-content{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:30px;}
+    .hero-text{flex:1;min-width:280px}
+    .hero-text h1{font-size:2rem;margin-bottom:10px}
+    .hero-text h1 span{color:var(--main)}
+    .hero-text p{color:var(--light);margin-bottom:20px}
+    .btn{display:inline-block;background:var(--main);color:#000;padding:10px 20px;border-radius:25px;font-weight:bold}
+    .hero-image img{max-width:300px;border-radius:50%;border:5px solid var(--main)}
+    /* Section titles */
+    section{padding:40px 50px}
+    h2.section-title{color:var(--main);border-right:5px solid var(--main);padding-right:10px;margin-bottom:20px}
+    /* Skills */
+    .skill{margin-bottom:15px}
+    .skill-bar{background:#333;border-radius:20px;overflow:hidden}
+    .skill-bar div{background:var(--main);height:10px}
+    /* Timeline */
+    .timeline{border-right:2px solid var(--main);padding-right:20px;position:relative}
+    .timeline::before{content:'';position:absolute;top:0;right:-7px;width:14px;height:14px;background:var(--main);border-radius:50%}
+    .timeline-item{margin-bottom:30px}
+    .timeline-item h3{color:var(--main)}
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+    .service{background:#1a1a1a;padding:15px;border-radius:10px;color:var(--light)}
+    footer{text-align:center;padding:20px;background:#1a1a1a;color:#888;margin-top:40px}
+    /* English Left-to-right */
+    [dir="ltr"] body{font-family:'Roboto','Vazir',sans-serif;}
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar">
-  <div class="logo">Beker</div>
-  <ul class="nav-links">
-    <li class="active"><a href="#">خانه</a></li>
-    <li><a href="#about">درباره من</a></li>
-    <li><a href="#services">خدمات</a></li>
-    <li><a href="#contact">تماس</a></li>
+<nav>
+  <div class="logo">AminT</div>
+  <ul>
+    <li class="active"><a href="#home" data-fa="خانه" data-en="Home">خانه</a></li>
+    <li><a href="#about" data-fa="درباره" data-en="About">درباره</a></li>
+    <li><a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
+    <li><a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a></li>
+    <li><a href="#contact" data-fa="تماس" data-en="Contact">تماس</a></li>
   </ul>
-  <a href="#contact" class="contact-btn">تماس</a>
+  <button class="lang-btn" onclick="toggleLang()">EN</button>
 </nav>
 
 <!-- Hero -->
-<header class="hero">
+<header class="hero" id="home">
   <div class="hero-content">
     <div class="hero-text">
-      <h1>ساخت محصولات دیجیتال،<br><span>برندها و تجربه‌ای جدید</span></h1>
-      <p>محمدامین طیبی — کارشناس فنی پشتیبانی</p>
-      <a href="pdf_5.pdf" class="btn" download>دانلود رزومه PDF</a>
+      <h1 data-fa="متخصص شبکه و ارتباطات | ویپ، لینوکس، مجازی‌سازی، دواپس" data-en="Network & Communications Specialist | VoIP, Linux, Virtualization, DevOps">
+        متخصص شبکه و ارتباطات | ویپ، لینوکس، مجازی‌سازی، دواپس
+      </h1>
+      <p data-fa="مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه" data-en="VoIP & Network Engineer with expertise in advanced solutions and network security.">
+        مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه
+      </p>
+      <a href="pdf_5.pdf" class="btn" download data-fa="دانلود رزومه" data-en="Download CV">دانلود رزومه</a>
     </div>
     <div class="hero-image">
-      <img src="image.png" alt="محمدامین طیبی">
+      <img src="image.png" alt="Amin Tayebi">
     </div>
   </div>
 </header>
 
-<!-- Skills -->
-<section id="skills">
-  <h2>مهارت‌ها</h2>
-  <div class="skill">
-    <p>PHP — 90%</p>
-    <div class="skill-bar"><div style="width:90%"></div></div>
-  </div>
-  <div class="skill">
-    <p>JavaScript — 90%</p>
-    <div class="skill-bar"><div style="width:90%"></div></div>
-  </div>
-  <div class="skill">
-    <p>HTML/CSS — 95%</p>
-    <div class="skill-bar"><div style="width:95%"></div></div>
-  </div>
+<!-- About -->
+<section id="about">
+  <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
+  <p data-fa="در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند." 
+     data-en="I have engineered and managed communication solutions for both SMEs and large enterprises combining technical precision with deep business understanding.">
+    در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند.
+  </p>
 </section>
 
-<!-- Services -->
-<section id="services">
-  <h2>خدمات</h2>
-  <div class="services">
-    <div class="service">طراحی رابط کاربری</div>
-    <div class="service">برنامه‌نویسی وب</div>
-    <div class="service">بهینه‌سازی سایت</div>
+<!-- Skills -->
+<section id="skills">
+  <h2 class="section-title" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
+  <div class="skill"><p>Linux LPIC — 80%</p><div class="skill-bar"><div style="width:80%"></div></div></div>
+  <div class="skill"><p>VoIP / Asterisk — 85%</p><div class="skill-bar"><div style="width:85%"></div></div></div>
+  <div class="skill"><p>Network — 80%</p><div class="skill-bar"><div style="width:80%"></div></div></div>
+  <div class="skill"><p>Docker — 60%</p><div class="skill-bar"><div style="width:60%"></div></div></div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <h2 class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3 data-fa="کارشناس 3 — تل سی" data-en="Level 3 Support — TelC">کارشناس 3 — تل سی</h3>
+      <p data-fa="بهمن 1397 تا دی 1400" data-en="Feb 2019 — Jan 2022">بهمن 1397 تا دی 1400</p>
+    </div>
+    <div class="timeline-item">
+      <h3 data-fa="کارشناس فنی پشتیبانی — تل سی" data-en="Technical Support Specialist — TelC">کارشناس فنی پشتیبانی — تل سی</h3>
+      <p data-fa="دی 1400 تا اکنون" data-en="Jan 2022 — Present">دی 1400 تا اکنون</p>
+    </div>
   </div>
 </section>
 
 <!-- Contact -->
 <section id="contact">
-  <h2>اطلاعات تماس</h2>
+  <h2 class="section-title" data-fa="تماس" data-en="Contact">تماس</h2>
   <p>📧 amintayebi**@gmail.com</p>
   <p>📱 +98-912-337-8752</p>
   <p>🌍 amintayebi.ir</p>
 </section>
 
 <!-- Footer -->
-<footer>© 2025 محمدامین طیبی</footer>
+<footer>&copy; 2025 Amin Tayebi</footer>
+
+<script>
+let lang = 'fa';
+function toggleLang(){
+  lang = (lang === 'fa') ? 'en' : 'fa';
+  document.documentElement.dir = (lang === 'fa') ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-fa]').forEach(el=>{
+    el.innerText = el.getAttribute(`data-${lang}`);
+  });
+  document.querySelector('.lang-btn').innerText = (lang === 'fa') ? 'EN' : 'FA';
+}
+</script>
 
 </body>
 </html>
