@@ -88,9 +88,9 @@ body {
   z-index: -1;
   opacity: 0.1;
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
 }
 
 /* Navigation */
@@ -572,41 +572,46 @@ body {
   border-radius: 20px;
 }
 
-/* Experience Timeline - تایم‌لاین درست شده */
+/* Experience Timeline - اصلاح کامل برای RTL */
 .timeline {
   position: relative;
   margin: 60px 0;
   width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 50%;
+  right: 50%;
   top: 0;
   bottom: 0;
   width: 3px;
   background: var(--gradient-main);
-  transform: translateX(-50%);
+  transform: translateX(50%);
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 60px;
   width: calc(50% - 30px);
+  clear: both;
 }
 
-/* آیتم اول - چپ */
+/* آیتم اول - راست */
 .timeline-item:nth-child(1) {
-  left: 0;
-  text-align: right;
+  float: right;
+  text-align: left;
+  right: 0;
 }
 
 .timeline-item:nth-child(1)::before {
   content: '';
   position: absolute;
   top: 30px;
-  right: -60px;
+  left: -60px;
   width: 20px;
   height: 20px;
   background: var(--gold);
@@ -615,17 +620,18 @@ body {
   box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
 }
 
-/* آیتم دوم - راست */
+/* آیتم دوم - چپ */
 .timeline-item:nth-child(2) {
-  left: calc(50% + 30px);
-  text-align: left;
+  float: left;
+  text-align: right;
+  left: 0;
 }
 
 .timeline-item:nth-child(2)::before {
   content: '';
   position: absolute;
   top: 30px;
-  left: -60px;
+  right: -60px;
   width: 20px;
   height: 20px;
   background: var(--gold);
@@ -805,43 +811,43 @@ body {
 /* Animations */
 @keyframes fadeInLeft {
   from {
-    opacity: 0;
-    transform: translateX(-50px);
+opacity: 0;
+transform: translateX(-50px);
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
+opacity: 1;
+transform: translateX(0);
   }
 }
 
 @keyframes fadeInRight {
   from {
-    opacity: 0;
-    transform: translateX(50px);
+opacity: 0;
+transform: translateX(50px);
   }
   to {
-    opacity: 1;
-    transform: translateX(0);
+opacity: 1;
+transform: translateX(0);
   }
 }
 
 @keyframes fadeInUp {
   from {
-    opacity: 0;
-    transform: translateY(30px);
+opacity: 0;
+transform: translateY(30px);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+opacity: 1;
+transform: translateY(0);
   }
 }
 
 @keyframes pulse {
   0%, 100% {
-    opacity: 1;
+opacity: 1;
   }
   50% {
-    opacity: 0.5;
+opacity: 0.5;
   }
 }
 
@@ -860,141 +866,175 @@ body {
 @media (max-width: 1024px) {
   .hero-container,
   .about-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    text-align: center;
+grid-template-columns: 1fr;
+gap: 60px;
+text-align: center;
   }
   
   .hero-content,
   .hero-image {
-    justify-self: center;
+justify-self: center;
   }
   
+  /* تایم‌لاین در موبایل */
   .timeline::before {
-    left: 30px;
+right: 30px;
+transform: none;
   }
   
   .timeline-item {
-    width: calc(100% - 60px);
-    left: 60px !important;
-    text-align: right;
+width: calc(100% - 80px);
+float: none !important;
+text-align: right !important;
+margin-right: 80px;
+margin-left: 0;
   }
   
   .timeline-item:nth-child(1)::before,
   .timeline-item:nth-child(2)::before {
-    left: -90px;
-    right: auto;
+right: -90px !important;
+left: auto !important;
   }
 }
 
 @media (max-width: 768px) {
   .mobile-menu {
-    display: flex;
+display: flex;
   }
   
   .nav-menu {
-    position: fixed;
-    top: 100px;
-    left: 0;
-    width: 100%;
-    background: rgba(15, 23, 42, 0.98);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    padding: 40px;
-    gap: 30px;
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    border-radius: 0 0 20px 20px;
+position: fixed;
+top: 100px;
+left: 0;
+width: 100%;
+background: rgba(15, 23, 42, 0.98);
+backdrop-filter: blur(20px);
+flex-direction: column;
+padding: 40px;
+gap: 30px;
+transform: translateY(-100%);
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease;
+border-radius: 0 0 20px 20px;
   }
   
   .nav-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
+transform: translateY(0);
+opacity: 1;
+visibility: visible;
   }
   
   .hero {
-    padding: 140px 20px 80px;
+padding: 140px 20px 80px;
   }
   
   .hero-container {
-    gap: 40px;
+gap: 40px;
   }
   
   .profile-image {
-    width: 300px;
-    height: 300px;
+width: 300px;
+height: 300px;
   }
   
   .hero-image::before {
-    width: 320px;
-    height: 320px;
+width: 320px;
+height: 320px;
   }
   
   .section {
-    padding: 80px 20px;
+padding: 80px 20px;
   }
   
   .section-header {
-    margin-bottom: 60px;
+margin-bottom: 60px;
   }
   
   .hero-actions {
-    flex-direction: column;
-    align-items: center;
+flex-direction: column;
+align-items: center;
   }
   
   .btn-primary,
   .btn-secondary {
-    width: 100%;
-    justify-content: center;
-    max-width: 280px;
+width: 100%;
+justify-content: center;
+max-width: 280px;
   }
   
   .skills-grid {
-    grid-template-columns: 1fr;
+grid-template-columns: 1fr;
   }
   
   .stats-grid {
-    grid-template-columns: 1fr;
+grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
   .nav-container {
-    padding: 0 20px;
+padding: 0 20px;
   }
   
   .hero-title {
-    font-size: 2.2rem;
+font-size: 2.2rem;
   }
   
   .profile-image {
-    width: 250px;
-    height: 250px;
+width: 250px;
+height: 250px;
   }
   
   .hero-image::before {
-    width: 270px;
-    height: 270px;
+width: 270px;
+height: 270px;
   }
   
   .timeline-item {
-    width: calc(100% - 40px);
-    left: 40px !important;
+width: calc(100% - 60px);
+margin-right: 60px;
   }
   
   .timeline-item:nth-child(1)::before,
   .timeline-item:nth-child(2)::before {
-    left: -70px;
+right: -70px !important;
   }
   
   .skill-category,
   .contact-card,
   .stat-card {
-    padding: 25px;
+padding: 25px;
+  }
+}
+
+/* تصحیح اضافی برای RTL در Chrome */
+[dir="rtl"] .timeline-item:nth-child(1) {
+  float: right !important;
+  text-align: left !important;
+}
+
+[dir="rtl"] .timeline-item:nth-child(2) {
+  float: left !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .timeline::before {
+  right: 50% !important;
+  left: auto !important;
+}
+
+@media (max-width: 1024px) {
+  [dir="rtl"] .timeline::before {
+right: 30px !important;
+left: auto !important;
+  }
+  
+  [dir="rtl"] .timeline-item {
+float: none !important;
+text-align: right !important;
+margin-right: 80px !important;
+margin-left: 0 !important;
   }
 }
 </style>
@@ -1005,389 +1045,389 @@ body {
 
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo">AminT</a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#home" class="nav-link active" data-fa="خانه" data-en="Home">خانه</a></li>
-        <li><a href="#about" class="nav-link" data-fa="درباره" data-en="About">درباره</a></li>
-        <li><a href="#skills" class="nav-link" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
-        <li><a href="#experience" class="nav-link" data-fa="تجربه" data-en="Experience">تجربه</a></li>
-        <li><a href="#contact" class="nav-link" data-fa="تماس" data-en="Contact">تماس</a></li>
-      </ul>
-      <div class="nav-controls">
-        <button class="lang-toggle" onclick="toggleLanguage()" data-fa="EN" data-en="فا">EN</button>
-        <div class="mobile-menu" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
+<div class="nav-container">
+<a href="#home" class="logo">AminT</a>
+<ul class="nav-menu" id="navMenu">
+<li><a href="#home" class="nav-link active" data-fa="خانه" data-en="Home">خانه</a></li>
+<li><a href="#about" class="nav-link" data-fa="درباره" data-en="About">درباره</a></li>
+<li><a href="#skills" class="nav-link" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
+<li><a href="#experience" class="nav-link" data-fa="تجربه" data-en="Experience">تجربه</a></li>
+<li><a href="#contact" class="nav-link" data-fa="تماس" data-en="Contact">تماس</a></li>
+</ul>
+<div class="nav-controls">
+<button class="lang-toggle" onclick="toggleLanguage()" data-fa="EN" data-en="فا">EN</button>
+<div class="mobile-menu" onclick="toggleMobileMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <div class="badge-icon"></div>
-          <span data-fa="آماده برای همکاری" data-en="Available for Work">آماده برای همکاری</span>
-        </div>
-        
-        <h1 class="hero-title">
-          <span class="gradient-text" data-fa="محمدامین طیبی" data-en="Mohammad Amin Tayebi">محمدامین طیبی</span>
-        </h1>
-        
-        <h2 class="hero-subtitle" data-fa="متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps" data-en="Network & Communications Specialist | VoIP, Linux, Virtualization, DevOps">
-          متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps
-        </h2>
-        
-        <p class="hero-description" data-fa="در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند. از ساخت سیستم‌های VoIP با کارایی بالا تا طراحی زیرساخت‌های شبکه امن و مقیاس‌پذیر، به کسب‌وکارها کمک می‌کنم تا در دنیایی که قطع ارتباط گزینه‌ای نیست، به طور مطمئن متصل بمانند." data-en="Over the past years, I've engineered and managed communication solutions for SMEs and large enterprises — solutions that combine technical precision with a clear understanding of business goals. From building high‑performance VoIP systems to designing secure, scalable network infrastructures, I help businesses stay reliably connected in a world where downtime isn't an option.">
-          در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند. از ساخت سیستم‌های VoIP با کارایی بالا تا طراحی زیرساخت‌های شبکه امن و مقیاس‌پذیر، به کسب‌وکارها کمک می‌کنم تا در دنیایی که قطع ارتباط گزینه‌ای نیست، به طور مطمئن متصل بمانند.
-        </p>
-        
-        <div class="hero-actions">
-          <a href="pdf_5.pdf" class="btn-primary" download>
-            <i class="fas fa-download"></i>
-            <span data-fa="دانلود رزومه" data-en="Download Resume">دانلود رزومه</span>
-          </a>
-          <a href="#contact" class="btn-secondary">
-            <i class="fas fa-envelope"></i>
-            <span data-fa="تماس با من" data-en="Let's Connect">تماس با من</span>
-          </a>
-        </div>
-      </div>
-      
-      <div class="hero-image">
-        <img src="image.png" alt="محمدامین طیبی" class="profile-image">
-      </div>
-    </div>
+<div class="hero-container">
+<div class="hero-content">
+<div class="hero-badge">
+<div class="badge-icon"></div>
+<span data-fa="آماده برای همکاری" data-en="Available for Work">آماده برای همکاری</span>
+</div>
+
+<h1 class="hero-title">
+<span class="gradient-text" data-fa="محمدامین طیبی" data-en="Mohammad Amin Tayebi">محمدامین طیبی</span>
+</h1>
+
+<h2 class="hero-subtitle" data-fa="متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps" data-en="Network & Communications Specialist | VoIP, Linux, Virtualization, DevOps">
+متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps
+</h2>
+
+<p class="hero-description" data-fa="در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند. از ساخت سیستم‌های VoIP با کارایی بالا تا طراحی زیرساخت‌های شبکه امن و مقیاس‌پذیر، به کسب‌وکارها کمک می‌کنم تا در دنیایی که قطع ارتباط گزینه‌ای نیست، به طور مطمئن متصل بمانند." data-en="Over the past years, I've engineered and managed communication solutions for SMEs and large enterprises — solutions that combine technical precision with a clear understanding of business goals. From building high‑performance VoIP systems to designing secure, scalable network infrastructures, I help businesses stay reliably connected in a world where downtime isn't an option.">
+در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند. از ساخت سیستم‌های VoIP با کارایی بالا تا طراحی زیرساخت‌های شبکه امن و مقیاس‌پذیر، به کسب‌وکارها کمک می‌کنم تا در دنیایی که قطع ارتباط گزینه‌ای نیست، به طور مطمئن متصل بمانند.
+</p>
+
+<div class="hero-actions">
+<a href="pdf_5.pdf" class="btn-primary" download>
+<i class="fas fa-download"></i>
+<span data-fa="دانلود رزومه" data-en="Download Resume">دانلود رزومه</span>
+</a>
+<a href="#contact" class="btn-secondary">
+<i class="fas fa-envelope"></i>
+<span data-fa="تماس با من" data-en="Let's Connect">تماس با من</span>
+</a>
+</div>
+</div>
+
+<div class="hero-image">
+<img src="image.png" alt="محمدامین طیبی" class="profile-image">
+</div>
+</div>
   </section>
 
   <!-- About Section -->
   <section class="section" id="about">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="بیشتر بدانید" data-en="Get to Know Me">بیشتر بدانید</div>
-      <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
-      <p class="section-description" data-fa="متخصصی با تجربه در زمینه فناوری‌های ارتباطی" data-en="Experienced specialist in communication technologies">
-        متخصصی با تجربه در زمینه فناوری‌های ارتباطی
-      </p>
-    </div>
-    
-    <div class="about-grid">
-      <div class="about-content fade-in">
-        <p data-fa="به عنوان یک حرفه‌ای با تجربه در حوزه فناوری اطلاعات، تجربه گسترده‌ای در طراحی، پیاده‌سازی و مدیریت سیستم‌های VoIP و زیرساخت‌های شبکه دارم. متعهد به ارائه راهکارهای نوآورانه و کارآمد هستم که ارتباطات امن، قابل اعتماد و مقیاس‌پذیر را برای کسب‌وکارها فراهم می‌کند." data-en="As a seasoned IT professional with extensive experience in designing, implementing, and managing VoIP systems and network infrastructures, I am committed to delivering innovative and efficient solutions that enable secure, reliable, and scalable communications for businesses.">
-          به عنوان یک حرفه‌ای با تجربه در حوزه فناوری اطلاعات، تجربه گسترده‌ای در طراحی، پیاده‌سازی و مدیریت سیستم‌های VoIP و زیرساخت‌های شبکه دارم. متعهد به ارائه راهکارهای نوآورانه و کارآمد هستم که ارتباطات امن، قابل اعتماد و مقیاس‌پذیر را برای کسب‌وکارها فراهم می‌کند.
-        </p>
-        
-        <p data-fa="به فناوری‌های نو همیشه کنجکاوم — از پروتکل‌های نسل جدید VoIP تا طراحی شبکه‌های آماده برای کلود — و از همکاری تیمی برای حل چالش‌های پیچیده لذت می‌برم. اگر به کسی نیاز دارید که سیستم ارتباطی شما را با امنیت و کارایی بالا طراحی، امن یا بهینه‌سازی کند — خوشحال می‌شوم در ارتباط باشیم." data-en="I'm passionate about exploring emerging technologies — from next‑gen VoIP protocols to cloud‑ready network designs — and thrive on collaborating with teams to solve complex technical puzzles. If you're looking for someone to design, secure, or optimize your communication systems so they just work — let's connect.">
-          به فناوری‌های نو همیشه کنجکاوم — از پروتکل‌های نسل جدید VoIP تا طراحی شبکه‌های آماده برای کلود — و از همکاری تیمی برای حل چالش‌های پیچیده لذت می‌برم. اگر به کسی نیاز دارید که سیستم ارتباطی شما را با امنیت و کارایی بالا طراحی، امن یا بهینه‌سازی کند — خوشحال می‌شوم در ارتباط باشیم.
-        </p>
-      </div>
-      
-      <div class="stats-grid fade-in">
-        <div class="stat-card">
-          <div class="stat-number">3+</div>
-          <div class="stat-label" data-fa="سال تجربه" data-en="Years Experience">سال تجربه</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">15+</div>
-          <div class="stat-label" data-fa="پروژه موفق" data-en="Projects Completed">پروژه موفق</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">10+</div>
-          <div class="stat-label" data-fa="تکنولوژی مسلط" data-en="Technologies">تکنولوژی مسلط</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">100%</div>
-          <div class="stat-label" data-fa="رضایت مشتری" data-en="Client Satisfaction">رضایت مشتری</div>
-        </div>
-      </div>
-    </div>
+<div class="section-header fade-in">
+<div class="section-badge" data-fa="بیشتر بدانید" data-en="Get to Know Me">بیشتر بدانید</div>
+<h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
+<p class="section-description" data-fa="متخصصی با تجربه در زمینه فناوری‌های ارتباطی" data-en="Experienced specialist in communication technologies">
+متخصصی با تجربه در زمینه فناوری‌های ارتباطی
+</p>
+</div>
+
+<div class="about-grid">
+<div class="about-content fade-in">
+<p data-fa="به عنوان یک حرفه‌ای با تجربه در حوزه فناوری اطلاعات، تجربه گسترده‌ای در طراحی، پیاده‌سازی و مدیریت سیستم‌های VoIP و زیرساخت‌های شبکه دارم. متعهد به ارائه راهکارهای نوآورانه و کارآمد هستم که ارتباطات امن، قابل اعتماد و مقیاس‌پذیر را برای کسب‌وکارها فراهم می‌کند." data-en="As a seasoned IT professional with extensive experience in designing, implementing, and managing VoIP systems and network infrastructures, I am committed to delivering innovative and efficient solutions that enable secure, reliable, and scalable communications for businesses.">
+به عنوان یک حرفه‌ای با تجربه در حوزه فناوری اطلاعات، تجربه گسترده‌ای در طراحی، پیاده‌سازی و مدیریت سیستم‌های VoIP و زیرساخت‌های شبکه دارم. متعهد به ارائه راهکارهای نوآورانه و کارآمد هستم که ارتباطات امن، قابل اعتماد و مقیاس‌پذیر را برای کسب‌وکارها فراهم می‌کند.
+</p>
+
+<p data-fa="به فناوری‌های نو همیشه کنجکاوم — از پروتکل‌های نسل جدید VoIP تا طراحی شبکه‌های آماده برای کلود — و از همکاری تیمی برای حل چالش‌های پیچیده لذت می‌برم. اگر به کسی نیاز دارید که سیستم ارتباطی شما را با امنیت و کارایی بالا طراحی، امن یا بهینه‌سازی کند — خوشحال می‌شوم در ارتباط باشیم." data-en="I'm passionate about exploring emerging technologies — from next‑gen VoIP protocols to cloud‑ready network designs — and thrive on collaborating with teams to solve complex technical puzzles. If you're looking for someone to design, secure, or optimize your communication systems so they just work — let's connect.">
+به فناوری‌های نو همیشه کنجکاوم — از پروتکل‌های نسل جدید VoIP تا طراحی شبکه‌های آماده برای کلود — و از همکاری تیمی برای حل چالش‌های پیچیده لذت می‌برم. اگر به کسی نیاز دارید که سیستم ارتباطی شما را با امنیت و کارایی بالا طراحی، امن یا بهینه‌سازی کند — خوشحال می‌شوم در ارتباط باشیم.
+</p>
+</div>
+
+<div class="stats-grid fade-in">
+<div class="stat-card">
+<div class="stat-number">3+</div>
+<div class="stat-label" data-fa="سال تجربه" data-en="Years Experience">سال تجربه</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">15+</div>
+<div class="stat-label" data-fa="پروژه موفق" data-en="Projects Completed">پروژه موفق</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">10+</div>
+<div class="stat-label" data-fa="تکنولوژی مسلط" data-en="Technologies">تکنولوژی مسلط</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">100%</div>
+<div class="stat-label" data-fa="رضایت مشتری" data-en="Client Satisfaction">رضایت مشتری</div>
+</div>
+</div>
+</div>
   </section>
 
   <!-- Skills Section -->
   <section class="section" id="skills">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="تخصص‌ها" data-en="Expertise">تخصص‌ها</div>
-      <h2 class="section-title" data-fa="مهارت‌های تخصصی" data-en="Technical Skills">مهارت‌های تخصصی</h2>
-      <p class="section-description" data-fa="تسلط در تکنولوژی‌های نوین ارتباطات و شبکه" data-en="Expertise in modern communication and network technologies">
-        تسلط در تکنولوژی‌های نوین ارتباطات و شبکه
-      </p>
-    </div>
-    
-    <div class="skills-grid">
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="ارتباطات صوتی (VoIP)" data-en="Voice Communications (VoIP)">ارتباطات صوتی (VoIP)</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Asterisk</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Issabel</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">SIP Protocol</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Dialplans & AMI</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
+<div class="section-header fade-in">
+<div class="section-badge" data-fa="تخصص‌ها" data-en="Expertise">تخصص‌ها</div>
+<h2 class="section-title" data-fa="مهارت‌های تخصصی" data-en="Technical Skills">مهارت‌های تخصصی</h2>
+<p class="section-description" data-fa="تسلط در تکنولوژی‌های نوین ارتباطات و شبکه" data-en="Expertise in modern communication and network technologies">
+تسلط در تکنولوژی‌های نوین ارتباطات و شبکه
+</p>
+</div>
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fab fa-linux"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="سیستم‌عامل و سرور" data-en="Operating Systems & Server">سیستم‌عامل و سرور</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Linux LPIC</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Linux Server</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">VMware Workstation</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Docker</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-      </div>
+<div class="skills-grid">
+<div class="skill-category fade-in">
+<div class="skill-category-header">
+<div class="skill-icon">
+<i class="fas fa-phone"></i>
+</div>
+<h3 class="skill-category-title" data-fa="ارتباطات صوتی (VoIP)" data-en="Voice Communications (VoIP)">ارتباطات صوتی (VoIP)</h3>
+</div>
+<div class="skill-item">
+<span class="skill-name">Asterisk</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Issabel</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">SIP Protocol</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Dialplans & AMI</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+</div>
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-network-wired"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="شبکه و امنیت" data-en="Networking & Security">شبکه و امنیت</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Network Switches & Routers</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">MikroTik Routers</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Wireshark & TCP/PCAP</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Passive Network</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
+<div class="skill-category fade-in">
+<div class="skill-category-header">
+<div class="skill-icon">
+<i class="fab fa-linux"></i>
+</div>
+<h3 class="skill-category-title" data-fa="سیستم‌عامل و سرور" data-en="Operating Systems & Server">سیستم‌عامل و سرور</h3>
+</div>
+<div class="skill-item">
+<span class="skill-name">Linux LPIC</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Linux Server</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">VMware Workstation</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Docker</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+</div>
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-database"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="پایگاه داده و نظارت" data-en="Database & Monitoring">پایگاه داده و نظارت</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">MariaDB & Oracle</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">MySQL</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Zabbix</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Grafana</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-      </div>
+<div class="skill-category fade-in">
+<div class="skill-category-header">
+<div class="skill-icon">
+<i class="fas fa-network-wired"></i>
+</div>
+<h3 class="skill-category-title" data-fa="شبکه و امنیت" data-en="Networking & Security">شبکه و امنیت</h3>
+</div>
+<div class="skill-item">
+<span class="skill-name">Network Switches & Routers</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">MikroTik Routers</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Wireshark & TCP/PCAP</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Passive Network</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+</div>
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-code"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="برنامه‌نویسی و توسعه" data-en="Programming & Development">برنامه‌نویسی و توسعه</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">PL/SQL</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">JavaScript</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Bash Script</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">API Development</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
+<div class="skill-category fade-in">
+<div class="skill-category-header">
+<div class="skill-icon">
+<i class="fas fa-database"></i>
+</div>
+<h3 class="skill-category-title" data-fa="پایگاه داده و نظارت" data-en="Database & Monitoring">پایگاه داده و نظارت</h3>
+</div>
+<div class="skill-item">
+<span class="skill-name">MariaDB & Oracle</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">MySQL</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Zabbix</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Grafana</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+</div>
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="ابزارها و مدیریت" data-en="Tools & Management">ابزارها و مدیریت</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Jira</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">PRTG</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Troubleshooting</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">LBMS</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
-    </div>
+<div class="skill-category fade-in">
+<div class="skill-category-header">
+<div class="skill-icon">
+<i class="fas fa-code"></i>
+</div>
+<h3 class="skill-category-title" data-fa="برنامه‌نویسی و توسعه" data-en="Programming & Development">برنامه‌نویسی و توسعه</h3>
+</div>
+<div class="skill-item">
+<span class="skill-name">PL/SQL</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">JavaScript</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Bash Script</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">API Development</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+</div>
+
+<div class="skill-category fade-in">
+<div class="skill-category-header">
+<div class="skill-icon">
+<i class="fas fa-tools"></i>
+</div>
+<h3 class="skill-category-title" data-fa="ابزارها و مدیریت" data-en="Tools & Management">ابزارها و مدیریت</h3>
+</div>
+<div class="skill-item">
+<span class="skill-name">Jira</span>
+<span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">PRTG</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">Troubleshooting</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+<div class="skill-item">
+<span class="skill-name">LBMS</span>
+<span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+</div>
+</div>
+</div>
   </section>
 
   <!-- Experience Section -->
   <section class="section" id="experience">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="مسیر شغلی" data-en="Career Path">مسیر شغلی</div>
-      <h2 class="section-title" data-fa="تجربه‌های کاری" data-en="Work Experience">تجربه‌های کاری</h2>
-      <p class="section-description" data-fa="سابقه حرفه‌ای در زمینه فناوری ارتباطات" data-en="Professional background in communication technologies">
-        سابقه حرفه‌ای در زمینه فناوری ارتباطات
-      </p>
-    </div>
-    
-    <div class="timeline">
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <div class="timeline-date">
-            <i class="fas fa-calendar"></i>
-            <span data-fa="دی 1400 — در حال حاضر" data-en="Dec 2021 — Present">دی 1400 — در حال حاضر</span>
-          </div>
-          <h3 class="timeline-title" data-fa="کارشناس فنی پشتیبانی" data-en="Technical Support Specialist">کارشناس فنی پشتیبانی</h3>
-          <div class="timeline-company" data-fa="تل سی — ایران، تهران" data-en="Tel-C — Iran, Tehran">تل سی — ایران، تهران</div>
-          <div class="timeline-description" data-fa="مسئولیت کامل مدیریت سیستم‌های لینوکس، پایگاه‌های داده و زیرساخت‌های VoIP. طراحی و پیاده‌سازی راهکارهای شبکه برای شرکت‌های کوچک و متوسط، مدیریت امنیت شبکه و بهینه‌سازی عملکرد سیستم‌ها." data-en="Full responsibility for managing Linux systems, databases, and VoIP infrastructures. Designing and implementing network solutions for SMEs, managing network security and optimizing system performance.">
-            مسئولیت کامل مدیریت سیستم‌های لینوکس، پایگاه‌های داده و زیرساخت‌های VoIP. طراحی و پیاده‌سازی راهکارهای شبکه برای شرکت‌های کوچک و متوسط، مدیریت امنیت شبکه و بهینه‌سازی عملکرد سیستم‌ها.
-          </div>
-          <div class="timeline-skills">
-            <span class="timeline-skill">Linux Administration</span>
-            <span class="timeline-skill">VoIP Systems</span>
-            <span class="timeline-skill">Database Management</span>
-            <span class="timeline-skill">Network Security</span>
-            <span class="timeline-skill">Troubleshooting</span>
-          </div>
-        </div>
-      </div>
+<div class="section-header fade-in">
+<div class="section-badge" data-fa="مسیر شغلی" data-en="Career Path">مسیر شغلی</div>
+<h2 class="section-title" data-fa="تجربه‌های کاری" data-en="Work Experience">تجربه‌های کاری</h2>
+<p class="section-description" data-fa="سابقه حرفه‌ای در زمینه فناوری ارتباطات" data-en="Professional background in communication technologies">
+سابقه حرفه‌ای در زمینه فناوری ارتباطات
+</p>
+</div>
 
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <div class="timeline-date">
-            <i class="fas fa-calendar"></i>
-            <span data-fa="بهمن 1397 — دی 1400" data-en="Feb 2019 — Dec 2021">بهمن 1397 — دی 1400</span>
-          </div>
-          <h3 class="timeline-title" data-fa="کارشناس مانیتورینگ شبکه" data-en="Network Monitoring Specialist">کارشناس مانیتورینگ شبکه</h3>
-          <div class="timeline-company" data-fa="تل سی — ایران، تهران" data-en="Tel-C — Iran, Tehran">تل سی — ایران، تهران</div>
-          <div class="timeline-description" data-fa="نظارت و مانیتورینگ سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP، رهبری تیم گروه F0، آموزش پرسنل جدید و گزارش‌دهی به مدیریت. آشنایی عمیق با زیرساخت‌های MCI و سیستم‌های مدیریت LBMS." data-en="Monitoring and supervising electronic payment systems with BICP software, leading F0 group team, training new personnel and reporting to management. Deep familiarity with MCI infrastructures and LBMS management systems.">
-            نظارت و مانیتورینگ سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP، رهبری تیم گروه F0، آموزش پرسنل جدید و گزارش‌دهی به مدیریت. آشنایی عمیق با زیرساخت‌های MCI و سیستم‌های مدیریت LBMS.
-          </div>
-          <div class="timeline-skills">
-            <span class="timeline-skill">BICP Software</span>
-            <span class="timeline-skill">Team Leadership</span>
-            <span class="timeline-skill">PRTG Monitoring</span>
-            <span class="timeline-skill">MCI Infrastructure</span>
-            <span class="timeline-skill">Training & Development</span>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="timeline">
+<div class="timeline-item fade-in">
+<div class="timeline-content">
+<div class="timeline-date">
+<i class="fas fa-calendar"></i>
+<span data-fa="دی 1400 — در حال حاضر" data-en="Dec 2021 — Present">دی 1400 — در حال حاضر</span>
+</div>
+<h3 class="timeline-title" data-fa="کارشناس فنی پشتیبانی" data-en="Technical Support Specialist">کارشناس فنی پشتیبانی</h3>
+<div class="timeline-company" data-fa="تل سی — ایران، تهران" data-en="Tel-C — Iran, Tehran">تل سی — ایران، تهران</div>
+<div class="timeline-description" data-fa="مسئولیت کامل مدیریت سیستم‌های لینوکس، پایگاه‌های داده و زیرساخت‌های VoIP. طراحی و پیاده‌سازی راهکارهای شبکه برای شرکت‌های کوچک و متوسط، مدیریت امنیت شبکه و بهینه‌سازی عملکرد سیستم‌ها." data-en="Full responsibility for managing Linux systems, databases, and VoIP infrastructures. Designing and implementing network solutions for SMEs, managing network security and optimizing system performance.">
+مسئولیت کامل مدیریت سیستم‌های لینوکس، پایگاه‌های داده و زیرساخت‌های VoIP. طراحی و پیاده‌سازی راهکارهای شبکه برای شرکت‌های کوچک و متوسط، مدیریت امنیت شبکه و بهینه‌سازی عملکرد سیستم‌ها.
+</div>
+<div class="timeline-skills">
+<span class="timeline-skill">Linux Administration</span>
+<span class="timeline-skill">VoIP Systems</span>
+<span class="timeline-skill">Database Management</span>
+<span class="timeline-skill">Network Security</span>
+<span class="timeline-skill">Troubleshooting</span>
+</div>
+</div>
+</div>
+
+<div class="timeline-item fade-in">
+<div class="timeline-content">
+<div class="timeline-date">
+<i class="fas fa-calendar"></i>
+<span data-fa="بهمن 1397 — دی 1400" data-en="Feb 2019 — Dec 2021">بهمن 1397 — دی 1400</span>
+</div>
+<h3 class="timeline-title" data-fa="کارشناس مانیتورینگ شبکه" data-en="Network Monitoring Specialist">کارشناس مانیتورینگ شبکه</h3>
+<div class="timeline-company" data-fa="تل سی — ایران، تهران" data-en="Tel-C — Iran, Tehran">تل سی — ایران، تهران</div>
+<div class="timeline-description" data-fa="نظارت و مانیتورینگ سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP، رهبری تیم گروه F0، آموزش پرسنل جدید و گزارش‌دهی به مدیریت. آشنایی عمیق با زیرساخت‌های MCI و سیستم‌های مدیریت LBMS." data-en="Monitoring and supervising electronic payment systems with BICP software, leading F0 group team, training new personnel and reporting to management. Deep familiarity with MCI infrastructures and LBMS management systems.">
+نظارت و مانیتورینگ سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP، رهبری تیم گروه F0، آموزش پرسنل جدید و گزارش‌دهی به مدیریت. آشنایی عمیق با زیرساخت‌های MCI و سیستم‌های مدیریت LBMS.
+</div>
+<div class="timeline-skills">
+<span class="timeline-skill">BICP Software</span>
+<span class="timeline-skill">Team Leadership</span>
+<span class="timeline-skill">PRTG Monitoring</span>
+<span class="timeline-skill">MCI Infrastructure</span>
+<span class="timeline-skill">Training & Development</span>
+</div>
+</div>
+</div>
+</div>
   </section>
 
   <!-- Contact Section -->
   <section class="section" id="contact">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="ارتباط با من" data-en="Get In Touch">ارتباط با من</div>
-      <h2 class="section-title" data-fa="اطلاعات تماس" data-en="Contact Information">اطلاعات تماس</h2>
-      <p class="section-description" data-fa="آماده همکاری در پروژه‌های جدید هستم" data-en="Ready to collaborate on new projects">
-        آماده همکاری در پروژه‌های جدید هستم
-      </p>
-    </div>
-    
-    <div class="contact-grid">
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <h3 class="contact-title" data-fa="ایمیل" data-en="Email">ایمیل</h3>
-        <div class="contact-info">
-          <a href="mailto:amintayebi@gmail.com" class="contact-link">amintayebi@gmail.com</a>
-        </div>
-      </div>
-      
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-phone"></i>
-        </div>
-        <h3 class="contact-title" data-fa="تلفن" data-en="Phone">تلفن</h3>
-        <div class="contact-info">
-          <a href="tel:+989123327852" class="contact-link">+98 912 332 7852</a><br>
-          <a href="tel:+989109192028" class="contact-link">+98 910 919 2028</a>
-        </div>
-      </div>
-      
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-map-marker-alt"></i>
-        </div>
-        <h3 class="contact-title" data-fa="موقعیت" data-en="Location">موقعیت</h3>
-        <div class="contact-info" data-fa="تهران، ایران" data-en="Tehran, Iran">
-          تهران، ایران
-        </div>
-      </div>
-      
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-briefcase"></i>
-        </div>
-        <h3 class="contact-title" data-fa="وضعیت" data-en="Status">وضعیت</h3>
-        <div class="contact-info" data-fa="آماده برای همکاری" data-en="Available for Work">
-          آماده برای همکاری
-        </div>
-      </div>
-    </div>
+<div class="section-header fade-in">
+<div class="section-badge" data-fa="ارتباط با من" data-en="Get In Touch">ارتباط با من</div>
+<h2 class="section-title" data-fa="اطلاعات تماس" data-en="Contact Information">اطلاعات تماس</h2>
+<p class="section-description" data-fa="آماده همکاری در پروژه‌های جدید هستم" data-en="Ready to collaborate on new projects">
+آماده همکاری در پروژه‌های جدید هستم
+</p>
+</div>
+
+<div class="contact-grid">
+<div class="contact-card fade-in">
+<div class="contact-icon">
+<i class="fas fa-envelope"></i>
+</div>
+<h3 class="contact-title" data-fa="ایمیل" data-en="Email">ایمیل</h3>
+<div class="contact-info">
+<a href="mailto:amintayebi@gmail.com" class="contact-link">amintayebi@gmail.com</a>
+</div>
+</div>
+
+<div class="contact-card fade-in">
+<div class="contact-icon">
+<i class="fas fa-phone"></i>
+</div>
+<h3 class="contact-title" data-fa="تلفن" data-en="Phone">تلفن</h3>
+<div class="contact-info">
+<a href="tel:+989123327852" class="contact-link">+98 912 332 7852</a><br>
+<a href="tel:+989109192028" class="contact-link">+98 910 919 2028</a>
+</div>
+</div>
+
+<div class="contact-card fade-in">
+<div class="contact-icon">
+<i class="fas fa-map-marker-alt"></i>
+</div>
+<h3 class="contact-title" data-fa="موقعیت" data-en="Location">موقعیت</h3>
+<div class="contact-info" data-fa="تهران، ایران" data-en="Tehran, Iran">
+تهران، ایران
+</div>
+</div>
+
+<div class="contact-card fade-in">
+<div class="contact-icon">
+<i class="fas fa-briefcase"></i>
+</div>
+<h3 class="contact-title" data-fa="وضعیت" data-en="Status">وضعیت</h3>
+<div class="contact-info" data-fa="آماده برای همکاری" data-en="Available for Work">
+آماده برای همکاری
+</div>
+</div>
+</div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-text" data-fa="ساخته شده با ❤️ توسط محمدامین طیبی" data-en="Made with ❤️ by Mohammad Amin Tayebi">
-      ساخته شده با <span class="footer-heart">❤️</span> توسط محمدامین طیبی
-    </div>
+<div class="footer-text" data-fa="ساخته شده با ❤️ توسط محمدامین طیبی" data-en="Made with ❤️ by Mohammad Amin Tayebi">
+ساخته شده با <span class="footer-heart">❤️</span> توسط محمدامین طیبی
+</div>
   </footer>
 
   <!-- Scroll to Top Button -->
   <button class="scroll-top" onclick="scrollToTop()">
-    <i class="fas fa-chevron-up"></i>
+<i class="fas fa-chevron-up"></i>
   </button>
 
 <script>
@@ -1399,164 +1439,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Navigation click handlers
   navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 100;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }
-      
-      // Update active link
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      
-      // Close mobile menu if open
-      const navMenu = document.getElementById('navMenu');
-      navMenu.classList.remove('active');
-    });
-  });
-
-  // Scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  // Observe all fade-in elements
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-  });
-
-  // Active section highlighting
-  window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    const scrolled = window.pageYOffset;
-    
-    // Navbar background on scroll
-    if (scrolled > 100) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    
-    // Show/hide scroll to top button
-    if (scrolled > 300) {
-      scrollTopBtn.classList.add('show');
-    } else {
-      scrollTopBtn.classList.remove('show');
-    }
-    
-    // Update active navigation link
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 200;
-      const sectionHeight = section.clientHeight;
-      
-      if (scrolled >= sectionTop && scrolled < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-    
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
-  });
-});
-
-// Mobile menu toggle
-function toggleMobileMenu() {
-  const navMenu = document.getElementById('navMenu');
-  navMenu.classList.toggle('active');
-}
-
-// Scroll to top function
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
-
-// Language toggle functionality
-let currentLang = 'fa';
-
-function toggleLanguage() {
-  const newLang = currentLang === 'fa' ? 'en' : 'fa';
-  const newDir = newLang === 'fa' ? 'rtl' : 'ltr';
-  
-  // Update HTML lang and dir attributes
-  document.documentElement.lang = newLang;
-  document.documentElement.dir = newDir;
-  
-  // Update all elements with data attributes
-  const elements = document.querySelectorAll('[data-fa][data-en]');
-  elements.forEach(element => {
-    const newText = element.getAttribute(`data-${newLang}`);
-    if (newText) {
-      element.textContent = newText;
-    }
-  });
-  
-  // Update language toggle button
-  const langToggle = document.querySelector('.lang-toggle');
-  langToggle.textContent = newLang === 'fa' ? 'EN' : 'فا';
-  
-  currentLang = newLang;
-}
-
-// Counter animation for stats
-function animateCounter(element, target, duration = 2000) {
-  let start = 0;
-  const increment = target / (duration / 16);
-  
-  const timer = setInterval(() => {
-    start += increment;
-    if (start >= target) {
-      element.textContent = target + (target === 100 ? '%' : '+');
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(start) + (target === 100 ? '%' : '+');
-    }
-  }, 16);
-}
-
-// Trigger counter animation when stats come into view
-const statsObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const numbers = entry.target.querySelectorAll('.stat-number');
-      numbers.forEach(number => {
-        const target = parseInt(number.textContent.replace(/\D/g, ''));
-        animateCounter(number, target);
-      });
-      statsObserver.unobserve(entry.target);
-    }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const statsGrid = document.querySelector('.stats-grid');
-  if (statsGrid) {
-    statsObserver.observe(statsGrid);
-  }
-});
-</script>
-</body>
-</html>
+link
