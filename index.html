@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>محمدامین طیبی | رزومه آنلاین</title>
 
+<!-- Preload critical resources -->
+<link rel="preload" href="image.png" as="image">
+<link rel="preload" href="pdf_5.pdf" as="document">
+
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet"/>
@@ -12,7 +16,7 @@
 <style>
 /* Reset & Base */
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{background:#0e0e0e;color:#fff;font-family:'Shabnam','Poppins',sans-serif;line-height:1.6;scroll-behavior:smooth}
+html,body{background:#0e0e0e;color:#fff;font-family:'Shabnam','Poppins',sans-serif;line-height:1.6;scroll-behavior:smooth;transition:all 0.3s ease}
 a{text-decoration:none;color:inherit}
 
 /* Theme Variables */
@@ -20,229 +24,169 @@ a{text-decoration:none;color:inherit}
   --gold:#facc15;
   --gold-gradient:linear-gradient(45deg,#facc15,#ffd700,#f6e05e);
   --bg-dark:#0e0e0e;
+  --bg-light:#f5f5f5;
+  --text-light:#333;
+  --card-dark:#1a1a1a;
+  --card-light:#ffffff;
+}
+
+/* Light Mode */
+body.light-mode {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+body.light-mode nav {
+  background: rgba(245,245,245,0.9);
+}
+
+body.light-mode .hero::before {
+  background: var(--bg-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23ddd' fill-opacity='0.3'%3E%3Ccircle cx='200' cy='200' r='200'/%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+
+body.light-mode .skill-bar {
+  background: #ddd;
+}
+
+body.light-mode footer {
+  background: var(--card-light);
+  color: #666;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+/* Loading Screen */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  border: 3px solid #333;
+  border-top: 3px solid var(--gold);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Navbar */
 nav{
   position:fixed;top:0;left:0;width:100%;
-  background:rgba(14,14,14,0.7);backdrop-filter:blur(8px);
+  background:rgba(14,14,14,0.8);backdrop-filter:blur(12px);
   display:flex;justify-content:space-between;align-items:center;
-  padding:15px 50px;z-index:10
+  padding:15px 50px;z-index:100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
 }
+
 nav .logo{font-weight:700;font-size:1.5rem;background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
-nav ul{display:flex;gap:25px;list-style:none}
-nav ul li a{font-weight:500;transition:.3s}
+
+nav ul{display:flex;gap:25px;list-style:none;transition:transform 0.3s ease}
+
+nav ul li a{font-weight:500;transition:.3s;position:relative}
+nav ul li a::after{
+  content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;
+  background:var(--gold-gradient);transition:width 0.3s ease;
+}
+nav ul li a:hover::after{width:100%}
 nav ul li a:hover{color:var(--gold)}
-.lang-btn{border:1px solid var(--gold);background:none;color:var(--gold);padding:5px 12px;border-radius:20px;cursor:pointer}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-btn, .lang-btn{
+  border:1px solid var(--gold);background:none;color:var(--gold);
+  padding:5px 12px;border-radius:20px;cursor:pointer;
+  transition:all 0.3s ease;font-size:0.9rem;
+}
+
+.theme-btn:hover, .lang-btn:hover{
+  background:var(--gold);color:#000;transform:translateY(-2px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
 /* Hero */
 header.hero{
   position:relative;
   min-height:100vh;display:flex;align-items:center;padding:0 50px;
-  background:var(--gold-gradient);
+  background:var(--gold-gradient);overflow:hidden;
 }
+
 header.hero::before{
   content:"";position:absolute;inset:0;
   background:var(--bg-dark) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23333' fill-opacity='0.2'%3E%3Ccircle cx='200' cy='200' r='200'/%3E%3C/g%3E%3C/svg%3E") repeat;
   mix-blend-mode:multiply;
 }
+
 .hero-content{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:50px;width:100%}
 .hero-text{flex:1;min-width:280px}
-.hero-text h1{font-size:2.5rem;margin-bottom:10px}
+.hero-text h1{font-size:2.8rem;margin-bottom:10px;line-height:1.2}
 .hero-text h1 span{background:var(--gold-gradient);-webkit-background-clip:text;color:transparent}
-.hero-text p{font-size:1.1rem;margin-bottom:20px;color:#ddd}
+.hero-text p{font-size:1.1rem;margin-bottom:25px;color:#ddd;max-width:500px}
+
 .btn{
-  display:inline-block;padding:10px 25px;border-radius:25px;
-  background:var(--gold-gradient);color:#000;font-weight:bold
+  display:inline-block;padding:12px 30px;border-radius:25px;
+  background:var(--gold-gradient);color:#000;font-weight:bold;
+  transition:all 0.3s ease;box-shadow:0 4px 15px rgba(250,204,21,0.3);
 }
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 6px 25px rgba(250,204,21,0.4);
+}
+
 .hero-image{flex:1;display:flex;justify-content:center}
 .hero-image img{
   max-width:320px;border-radius:20px;
   box-shadow:0 0 40px rgba(250,204,21,0.5);
-  object-fit:cover;mix-blend-mode:screen; /* blend effect */
+  object-fit:cover;transition:transform 0.3s ease;
+}
+
+.hero-image img:hover{
+  transform:scale(1.05);
 }
 
 /* Sections */
-section{padding:60px 50px}
+section{padding:80px 50px}
 .section-title{
-  font-size:1.8rem;margin-bottom:30px;
-  background:var(--gold-gradient);-webkit-background-clip:text;color:transparent
+  font-size:2rem;margin-bottom:40px;
+  background:var(--gold-gradient);-webkit-background-clip:text;color:transparent;
+  position:relative;
+}
+
+.section-title::after{
+  content:'';position:absolute;bottom:-10px;left:0;
+  width:60px;height:3px;background:var(--gold-gradient);
 }
 
 /* Skills */
-.skill{margin-bottom:20px}
-.skill-name{margin-bottom:5px;font-weight:bold}
-.skill-bar{background:#333;border-radius:20px;overflow:hidden;position:relative}
-.skill-bar div{
-  height:12px;background:var(--gold-gradient);
-  width:0;transition:width 1s ease-in-out;
-}
-
-/* Timeline */
-.timeline{border-right:2px solid var(--gold);padding-right:20px;position:relative}
-.timeline-item{margin-bottom:30px;opacity:0;transform:translateY(40px);transition:all .8s ease}
-.timeline-item.show{opacity:1;transform:translateY(0)}
-.timeline-item h3{color:var(--gold);font-size:1.2rem}
-
-/* Contact */
-footer{background:#1a1a1a;color:#888;text-align:center;padding:15px}
-
-/* Scroll Animations */
-.fade-in-up{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
-.fade-in-up.show{opacity:1;transform:translateY(0)}
-
-@media(max-width:768px){
-  .hero-content{flex-direction:column}
-  nav{padding:15px 20px}
-}
-</style>
-</head>
-<body>
-
-<!-- Navbar -->
-<nav>
-  <div class="logo">AminT</div>
-  <ul>
-    <li><a href="#home" data-fa="خانه" data-en="Home">خانه</a></li>
-    <li><a href="#about" data-fa="درباره" data-en="About">درباره</a></li>
-    <li><a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
-    <li><a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a></li>
-    <li><a href="#contact" data-fa="تماس" data-en="Contact">تماس</a></li>
-  </ul>
-  <button class="lang-btn" onclick="toggleLang()">EN</button>
-</nav>
-
-<!-- Hero -->
-<header class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-text fade-in-up">
-      <h1><span>محمدامین طیبی</span></h1>
-      <h2 id="typed-text" style="height:40px"></h2>
-      <p data-fa="مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه" 
-         data-en="VoIP & Network Engineer with expertise in advanced solutions and network security.">
-         مهندس VoIP و زیرساخت شبکه با تجربه در راهکارهای پیشرفته و امنیت شبکه
-      </p>
-      <a href="pdf_5.pdf" class="btn" download data-fa="دانلود رزومه" data-en="Download CV">دانلود رزومه</a>
-    </div>
-    <div class="hero-image fade-in-up">
-      <img src="image.png" alt="Amin Tayebi">
-    </div>
-  </div>
-</header>
-
-<!-- About -->
-<section id="about" class="fade-in-up">
-  <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
-  <p data-fa="دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار." 
-     data-en="Highly team-oriented, familiar with administrative procedures, committed and quick learner.">
-     دارای روحیه تیمی بالا، آشنا با مراتب اداری، یادگیری بالا و تعهد به کار.
-  </p>
-</section>
-
-<!-- Skills -->
-<section id="skills" class="fade-in-up">
-  <h2 class="section-title" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
-  <div class="skill">
-    <div class="skill-name">Linux LPIC — 80%</div>
-    <div class="skill-bar"><div data-skill="80"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">VoIP / Asterisk — 85%</div>
-    <div class="skill-bar"><div data-skill="85"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Network — 80%</div>
-    <div class="skill-bar"><div data-skill="80"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Docker — 60%</div>
-    <div class="skill-bar"><div data-skill="60"></div></div>
-  </div>
-</section>
-
-<!-- Experience -->
-<section id="experience" class="fade-in-up">
-  <h2 class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3 data-fa="کارشناس 3 — تل سی" data-en="Level 3 Support — TelC">کارشناس 3 — تل سی</h3>
-      <p data-fa="بهمن 1397 تا دی 1400" data-en="Feb 2019 — Jan 2022">بهمن 1397 تا دی 1400</p>
-    </div>
-    <div class="timeline-item">
-      <h3 data-fa="کارشناس فنی پشتیبانی — تل سی" data-en="Technical Support Specialist — TelC">کارشناس فنی پشتیبانی — تل سی</h3>
-      <p data-fa="دی 1400 تا اکنون" data-en="Jan 2022 — Present">دی 1400 تا اکنون</p>
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="fade-in-up">
-  <h2 class="section-title" data-fa="تماس" data-en="Contact">تماس</h2>
-  <p>📧 amintayebi**@gmail.com</p>
-  <p>📱 +98-912-337-8752</p>
-  <p>🌍 amintayebi.ir</p>
-</section>
-
-<!-- Footer -->
-<footer>&copy; 2025 Amin Tayebi</footer>
-
-<script>
-// Language Toggle
-let lang='fa';
-function toggleLang(){
-  lang = (lang==='fa')?'en':'fa';
-  document.documentElement.dir = (lang==='fa')?'rtl':'ltr';
-  document.querySelectorAll('[data-fa]').forEach(el=>{
-    el.innerText = el.getAttribute(`data-${lang}`);
-  });
-  document.querySelector('.lang-btn').innerText = (lang==='fa')?'EN':'FA';
-}
-
-// Typewriter Effect
-let jobTitles = [
-  "کارشناس فنی پشتیبانی",
-  "Network & Communications Specialist",
-  "مهندس VoIP و لینوکس"
-];
-let typedIndex=0, charIndex=0;
-let typedElement = document.getElementById('typed-text');
-function typeJob(){
-  if(charIndex < jobTitles[typedIndex].length){
-    typedElement.innerHTML += jobTitles[typedIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(typeJob,80);
-  }else{
-    setTimeout(eraseJob,1500);
-  }
-}
-function eraseJob(){
-  if(charIndex > 0){
-    typedElement.innerHTML = jobTitles[typedIndex].substring(0,charIndex-1);
-    charIndex--;
-    setTimeout(eraseJob,40);
-  }else{
-    typedIndex = (typedIndex+1)%jobTitles.length;
-    setTimeout(typeJob,200);
-  }
-}
-typeJob();
-
-// Scroll Animations
-const observers = document.querySelectorAll('.fade-in-up, .timeline-item');
-let observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-      if(entry.target.querySelectorAll('[data-skill]').length){
-        entry.target.querySelectorAll('[data-skill]').forEach(bar=>{
-          bar.style.width = bar.dataset.skill+'%';
-        });
-      }
-    }
-  });
-},{threshold:0.2});
-observers.forEach(el=>observer.observe(el));
-</script>
-
-</body>
-</html>
+.skills-grid{
