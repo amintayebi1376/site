@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="google05a193f3c3cf3d5a" />
 <title>محمدامین طیبی | VoIP & Network Engineer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -397,14 +398,14 @@ body {
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  clear: both; /* این خط اضافه شد */
+  clear: both;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 80px;
   animation: fadeInUp 0.8s ease-out;
-  clear: both; /* این خط اضافه شد */
+  clear: both;
 }
 
 .section-badge {
@@ -574,14 +575,14 @@ body {
   border-radius: 20px;
 }
 
-/* Experience Timeline - اصلاح شده برای RTL */
+/* Experience Timeline */
 .experience-section {
   padding: 120px 30px;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  clear: both; /* Clear float از timeline */
+  clear: both;
 }
 
 .timeline {
@@ -593,7 +594,6 @@ body {
   margin-right: auto;
 }
 
-/* خط وسط تایم‌لاین */
 .timeline::before {
   content: '';
   position: absolute;
@@ -605,14 +605,12 @@ body {
   transform: translateX(50%);
 }
 
-/* Clear floats بعد از timeline */
 .timeline::after {
   content: '';
   display: table;
   clear: both;
 }
 
-/* آیتم‌های تایم‌لاین */
 .timeline-item {
   position: relative;
   margin-bottom: 60px;
@@ -620,7 +618,6 @@ body {
   clear: both;
 }
 
-/* آیتم اول - راست */
 .timeline-item:nth-child(1) {
   float: right !important;
   text-align: left !important;
@@ -639,7 +636,6 @@ body {
   box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
 }
 
-/* آیتم دوم - چپ */
 .timeline-item:nth-child(2) {
   float: left !important;
   text-align: right !important;
@@ -785,7 +781,7 @@ body {
   padding: 40px 30px;
   border-top: 1px solid rgba(99, 102, 241, 0.1);
   color: var(--text-secondary);
-  clear: both; /* این خط اضافه شد */
+  clear: both;
 }
 
 .footer-text {
@@ -895,7 +891,6 @@ body {
     justify-self: center;
   }
   
-  /* تایم‌لاین در تبلت */
   .timeline::before {
     right: 30px !important;
     transform: none !important;
@@ -1014,7 +1009,6 @@ body {
     height: 270px;
   }
   
-  /* تایم‌لاین در موبایل */
   .timeline-item {
     width: calc(100% - 60px) !important;
     margin-right: 60px !important;
@@ -1352,6 +1346,39 @@ body {
             <span class="timeline-skill">PRTG Monitoring</span>
             <span class="timeline-skill">MCI Infrastructure</span>
             <span class="timeline-skill">Training & Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section" id="education">
+    <div class="section-header fade-in">
+      <div class="section-badge" data-fa="تحصیلات" data-en="Education">تحصیلات</div>
+      <h2 class="section-title" data-fa="سوابق تحصیلی" data-en="Academic Background">سوابق تحصیلی</h2>
+      <p class="section-description" data-fa="تحصیلات دانشگاهی در رشته فناوری اطلاعات" data-en="University education in Information Technology">
+        تحصیلات دانشگاهی در رشته فناوری اطلاعات
+      </p>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item fade-in">
+        <div class="timeline-content">
+          <div class="timeline-date">
+            <i class="fas fa-graduation-cap"></i>
+            <span data-fa="1398 — 1402" data-en="2019 — 2023">1398 — 1402</span>
+          </div>
+          <h3 class="timeline-title" data-fa="کارشناسی کامپیوتر" data-en="Bachelor's in Computer Science">کارشناسی کامپیوتر</h3>
+          <div class="timeline-company" data-fa="دانشگاه آزاد اسلامی پرند" data-en="Islamic Azad University Parand">دانشگاه آزاد اسلامی پرند</div>
+          <div class="timeline-description" data-fa="تحصیل در رشته کامپیوتر و فناوری اطلاعات با تخصص در حوزه نرم‌افزار. تمرکز بر مباحث شبکه، پایگاه داده، برنامه‌نویسی و سیستم‌های توزیع‌شده." data-en="Studied Computer Science and Information Technology with specialization in software. Focus on networking, databases, programming and distributed systems.">
+            تحصیل در رشته کامپیوتر و فناوری اطلاعات با تخصص در حوزه نرم‌افزار. تمرکز بر مباحث شبکه، پایگاه داده، برنامه‌نویسی و سیستم‌های توزیع‌شده.
+          </div>
+          <div class="timeline-skills">
+            <span class="timeline-skill">Computer Networks</span>
+            <span class="timeline-skill">Database Systems</span>
+            <span class="timeline-skill">Software Engineering</span>
+            <span class="timeline-skill">Operating Systems</span>
           </div>
         </div>
       </div>
