@@ -1,1627 +1,1380 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="google05a193f3c3cf3d5a" />
-<title>محمدامین طیبی | VoIP & Network Engineer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-/* Reset & Variables */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --primary: #6366f1;
-  --primary-light: #818cf8;
-  --primary-dark: #4f46e5;
-  --secondary: #10b981;
-  --accent: #f59e0b;
-  --gold: #fbbf24;
-  --dark: #0f172a;
-  --dark-light: #1e293b;
-  --dark-medium: #334155;
-  --light: #f8fafc;
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  
-  --gradient-main: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-hero: linear-gradient(135deg, rgba(79,70,229,0.8) 0%, rgba(124,58,237,0.8) 50%, rgba(219,39,119,0.8) 100%);
-  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
-}
-
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  max-width: 100vw;
-}
-
-body {
-  font-family: 'Vazirmatn', 'Poppins', sans-serif;
-  background: var(--dark);
-  color: var(--text-primary);
-  line-height: 1.7;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--dark-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--gradient-main);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}
-
-/* Background Effects */
-.bg-particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.1;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-}
-
-/* Navigation */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 20px 0;
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-  z-index: 1000;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.navbar.scrolled {
-  padding: 15px 0;
-  background: rgba(15, 23, 42, 0.95);
-}
-
-.nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 40px;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-menu a {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
-  transition: all 0.3s ease;
-  padding: 8px 0;
-  white-space: nowrap;
-}
-
-.nav-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-gold);
-  transition: width 0.3s ease;
-}
-
-.nav-menu a:hover::after,
-.nav-menu a.active::after {
-  width: 100%;
-}
-
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-shrink: 0;
-}
-
-.lang-toggle {
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid var(--primary);
-  color: var(--primary);
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.lang-toggle:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-2px);
-}
-
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 4px;
-}
-
-.mobile-menu span {
-  width: 25px;
-  height: 2px;
-  background: var(--gold);
-  transition: 0.3s;
-  border-radius: 2px;
-}
-
-/* Hero Section - Fixed Layout */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 120px 30px 60px;
-  background-image: var(--gradient-hero), url('64c69643-4b0b-4874-a276-92f9c99412de.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-blend-mode: multiply;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-  z-index: 0;
-}
-
-.hero-container {
-  max-width: 1400px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.hero-content {
-  animation: fadeInLeft 1s ease-out;
-  justify-self: start;
-  max-width: 100%;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.hero-badge .badge-icon {
-  width: 8px;
-  height: 8px;
-  background: var(--secondary);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 25px;
-}
-
-.hero-title .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-subtitle {
-  font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.hero-description {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.8;
-  margin-bottom: 40px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  background: var(--gradient-gold);
-  color: var(--dark);
-  padding: 16px 32px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-lg);
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-xl);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: white;
-  padding: 16px 32px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
-}
-
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  animation: fadeInRight 1s ease-out;
-  justify-self: end;
-}
-
-.hero-image::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 450px;
-  height: 450px;
-  background: var(--gradient-gold);
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-  z-index: -1;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-.profile-image {
-  width: 420px;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--shadow-xl);
-  transition: all 0.5s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.profile-image:hover {
-  transform: scale(1.05);
-  border-color: var(--gold);
-  box-shadow: 0 0 50px rgba(251, 191, 36, 0.4);
-}
-
-/* Sections */
-.section {
-  padding: 120px 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-  clear: both;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 80px;
-  animation: fadeInUp 0.8s ease-out;
-  clear: both;
-}
-
-.section-badge {
-  display: inline-block;
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--primary);
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  border: 1px solid rgba(99, 102, 241, 0.2);
-}
-
-.section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 20px;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.section-description {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
-
-/* About Section */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  width: 100%;
-}
-
-.about-content {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-}
-
-.about-content p {
-  margin-bottom: 20px;
-}
-
-.about-content .highlight {
-  color: var(--gold);
-  font-weight: 600;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.stat-card {
-  background: var(--dark-light);
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  border: 1px solid rgba(99, 102, 241, 0.1);
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow);
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 10px;
-}
-
-.stat-label {
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-/* Skills Section */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-  width: 100%;
-}
-
-.skill-category {
-  background: var(--dark-light);
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(99, 102, 241, 0.1);
-  transition: all 0.3s ease;
-}
-
-.skill-category:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow);
-}
-
-.skill-category-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.skill-icon {
-  width: 50px;
-  height: 50px;
-  background: var(--gradient-main);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: white;
-}
-
-.skill-category-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.skill-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-}
-
-.skill-item:last-child {
-  margin-bottom: 0;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.skill-name {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.skill-level {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--gold);
-  background: rgba(251, 191, 36, 0.1);
-  padding: 4px 12px;
-  border-radius: 20px;
-}
-
-/* Experience Timeline */
-.experience-section {
-  padding: 120px 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
-  clear: both;
-}
-
-.timeline {
-  position: relative;
-  margin: 60px 0;
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  right: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--gradient-main);
-  transform: translateX(50%);
-}
-
-.timeline::after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 60px;
-  width: calc(50% - 30px);
-  clear: both;
-}
-
-.timeline-item:nth-child(1) {
-  float: right !important;
-  text-align: left !important;
-}
-
-.timeline-item:nth-child(1)::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: -60px;
-  width: 20px;
-  height: 20px;
-  background: var(--gold);
-  border-radius: 50%;
-  border: 4px solid var(--dark);
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-}
-
-.timeline-item:nth-child(2) {
-  float: left !important;
-  text-align: right !important;
-}
-
-.timeline-item:nth-child(2)::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  right: -60px;
-  width: 20px;
-  height: 20px;
-  background: var(--gold);
-  border-radius: 50%;
-  border: 4px solid var(--dark);
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-}
-
-.timeline-content {
-  background: var(--dark-light);
-  padding: 35px;
-  border-radius: 20px;
-  border: 1px solid rgba(99, 102, 241, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.timeline-content:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow);
-}
-
-.timeline-date {
-  color: var(--gold);
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.timeline-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 15px;
-}
-
-.timeline-company {
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
-
-.timeline-description {
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-.timeline-skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.timeline-skill {
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--primary);
-  padding: 4px 12px;
-  border-radius: 15px;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-/* Contact Section */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  width: 100%;
-}
-
-.contact-card {
-  background: var(--dark-light);
-  padding: 40px 30px;
-  border-radius: 20px;
-  text-align: center;
-  border: 1px solid rgba(99, 102, 241, 0.1);
-  transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-glow);
-}
-
-.contact-icon {
-  width: 70px;
-  height: 70px;
-  background: var(--gradient-main);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: white;
-  margin: 0 auto 25px;
-  box-shadow: var(--shadow-lg);
-}
-
-.contact-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 15px;
-}
-
-.contact-info {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  font-weight: 500;
-}
-
-.contact-link {
-  color: var(--gold);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-  color: var(--primary);
-}
-
-/* Footer */
-.footer {
-  background: var(--dark-light);
-  text-align: center;
-  padding: 40px 30px;
-  border-top: 1px solid rgba(99, 102, 241, 0.1);
-  color: var(--text-secondary);
-  clear: both;
-}
-
-.footer-text {
-  font-size: 1rem;
-}
-
-.footer-heart {
-  color: var(--gold);
-  animation: pulse 2s infinite;
-}
-
-/* Scroll to Top */
-.scroll-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 55px;
-  height: 55px;
-  background: var(--gradient-main);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.3rem;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 1000;
-  box-shadow: var(--shadow-lg);
-}
-
-.scroll-top.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.scroll-top:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
-}
-
-/* Animations */
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .hero-container,
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    text-align: center;
-  }
-  
-  .hero-content,
-  .hero-image {
-    justify-self: center;
-  }
-  
-  .timeline::before {
-    right: 30px !important;
-    transform: none !important;
-  }
-  
-  .timeline-item {
-    width: calc(100% - 80px) !important;
-    float: none !important;
-    text-align: right !important;
-    margin-right: 80px !important;
-    margin-left: 0 !important;
-  }
-  
-  .timeline-item:nth-child(1)::before,
-  .timeline-item:nth-child(2)::before {
-    right: -90px !important;
-    left: auto !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .mobile-menu {
-    display: flex;
-  }
-  
-  .nav-menu {
-    position: fixed;
-    top: 100px;
-    left: 0;
-    width: 100%;
-    background: rgba(15, 23, 42, 0.98);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    padding: 40px;
-    gap: 30px;
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    border-radius: 0 0 20px 20px;
-  }
-  
-  .nav-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .hero {
-    padding: 140px 20px 80px;
-  }
-  
-  .hero-container {
-    gap: 40px;
-  }
-  
-  .profile-image {
-    width: 300px;
-    height: 300px;
-  }
-  
-  .hero-image::before {
-    width: 320px;
-    height: 320px;
-  }
-  
-  .section {
-    padding: 80px 20px;
-  }
-  
-  .experience-section {
-    padding: 80px 20px;
-  }
-  
-  .section-header {
-    margin-bottom: 60px;
-  }
-  
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-    justify-content: center;
-    max-width: 280px;
-  }
-  
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-container {
-    padding: 0 20px;
-  }
-  
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  
-  .profile-image {
-    width: 250px;
-    height: 250px;
-  }
-  
-  .hero-image::before {
-    width: 270px;
-    height: 270px;
-  }
-  
-  .timeline-item {
-    width: calc(100% - 60px) !important;
-    margin-right: 60px !important;
-  }
-  
-  .timeline-item:nth-child(1)::before,
-  .timeline-item:nth-child(2)::before {
-    right: -70px !important;
-  }
-  
-  .skill-category,
-  .contact-card,
-  .stat-card {
-    padding: 25px;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="google05a193f3c3cf3d5a" />
+    <title>محمدامین طیبی | VoIP & Network Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gold: #fbbf24;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Poppins', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 5%;
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-toggle {
+            background: var(--gradient);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 8rem 5% 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('64c69643-4b0b-4874-a276-92f9c99412de.png') center/cover;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--gold) 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.5);
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 50px rgba(99, 102, 241, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(99, 102, 241, 0.8);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(99, 102, 241, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(99, 102, 241, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateX(-5px);
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-level {
+            padding: 0.3rem 0.8rem;
+            background: var(--gradient);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--dark);
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--primary);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--primary) transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-date {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .timeline-company {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .timeline-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-skill {
+            padding: 0.3rem 0.8rem;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--light);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(99, 102, 241, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .contact-info {
+            color: var(--gray);
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            #home {
+                grid-template-columns: 1fr;
+                padding: 6rem 5% 3rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-img {
+                max-width: 300px;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid var(--primary);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--primary) transparent transparent;
+            }
+
+            .left::after,
+            .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid,
+            .skills-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="bg-particles"></div>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
 
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo">AminT</a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#home" class="nav-link active" data-fa="خانه" data-en="Home">خانه</a></li>
-        <li><a href="#about" class="nav-link" data-fa="درباره" data-en="About">درباره</a></li>
-        <li><a href="#skills" class="nav-link" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
-        <li><a href="#experience" class="nav-link" data-fa="تجربه" data-en="Experience">تجربه</a></li>
-        <li><a href="#contact" class="nav-link" data-fa="تماس" data-en="Contact">تماس</a></li>
-      </ul>
-      <div class="nav-controls">
-        <button class="lang-toggle" onclick="toggleLanguage()" data-fa="EN" data-en="فا">EN</button>
-        <div class="mobile-menu" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">AminT</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active" data-fa="خانه" data-en="Home">خانه</a></li>
+                <li><a href="#about" data-fa="درباره" data-en="About">درباره</a></li>
+                <li><a href="#skills" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a></li>
+                <li><a href="#experience" data-fa="تجربه" data-en="Experience">تجربه</a></li>
+                <li><a href="#contact" data-fa="تماس" data-en="Contact">تماس</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <div class="badge-icon"></div>
-          <span data-fa="آماده برای همکاری" data-en="Available for Work">آماده برای همکاری</span>
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-content">
+            <div class="badge" data-fa="آماده برای همکاری" data-en="Available for Work">آماده برای همکاری</div>
+            <h1 class="hero-title">
+                سلام، من <span class="highlight">محمدامین طیبی</span> هستم
+            </h1>
+            <p class="hero-subtitle" data-fa="متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps" 
+               data-en="Network & Communications Specialist | VoIP, Linux, Virtualization, DevOps">
+                متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps
+            </p>
+            <div class="hero-actions">
+                <a href="pdf_5.pdf" class="btn btn-primary" download>
+                    <i class="fas fa-download"></i>
+                    <span data-fa="دانلود رزومه" data-en="Download Resume">دانلود رزومه</span>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    <span data-fa="ارتباط با من" data-en="Let's Connect">ارتباط با من</span>
+                </a>
+            </div>
         </div>
-        
-        <h1 class="hero-title">
-          <span class="gradient-text" data-fa="محمدامین طیبی" data-en="Mohammad Amin Tayebi">محمدامین طیبی</span>
-        </h1>
-        
-        <h2 class="hero-subtitle" data-fa="متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps" data-en="Network & Communications Specialist | VoIP, Linux, Virtualization, DevOps">
-          متخصص شبکه و ارتباطات | VoIP، لینوکس، مجازی‌سازی، DevOps
-        </h2>
-        
-        <p class="hero-description" data-fa="در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند. از ساخت سیستم‌های VoIP با کارایی بالا تا طراحی زیرساخت‌های شبکه امن و مقیاس‌پذیر، به کسب‌وکارها کمک می‌کنم تا در دنیایی که قطع ارتباط گزینه‌ای نیست، به طور مطمئن متصل بمانند." data-en="Over the past years, I've engineered and managed communication solutions for SMEs and large enterprises — solutions that combine technical precision with a clear understanding of business goals. From building high‑performance VoIP systems to designing secure, scalable network infrastructures, I help businesses stay reliably connected in a world where downtime isn't an option.">
-          در سال‌های اخیر، راهکارهای ارتباطی را برای شرکت‌های کوچک و بزرگ طراحی و مدیریت کرده‌ام — راهکارهایی که دقت فنی را با درک عمیق از نیازهای کسب‌وکار ترکیب می‌کنند. از ساخت سیستم‌های VoIP با کارایی بالا تا طراحی زیرساخت‌های شبکه امن و مقیاس‌پذیر، به کسب‌وکارها کمک می‌کنم تا در دنیایی که قطع ارتباط گزینه‌ای نیست، به طور مطمئن متصل بمانند.
+        <div class="hero-image">
+            <img src="image.png" alt="Mohammad Amin Tayebi" class="profile-img">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
+        <p class="about-content" data-fa="من یک متخصص شبکه و ارتباطات با تجربه بیش از ۳ سال در طراحی، پیاده‌سازی و مدیریت زیرساخت‌های VoIP و شبکه هستم. تمرکز من بر ایجاد راهکارهای قابل اعتماد، مقیاس‌پذیر و بهینه است که نیازهای کسب‌وکارها را برآورده می‌کند."
+           data-en="I am a Network & Communications Specialist with over 3 years of experience in designing, implementing, and managing VoIP and network infrastructures. My focus is on creating reliable, scalable, and optimized solutions that meet business needs.">
+            من یک متخصص شبکه و ارتباطات با تجربه بیش از ۳ سال در طراحی، پیاده‌سازی و مدیریت زیرساخت‌های VoIP و شبکه هستم. تمرکز من بر ایجاد راهکارهای قابل اعتماد، مقیاس‌پذیر و بهینه است که نیازهای کسب‌وکارها را برآورده می‌کند.
         </p>
-        
-        <div class="hero-actions">
-          <a href="pdf_5.pdf" class="btn-primary" download>
-            <i class="fas fa-download"></i>
-            <span data-fa="دانلود رزومه" data-en="Download Resume">دانلود رزومه</span>
-          </a>
-          <a href="#contact" class="btn-secondary">
-            <i class="fas fa-envelope"></i>
-            <span data-fa="تماس با من" data-en="Let's Connect">تماس با من</span>
-          </a>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-count="3">0</div>
+                <div class="stat-label" data-fa="سال تجربه" data-en="Years Experience">سال تجربه</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="15">0</div>
+                <div class="stat-label" data-fa="پروژه موفق" data-en="Projects Completed">پروژه موفق</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="10">0</div>
+                <div class="stat-label" data-fa="تکنولوژی مسلط" data-en="Technologies Mastered">تکنولوژی مسلط</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="100">0</div>
+                <div class="stat-label" data-fa="رضایت مشتری" data-en="Client Satisfaction">رضایت مشتری</div>
+            </div>
         </div>
-      </div>
-      
-      <div class="hero-image">
-        <img src="image.png" alt="محمدامین طیبی" class="profile-image">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section class="section" id="about">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="بیشتر بدانید" data-en="Get to Know Me">بیشتر بدانید</div>
-      <h2 class="section-title" data-fa="درباره من" data-en="About Me">درباره من</h2>
-      <p class="section-description" data-fa="متخصصی با تجربه در زمینه فناوری‌های ارتباطی" data-en="Experienced specialist in communication technologies">
-        متخصصی با تجربه در زمینه فناوری‌های ارتباطی
-      </p>
-    </div>
-    
-    <div class="about-grid">
-      <div class="about-content fade-in">
-        <p data-fa="به عنوان یک حرفه‌ای با تجربه در حوزه فناوری اطلاعات، تجربه گسترده‌ای در طراحی، پیاده‌سازی و مدیریت سیستم‌های VoIP و زیرساخت‌های شبکه دارم. متعهد به ارائه راهکارهای نوآورانه و کارآمد هستم که ارتباطات امن، قابل اعتماد و مقیاس‌پذیر را برای کسب‌وکارها فراهم می‌کند." data-en="As a seasoned IT professional with extensive experience in designing, implementing, and managing VoIP systems and network infrastructures, I am committed to delivering innovative and efficient solutions that enable secure, reliable, and scalable communications for businesses.">
-          به عنوان یک حرفه‌ای با تجربه در حوزه فناوری اطلاعات، تجربه گسترده‌ای در طراحی، پیاده‌سازی و مدیریت سیستم‌های VoIP و زیرساخت‌های شبکه دارم. متعهد به ارائه راهکارهای نوآورانه و کارآمد هستم که ارتباطات امن، قابل اعتماد و مقیاس‌پذیر را برای کسب‌وکارها فراهم می‌کند.
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in">
+        <h2 class="section-title" data-fa="مهارت‌های من" data-en="My Skills">مهارت‌های من</h2>
+        <div class="skills-grid">
+            <!-- Linux Administration -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fab fa-linux"></i>
+                    <span data-fa="مدیریت لینوکس" data-en="Linux Administration">مدیریت لینوکس</span>
+                </h3>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="LPIC-1 & LPIC-2" data-en="LPIC-1 & LPIC-2">LPIC-1 & LPIC-2</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="مدیریت کاربران و دسترسی‌ها" data-en="User & Permissions Management">مدیریت کاربران و دسترسی‌ها</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Bash Scripting" data-en="Bash Scripting">Bash Scripting</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Cron Jobs & Task Scheduling" data-en="Cron Jobs & Task Scheduling">Cron Jobs & Task Scheduling</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="مدیریت لاگ‌ها و Systemd" data-en="Log Management & Systemd">مدیریت لاگ‌ها و Systemd</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Disk Partitioning & LVM" data-en="Disk Partitioning & LVM">Disk Partitioning & LVM</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Process & Resource Monitoring" data-en="Process & Resource Monitoring">Process & Resource Monitoring</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Backup & Restore" data-en="Backup & Restore">Backup & Restore</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+            </div>
+
+            <!-- VoIP & Communications -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-phone-volume"></i>
+                    <span data-fa="ارتباطات صوتی (VoIP)" data-en="Voice Communications (VoIP)">ارتباطات صوتی (VoIP)</span>
+                </h3>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Asterisk PBX" data-en="Asterisk PBX">Asterisk PBX</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="SIP Protocol" data-en="SIP Protocol">SIP Protocol</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Dialplans & AMI" data-en="Dialplans & AMI">Dialplans & AMI</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="VoIP Handset Deployment" data-en="VoIP Handset Deployment">VoIP Handset Deployment</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Network Design for VoIP" data-en="Network Design for VoIP">Network Design for VoIP</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="SIP Header Analysis" data-en="SIP Header Analysis">SIP Header Analysis</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+            </div>
+
+            <!-- Virtualization -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-server"></i>
+                    <span data-fa="مجازی‌سازی" data-en="Virtualization">مجازی‌سازی</span>
+                </h3>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="VMware ESXi Administration" data-en="VMware ESXi Administration">VMware ESXi Administration</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="vCenter Server Management" data-en="vCenter Server Management">vCenter Server Management</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="vMotion & Storage vMotion" data-en="vMotion & Storage vMotion">vMotion & Storage vMotion</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Virtual Networking (vSwitch)" data-en="Virtual Networking (vSwitch)">Virtual Networking (vSwitch)</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Backup & DR (Veeam)" data-en="Backup & DR (Veeam)">Backup & DR (Veeam)</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Docker Containers" data-en="Docker Containers">Docker Containers</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+            </div>
+
+            <!-- Networking & Security -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-network-wired"></i>
+                    <span data-fa="شبکه و امنیت" data-en="Networking & Security">شبکه و امنیت</span>
+                </h3>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Network Switches & Routers" data-en="Network Switches & Routers">Network Switches & Routers</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="MikroTik Routers" data-en="MikroTik Routers">MikroTik Routers</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Wireshark & Packet Analysis" data-en="Wireshark & Packet Analysis">Wireshark & Packet Analysis</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="TCP/IP & PCAP" data-en="TCP/IP & PCAP">TCP/IP & PCAP</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Passive Network Infrastructure" data-en="Passive Network Infrastructure">Passive Network Infrastructure</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Network Firewalls" data-en="Network Firewalls">Network Firewalls</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+            </div>
+
+            <!-- Database & Monitoring -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-database"></i>
+                    <span data-fa="پایگاه داده و نظارت" data-en="Database & Monitoring">پایگاه داده و نظارت</span>
+                </h3>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="MariaDB & Oracle" data-en="MariaDB & Oracle">MariaDB & Oracle</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="MySQL & SQL" data-en="MySQL & SQL">MySQL & SQL</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Database Security & Optimization" data-en="Database Security & Optimization">Database Security & Optimization</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Zabbix Monitoring" data-en="Zabbix Monitoring">Zabbix Monitoring</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Grafana Dashboards" data-en="Grafana Dashboards">Grafana Dashboards</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="PRTG Network Monitor" data-en="PRTG Network Monitor">PRTG Network Monitor</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Prometheus & Loki" data-en="Prometheus & Loki">Prometheus & Loki</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+            </div>
+
+            <!-- DevOps & Automation -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-code-branch"></i>
+                    <span data-fa="DevOps و اتوماسیون" data-en="DevOps & Automation">DevOps و اتوماسیون</span>
+                </h3>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="RESTful & SOAP Web Services" data-en="RESTful & SOAP Web Services">RESTful & SOAP Web Services</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="API Development (JWT Auth)" data-en="API Development (JWT Auth)">API Development (JWT Auth)</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="CI/CD (Jenkins & GitLab)" data-en="CI/CD (Jenkins & GitLab)">CI/CD (Jenkins & GitLab)</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="NGINX & Apache" data-en="NGINX & Apache">NGINX & Apache</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="n8n Workflow Automation" data-en="n8n Workflow Automation">n8n Workflow Automation</span>
+                    <span class="skill-level" data-fa="پیشرفته" data-en="Advanced">پیشرفته</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Jira API Integration" data-en="Jira API Integration">Jira API Integration</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Telegram Bot Development" data-en="Telegram Bot Development">Telegram Bot Development</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name" data-fa="Python & JavaScript" data-en="Python & JavaScript">Python & JavaScript</span>
+                    <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="fade-in">
+        <h2 class="section-title" data-fa="تجربه کاری" data-en="Work Experience">تجربه کاری</h2>
+        <div class="timeline">
+            <!-- Experience 1 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date" data-fa="دسامبر ۲۰۲۱ — اکنون" data-en="Dec 2021 — Present">دسامبر ۲۰۲۱ — اکنون</div>
+                    <h3 class="timeline-title" data-fa="متخصص پشتیبانی فنی و تیم L2" data-en="Technical Support Specialist & L2 Team Lead">متخصص پشتیبانی فنی و تیم L2</h3>
+                    <div class="timeline-company" data-fa="Tel-C — ایران، تهران" data-en="Tel-C — Iran, Tehran">Tel-C — ایران، تهران</div>
+                    <p class="timeline-description" data-fa="مدیریت و بهینه‌سازی سیستم‌های لینوکس، پایگاه‌داده و VoIP. طراحی شبکه برای کسب‌وکارهای کوچک و متوسط با تمرکز بر امنیت و عملکرد. رهبری تیم L2 در حل مشکلات پیشرفته و آموزش اعضای تیم."
+                       data-en="Managing and optimizing Linux systems, databases, and VoIP infrastructure. Designing networks for SMEs with a focus on security and performance. Leading L2 team in advanced troubleshooting and team training.">
+                        مدیریت و بهینه‌سازی سیستم‌های لینوکس، پایگاه‌داده و VoIP. طراحی شبکه برای کسب‌وکارهای کوچک و متوسط با تمرکز بر امنیت و عملکرد. رهبری تیم L2 در حل مشکلات پیشرفته و آموزش اعضای تیم.
+                    </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Linux Administration</span>
+                        <span class="timeline-skill">VoIP Systems</span>
+                        <span class="timeline-skill">Database Management</span>
+                        <span class="timeline-skill">Network Security</span>
+                        <span class="timeline-skill">Team Leadership</span>
+                        <span class="timeline-skill">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience 2 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date" data-fa="فوریه ۲۰۱۹ — دسامبر ۲۰۲۱" data-en="Feb 2019 — Dec 2021">فوریه ۲۰۱۹ — دسامبر ۲۰۲۱</div>
+                    <h3 class="timeline-title" data-fa="متخصص نظارت بر شبکه" data-en="Network Monitoring Specialist">متخصص نظارت بر شبکه</h3>
+                    <div class="timeline-company" data-fa="Tel-C — ایران، تهران" data-en="Tel-C — Iran, Tehran">Tel-C — ایران، تهران</div>
+                    <p class="timeline-description" data-fa="نظارت بر سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP. رهبری تیم F0 و آموزش اعضای جدید. گزارش‌دهی و آشنایی با زیرساخت‌های MCI و سیستم‌های LBMS."
+                       data-en="Monitoring electronic payment systems using BICP software. Leading F0 team and training new members. Reporting and familiarity with MCI infrastructure and LBMS systems.">
+                        نظارت بر سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP. رهبری تیم F0 و آموزش اعضای جدید. گزارش‌دهی و آشنایی با زیرساخت‌های MCI و سیستم‌های LBMS.
+                    </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">BICP Software</span>
+                        <span class="timeline-skill">Team Leadership</span>
+                        <span class="timeline-skill">PRTG Monitoring</span>
+                        <span class="timeline-skill">MCI Infrastructure</span>
+                        <span class="timeline-skill">LBMS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="fade-in">
+        <h2 class="section-title" data-fa="تحصیلات" data-en="Education">تحصیلات</h2>
+        <div class="timeline">
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date" data-fa="۲۰۱۹ — ۲۰۲۳" data-en="2019 — 2023">۲۰۱۹ — ۲۰۲۳</div>
+                    <h3 class="timeline-title" data-fa="کارشناسی علوم کامپیوتر" data-en="Bachelor of Computer Science">کارشناسی علوم کامپیوتر</h3>
+                    <div class="timeline-company" data-fa="دانشگاه آزاد اسلامی پرند" data-en="Islamic Azad University Parand">دانشگاه آزاد اسلامی پرند</div>
+                    <p class="timeline-description" data-fa="تخصص نرم‌افزار با تمرکز بر شبکه، پایگاه‌داده و برنامه‌نویسی"
+                       data-en="Software specialization with focus on Networks, Databases, and Programming">
+                        تخصص نرم‌افزار با تمرکز بر شبکه، پایگاه‌داده و برنامه‌نویسی
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <h2 class="section-title" data-fa="تماس با من" data-en="Contact Me">تماس با من</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <h3 class="contact-title" data-fa="ایمیل" data-en="Email">ایمیل</h3>
+                <p class="contact-info">
+                    <a href="mailto:amintayebi@gmail.com" class="contact-link">amintayebi@gmail.com</a>
+                </p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <h3 class="contact-title" data-fa="تلفن" data-en="Phone">تلفن</h3>
+                <p class="contact-info">
+                    <a href="tel:+989123327852" class="contact-link">+98 912 332 7852</a><br>
+                    <a href="tel:+989109192028" class="contact-link">+98 910 919 2028</a>
+                </p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h3 class="contact-title" data-fa="موقعیت" data-en="Location">موقعیت</h3>
+                <p class="contact-info" data-fa="تهران، ایران" data-en="Tehran, Iran">تهران، ایران</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-briefcase"></i></div>
+                <h3 class="contact-title" data-fa="وضعیت" data-en="Status">وضعیت</h3>
+                <p class="contact-info" data-fa="آماده برای همکاری" data-en="Available for Work">آماده برای همکاری</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/amin-tayebi-b40977233/?originalSubdomain=ir" target="_blank" class="social-link" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:amintayebi@gmail.com" class="social-link" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+989123327852" class="social-link" title="Phone">
+                <i class="fas fa-phone"></i>
+            </a>
+        </div>
+        <p data-fa="ساخته شده با ❤️ توسط محمدامین طیبی" data-en="Made with ❤️ by Mohammad Amin Tayebi">
+            ساخته شده با ❤️ توسط محمدامین طیبی
         </p>
-        
-        <p data-fa="به فناوری‌های نو همیشه کنجکاوم — از پروتکل‌های نسل جدید VoIP تا طراحی شبکه‌های آماده برای کلود — و از همکاری تیمی برای حل چالش‌های پیچیده لذت می‌برم. اگر به کسی نیاز دارید که سیستم ارتباطی شما را با امنیت و کارایی بالا طراحی، امن یا بهینه‌سازی کند — خوشحال می‌شوم در ارتباط باشیم." data-en="I'm passionate about exploring emerging technologies — from next‑gen VoIP protocols to cloud‑ready network designs — and thrive on collaborating with teams to solve complex technical puzzles. If you're looking for someone to design, secure, or optimize your communication systems so they just work — let's connect.">
-          به فناوری‌های نو همیشه کنجکاوم — از پروتکل‌های نسل جدید VoIP تا طراحی شبکه‌های آماده برای کلود — و از همکاری تیمی برای حل چالش‌های پیچیده لذت می‌برم. اگر به کسی نیاز دارید که سیستم ارتباطی شما را با امنیت و کارایی بالا طراحی، امن یا بهینه‌سازی کند — خوشحال می‌شوم در ارتباط باشیم.
-        </p>
-      </div>
-      
-      <div class="stats-grid fade-in">
-        <div class="stat-card">
-          <div class="stat-number">3+</div>
-          <div class="stat-label" data-fa="سال تجربه" data-en="Years Experience">سال تجربه</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">15+</div>
-          <div class="stat-label" data-fa="پروژه موفق" data-en="Projects Completed">پروژه موفق</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">10+</div>
-          <div class="stat-label" data-fa="تکنولوژی مسلط" data-en="Technologies">تکنولوژی مسلط</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">100%</div>
-          <div class="stat-label" data-fa="رضایت مشتری" data-en="Client Satisfaction">رضایت مشتری</div>
-        </div>
-      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
     </div>
-  </section>
 
-  <!-- Skills Section -->
-  <section class="section" id="skills">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="تخصص‌ها" data-en="Expertise">تخصص‌ها</div>
-      <h2 class="section-title" data-fa="مهارت‌های تخصصی" data-en="Technical Skills">مهارت‌های تخصصی</h2>
-      <p class="section-description" data-fa="تسلط در تکنولوژی‌های نوین ارتباطات و شبکه" data-en="Expertise in modern communication and network technologies">
-        تسلط در تکنولوژی‌های نوین ارتباطات و شبکه
-      </p>
-    </div>
-    
-    <div class="skills-grid">
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="ارتباطات صوتی (VoIP)" data-en="Voice Communications (VoIP)">ارتباطات صوتی (VoIP)</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Asterisk</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Issabel</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">SIP Protocol</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Dialplans & AMI</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
+    <script>
+        // Create particle background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fab fa-linux"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="سیستم‌عامل و سرور" data-en="Operating Systems & Server">سیستم‌عامل و سرور</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Linux LPIC</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Linux Server</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">VMware Workstation</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Docker</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-      </div>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = document.getElementById('scrollTop');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-network-wired"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="شبکه و امنیت" data-en="Networking & Security">شبکه و امنیت</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Network Switches & Routers</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">MikroTik Routers</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Wireshark & TCP/PCAP</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Passive Network</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
 
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-database"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="پایگاه داده و نظارت" data-en="Database & Monitoring">پایگاه داده و نظارت</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">MariaDB & Oracle</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">MySQL</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Zabbix</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Grafana</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-      </div>
-
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-code"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="برنامه‌نویسی و توسعه" data-en="Programming & Development">برنامه‌نویسی و توسعه</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">PL/SQL</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">JavaScript</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Bash Script</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">API Development</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
-
-      <div class="skill-category fade-in">
-        <div class="skill-category-header">
-          <div class="skill-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <h3 class="skill-category-title" data-fa="ابزارها و مدیریت" data-en="Tools & Management">ابزارها و مدیریت</h3>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Jira</span>
-          <span class="skill-level" data-fa="مبتدی" data-en="Beginner">مبتدی</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">PRTG</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">Troubleshooting</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-        <div class="skill-item">
-          <span class="skill-name">LBMS</span>
-          <span class="skill-level" data-fa="متوسط" data-en="Intermediate">متوسط</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section class="experience-section" id="experience">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="مسیر شغلی" data-en="Career Path">مسیر شغلی</div>
-      <h2 class="section-title" data-fa="تجربه‌های کاری" data-en="Work Experience">تجربه‌های کاری</h2>
-      <p class="section-description" data-fa="سابقه حرفه‌ای در زمینه فناوری ارتباطات" data-en="Professional background in communication technologies">
-        سابقه حرفه‌ای در زمینه فناوری ارتباطات
-      </p>
-    </div>
-    
-    <div class="timeline">
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <div class="timeline-date">
-            <i class="fas fa-calendar"></i>
-            <span data-fa="دی 1400 — در حال حاضر" data-en="Dec 2021 — Present">دی 1400 — در حال حاضر</span>
-          </div>
-          <h3 class="timeline-title" data-fa="کارشناس فنی پشتیبانی" data-en="Technical Support Specialist">کارشناس فنی پشتیبانی</h3>
-          <div class="timeline-company" data-fa="تل سی — ایران، تهران" data-en="Tel-C — Iran, Tehran">تل سی — ایران، تهران</div>
-          <div class="timeline-description" data-fa="مسئولیت کامل مدیریت سیستم‌های لینوکس، پایگاه‌های داده و زیرساخت‌های VoIP. طراحی و پیاده‌سازی راهکارهای شبکه برای شرکت‌های کوچک و متوسط، مدیریت امنیت شبکه و بهینه‌سازی عملکرد سیستم‌ها." data-en="Full responsibility for managing Linux systems, databases, and VoIP infrastructures. Designing and implementing network solutions for SMEs, managing network security and optimizing system performance.">
-            مسئولیت کامل مدیریت سیستم‌های لینوکس، پایگاه‌های داده و زیرساخت‌های VoIP. طراحی و پیاده‌سازی راهکارهای شبکه برای شرکت‌های کوچک و متوسط، مدیریت امنیت شبکه و بهینه‌سازی عملکرد سیستم‌ها.
-          </div>
-          <div class="timeline-skills">
-            <span class="timeline-skill">Linux Administration</span>
-            <span class="timeline-skill">VoIP Systems</span>
-            <span class="timeline-skill">Database Management</span>
-            <span class="timeline-skill">Network Security</span>
-            <span class="timeline-skill">Troubleshooting</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <div class="timeline-date">
-            <i class="fas fa-calendar"></i>
-            <span data-fa="بهمن 1397 — دی 1400" data-en="Feb 2019 — Dec 2021">بهمن 1397 — دی 1400</span>
-          </div>
-          <h3 class="timeline-title" data-fa="کارشناس مانیتورینگ شبکه" data-en="Network Monitoring Specialist">کارشناس مانیتورینگ شبکه</h3>
-          <div class="timeline-company" data-fa="تل سی — ایران، تهران" data-en="Tel-C — Iran, Tehran">تل سی — ایران، تهران</div>
-          <div class="timeline-description" data-fa="نظارت و مانیتورینگ سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP، رهبری تیم گروه F0، آموزش پرسنل جدید و گزارش‌دهی به مدیریت. آشنایی عمیق با زیرساخت‌های MCI و سیستم‌های مدیریت LBMS." data-en="Monitoring and supervising electronic payment systems with BICP software, leading F0 group team, training new personnel and reporting to management. Deep familiarity with MCI infrastructures and LBMS management systems.">
-            نظارت و مانیتورینگ سیستم‌های پرداخت الکترونیکی با نرم‌افزار BICP، رهبری تیم گروه F0، آموزش پرسنل جدید و گزارش‌دهی به مدیریت. آشنایی عمیق با زیرساخت‌های MCI و سیستم‌های مدیریت LBMS.
-          </div>
-          <div class="timeline-skills">
-            <span class="timeline-skill">BICP Software</span>
-            <span class="timeline-skill">Team Leadership</span>
-            <span class="timeline-skill">PRTG Monitoring</span>
-            <span class="timeline-skill">MCI Infrastructure</span>
-            <span class="timeline-skill">Training & Development</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education Section -->
-  <section class="section" id="education">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="تحصیلات" data-en="Education">تحصیلات</div>
-      <h2 class="section-title" data-fa="سوابق تحصیلی" data-en="Academic Background">سوابق تحصیلی</h2>
-      <p class="section-description" data-fa="تحصیلات دانشگاهی در رشته فناوری اطلاعات" data-en="University education in Information Technology">
-        تحصیلات دانشگاهی در رشته فناوری اطلاعات
-      </p>
-    </div>
-    
-    <div class="timeline">
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <div class="timeline-date">
-            <i class="fas fa-graduation-cap"></i>
-            <span data-fa="1398 — 1402" data-en="2019 — 2023">1398 — 1402</span>
-          </div>
-          <h3 class="timeline-title" data-fa="کارشناسی کامپیوتر" data-en="Bachelor's in Computer Science">کارشناسی کامپیوتر</h3>
-          <div class="timeline-company" data-fa="دانشگاه آزاد اسلامی پرند" data-en="Islamic Azad University Parand">دانشگاه آزاد اسلامی پرند</div>
-          <div class="timeline-description" data-fa="تحصیل در رشته کامپیوتر و فناوری اطلاعات با تخصص در حوزه نرم‌افزار. تمرکز بر مباحث شبکه، پایگاه داده، برنامه‌نویسی و سیستم‌های توزیع‌شده." data-en="Studied Computer Science and Information Technology with specialization in software. Focus on networking, databases, programming and distributed systems.">
-            تحصیل در رشته کامپیوتر و فناوری اطلاعات با تخصص در حوزه نرم‌افزار. تمرکز بر مباحث شبکه، پایگاه داده، برنامه‌نویسی و سیستم‌های توزیع‌شده.
-          </div>
-          <div class="timeline-skills">
-            <span class="timeline-skill">Computer Networks</span>
-            <span class="timeline-skill">Database Systems</span>
-            <span class="timeline-skill">Software Engineering</span>
-            <span class="timeline-skill">Operating Systems</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section" id="contact">
-    <div class="section-header fade-in">
-      <div class="section-badge" data-fa="ارتباط با من" data-en="Get In Touch">ارتباط با من</div>
-      <h2 class="section-title" data-fa="اطلاعات تماس" data-en="Contact Information">اطلاعات تماس</h2>
-      <p class="section-description" data-fa="آماده همکاری در پروژه‌های جدید هستم" data-en="Ready to collaborate on new projects">
-        آماده همکاری در پروژه‌های جدید هستم
-      </p>
-    </div>
-    
-    <div class="contact-grid">
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <h3 class="contact-title" data-fa="ایمیل" data-en="Email">ایمیل</h3>
-        <div class="contact-info">
-          <a href="mailto:amintayebi@gmail.com" class="contact-link">amintayebi@gmail.com</a>
-        </div>
-      </div>
-      
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-phone"></i>
-        </div>
-        <h3 class="contact-title" data-fa="تلفن" data-en="Phone">تلفن</h3>
-        <div class="contact-info">
-          <a href="tel:+989123327852" class="contact-link">+98 912 332 7852</a><br>
-          <a href="tel:+989109192028" class="contact-link">+98 910 919 2028</a>
-        </div>
-      </div>
-      
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-map-marker-alt"></i>
-        </div>
-        <h3 class="contact-title" data-fa="موقعیت" data-en="Location">موقعیت</h3>
-        <div class="contact-info" data-fa="تهران، ایران" data-en="Tehran, Iran">
-          تهران، ایران
-        </div>
-      </div>
-      
-      <div class="contact-card fade-in">
-        <div class="contact-icon">
-          <i class="fas fa-briefcase"></i>
-        </div>
-        <h3 class="contact-title" data-fa="وضعیت" data-en="Status">وضعیت</h3>
-        <div class="contact-info" data-fa="آماده برای همکاری" data-en="Available for Work">
-          آماده برای همکاری
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-text" data-fa="ساخته شده با ❤️ توسط محمدامین طیبی" data-en="Made with ❤️ by Mohammad Amin Tayebi">
-      ساخته شده با <span class="footer-heart">❤️</span> توسط محمدامین طیبی
-    </div>
-  </footer>
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-top" onclick="scrollToTop()">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-<script>
-// Smooth scrolling for navigation links
-document.addEventListener('DOMContentLoaded', function() {
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('.section, .hero, .experience-section');
-  const scrollTopBtn = document.querySelector('.scroll-top');
-
-  // Navigation click handlers
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 100;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
+            // Update active navigation link
+            updateActiveNavLink();
         });
-      }
-      
-      // Update active link
-      navLinks.forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      
-      // Close mobile menu if open
-      const navMenu = document.getElementById('navMenu');
-      navMenu.classList.remove('active');
-    });
-  });
 
-  // Scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
+        // Update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
 
-  // Observe all fade-in elements
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-  });
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
 
-  // Active section highlighting
-  window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    const scrolled = window.pageYOffset;
-    
-    // Navbar background on scroll
-    if (scrolled > 100) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    
-    // Show/hide scroll to top button
-    if (scrolled > 300) {
-      scrollTopBtn.classList.add('show');
-    } else {
-      scrollTopBtn.classList.remove('show');
-    }
-    
-    // Update active navigation link
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 200;
-      const sectionHeight = section.clientHeight;
-      
-      if (scrolled >= sectionTop && scrolled < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-    
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-      }
-    });
-  });
-});
+        // Toggle mobile menu
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
 
-// Mobile menu toggle
-function toggleMobileMenu() {
-  const navMenu = document.getElementById('navMenu');
-  navMenu.classList.toggle('active');
-}
+        // Language toggle
+        let currentLang = 'fa';
+        function toggleLanguage() {
+            const langBtn = document.querySelector('.lang-toggle');
+            const elementsWithLang = document.querySelectorAll('[data-fa][data-en]');
+            
+            currentLang = currentLang === 'fa' ? 'en' : 'fa';
+            
+            elementsWithLang.forEach(element => {
+                if (currentLang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                    document.documentElement.setAttribute('lang', 'en');
+                    document.documentElement.setAttribute('dir', 'ltr');
+                    langBtn.textContent = 'FA';
+                } else {
+                    element.textContent = element.getAttribute('data-fa');
+                    document.documentElement.setAttribute('lang', 'fa');
+                    document.documentElement.setAttribute('dir', 'rtl');
+                    langBtn.textContent = 'EN';
+                }
+            });
+        }
 
-// Scroll to top function
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
-// Language toggle functionality
-let currentLang = 'fa';
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-function toggleLanguage() {
-  const newLang = currentLang === 'fa' ? 'en' : 'fa';
-  const newDir = newLang === 'fa' ? 'rtl' : 'ltr';
-  
-  // Update HTML lang and dir attributes
-  document.documentElement.lang = newLang;
-  document.documentElement.dir = newDir;
-  
-  // Update all elements with data attributes
-  const elements = document.querySelectorAll('[data-fa][data-en]');
-  elements.forEach(element => {
-    const newText = element.getAttribute(`data-${newLang}`);
-    if (newText) {
-      element.textContent = newText;
-    }
-  });
-  
-  // Update language toggle button
-  const langToggle = document.querySelector('.lang-toggle');
-  langToggle.textContent = newLang === 'fa' ? 'EN' : 'فا';
-  
-  currentLang = newLang;
-}
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-// Counter animation for stats
-function animateCounter(element, target, duration = 2000) {
-  let start = 0;
-  const increment = target / (duration / 16);
-  
-  const timer = setInterval(() => {
-    start += increment;
-    if (start >= target) {
-      element.textContent = target + (target === 100 ? '%' : '+');
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(start) + (target === 100 ? '%' : '+');
-    }
-  }, 16);
-}
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Trigger counter animation when stats come into view
-const statsObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const numbers = entry.target.querySelectorAll('.stat-number');
-      numbers.forEach(number => {
-        const target = parseInt(number.textContent.replace(/\D/g, ''));
-        animateCounter(number, target);
-      });
-      statsObserver.unobserve(entry.target);
-    }
-  });
-});
+        // Animate counter on scroll
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
 
-document.addEventListener('DOMContentLoaded', function() {
-  const statsGrid = document.querySelector('.stats-grid');
-  if (statsGrid) {
-    statsObserver.observe(statsGrid);
-  }
-});
-</script>
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target + (element.parentElement.querySelector('.stat-label').textContent.includes('رضایت') ? '%' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (element.parentElement.querySelector('.stat-label').textContent.includes('رضایت') ? '%' : '+');
+                }
+            }, 16);
+        }
+
+        // Observe stats section for counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-number').forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-grid');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Initialize
+        createParticles();
+    </script>
 </body>
 </html>
